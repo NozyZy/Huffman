@@ -39,7 +39,7 @@ void textFileToBinFile(FILE* file){
         // pints the binary char* into the fBin file
         printFile(fBin, bin);
     }
-    printf("\nThe file has been succesfully converted to binary\n");
+    printf("\nThe file has been succesfully converted to binary !\n");
     free(bin);
     fclose(fBin);
 
