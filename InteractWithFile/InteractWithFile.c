@@ -25,7 +25,6 @@ char* loadFile(FILE* file){
         text[pos] = (char)ch;
         pos++;
 
-        // if bigger than 8, add 8
         if (pos >= size) {
             size += 8;
             // adapt the size
@@ -38,29 +37,25 @@ char* loadFile(FILE* file){
     if (!text) return NULL;
 
     text[pos] = '\0';
-    // set the SEEK to the beginning of the file
     fseek(file, 0, SEEK_SET);
     return text;
 }
 
 // prints the content given in argument in a .txt file given in argument
 void printFile(FILE* file, char* content){
-    // if no file, exit
     if (!file) error1();
-    // prints all the content in the file
     fprintf(file, "%s", content);
 }
 
 // returns the number of chars in a .txt file
 int countCharFile(FILE* file){
     int count = 0, ch;
-    // if no file, exit
+    
     if (!file) error1();
-    // set the SEEK to the beginning of the file
     fseek(file, 0, SEEK_SET);
+    
     while (1) {
         ch = fgetc(file);
-        // if End Of File, stop the loop
         if (ch == EOF) break;
         count++;
     }
@@ -71,10 +66,10 @@ int countCharFile(FILE* file){
 // creates an empty file, or empty the file, with the name given in argument
 void emptyFile(char* name){
     FILE* file = fopen(name, "w+");
-    // if no file, exit
+    
     if (!file) error1();
     char ch[1] = {"\0"};
-    // writes in the empty char \0
+    // writes down the empty char \0
     printFile(file, ch);
     fclose(file);
 }
