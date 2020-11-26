@@ -12,10 +12,10 @@ char* loadFile(FILE* file){
     char *text;
     // if no file, exit
     if (!file) error1();
-    // first position to 0 / guessed size is 256 (2^8)
-    size_t pos = 0, size = 256;
+    // first position to 0 / guessed size is 8 (2^3)
+    size_t pos = 0, size = 8;
 
-    text = malloc((size)*sizeof(char));
+    text = malloc(size*sizeof(char));
     // if allocation fails, return NULL
     if (!text) return NULL;
     // set the SEEK at the beginning of the file
@@ -25,10 +25,11 @@ char* loadFile(FILE* file){
         text[pos] = (char)ch;
         pos++;
 
-        if (pos >= size) size += 256;
-
-        // adapt the size
-        text = realloc(text, (size+1)*sizeof(char));
+        if (pos >= size) {
+            size += 8;
+            // adapt the size
+            text = realloc(text, size * sizeof(char));
+        }
         if (!text) return NULL;
     }
     // remove empty allocation
@@ -49,8 +50,10 @@ void printFile(FILE* file, char* content){
 // returns the number of chars in a .txt file
 int countCharFile(FILE* file){
     int count = 0, ch;
+    
     if (!file) error1();
     fseek(file, 0, SEEK_SET);
+    
     while (1) {
         ch = fgetc(file);
         if (ch == EOF) break;
@@ -63,11 +66,10 @@ int countCharFile(FILE* file){
 // creates an empty file, or empty the file, with the name given in argument
 void emptyFile(char* name){
     FILE* file = fopen(name, "w+");
+    
     if (!file) error1();
     char ch[1] = {"\0"};
-    // writes in the empty char \0
+    // writes down the empty char \0
     printFile(file, ch);
     fclose(file);
 }
-
-
