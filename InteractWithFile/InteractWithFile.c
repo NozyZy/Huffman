@@ -13,9 +13,9 @@ char* loadFile(FILE* file){
     // if no file, exit
     if (!file) error1();
     // first position to 0 / guessed size is 8 (2^3)
-    size_t pos = 0, cap = 8;
+    size_t pos = 0, size = 8;
 
-    text = malloc(cap*sizeof(char));
+    text = malloc(size*sizeof(char));
     // if allocation fails, return NULL
     if (!text) return NULL;
     // set the SEEK at the beginning of the file
@@ -26,10 +26,10 @@ char* loadFile(FILE* file){
         pos++;
 
         // if bigger than 8, add 8
-        if (pos >= cap) {
-            cap += 8;
+        if (pos >= size) {
+            size += 8;
             // adapt the size
-            text = realloc(text, cap * sizeof(char));
+            text = realloc(text, size * sizeof(char));
         }
         if (!text) return NULL;
     }
