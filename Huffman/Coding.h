@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "InteractWithFile.h"
+#include "Dico.h"
 
 #ifndef HUFFMAN_CODING_H
 #define HUFFMAN_CODING_H
