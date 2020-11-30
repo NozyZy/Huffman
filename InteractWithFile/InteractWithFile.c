@@ -41,12 +41,6 @@ char* loadFile(FILE* file){
     return text;
 }
 
-// prints the content given in argument in a .txt file given in argument
-void printFile(FILE* file, char* content){
-    if (!file) error1();
-    fprintf(file, "%s", content);
-}
-
 // returns the number of chars in a .txt file
 int countCharFile(FILE* file){
     int count = 0, ch;
@@ -63,13 +57,3 @@ int countCharFile(FILE* file){
     return count;
 }
 
-// creates an empty file, or empty the file, with the name given in argument
-void emptyFile(char* name){
-    FILE* file = fopen(name, "w+");
-
-    if (!file) error1();
-    char ch[1] = {"\0"};
-    // writes down the empty char \0
-    printFile(file, ch);
-    fclose(file);
-}

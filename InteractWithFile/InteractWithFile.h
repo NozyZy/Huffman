@@ -6,8 +6,6 @@
 
 void error1(); // prints the main error, for no file found
 char* loadFile(FILE* file); // loads the content of a .txt file, given in argument, in a char*
-void printFile(FILE* file, char* content); // prints the content of a .txt file
 int countCharFile(FILE* file); // returns the number of chars in a .txt file
-void emptyFile(char* name); // create or empty a file
 
 #endif //HUFFMAN_INTERACTWITHFILE_H

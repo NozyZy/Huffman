@@ -16,11 +16,7 @@ void afficherListe(char* label, Element* l);
 
 Element* creerElement(char ch);
 
-void supprimerElement(Element** l, char ch);
-
 int verifElement(Element* l, char ch);
-
-Element* elementMinimum(Element* l);
 
 void ajoutListe(Element** l, char ch);
 

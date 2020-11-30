@@ -17,50 +17,12 @@ Element * creerElement(char ch) {
     return lNew;
 }
 
-void supprimerElement(Element** l, char ch) {
-    Element* prec = *l;
-    Element* cour = *l;
-    Element* rm = NULL;
-    while (cour) {
-        if (cour->ch == ch) {
-            if (*l == cour) {
-                rm = cour;
-                *l = cour->suivant;
-                cour = *l;
-                free(rm);
-            }
-            else {
-                prec->suivant = cour->suivant;
-                cour = prec->suivant;
-            }
-        }
-        else {
-            prec = cour;
-            cour = cour->suivant;
-        }
-    }
-}
-
 int verifElement(Element* l, char ch) {
     if (!l) return 0;									// le caractère n'est pas listé
     else {
         if (l->ch == ch) return 1;						// on a trouvé le caractère dans la liste
         else return verifElement((l->suivant), ch);		// rien a signaler, le caractère n'est pas encore listé, on regarde pour le suivant
     }
-}
-
-Element* elementMinimum(Element* l) {
-    Element* charMinimum = (Element*)malloc(sizeof(Element));
-    charMinimum->ch = l->ch;
-    charMinimum->occ = l->occ;
-    while (l) {
-        if (l->occ < charMinimum->occ) {
-            charMinimum->ch = l->ch;
-            charMinimum->occ = l->occ;
-        }
-        l = l->suivant;
-    }
-    return charMinimum;
 }
 
 void ajoutListe(Element** l, char ch) {
@@ -76,6 +38,3 @@ void freeList(Element* l) {
         free(l);
     }
 }
-
-
-
