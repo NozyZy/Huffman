@@ -1,12 +1,13 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "Huffman/Coding.h"
 
 int main(void) {
-    char content[] = {'T', 'A', 'S', 'S', 'E', 'S', '\0'};
+    FILE* fInput;
+    fInput = fopen("../input.txt", "r+");
+    if (!fInput) error1();
 
+    char* content = loadFile(fInput);
     Element* l = NULL;
-    l = creerListe(content, 7);
+    l = creerListeOccurrences(content, countCharFile(fInput));
     afficherListe("la liste", l);
 
     freeList(l);
