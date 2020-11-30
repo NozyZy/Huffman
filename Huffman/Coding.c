@@ -42,5 +42,4 @@ void textFileToBinFile(FILE* file, char* fBinName){
     printf("\nThe file has been succesfully converted to binary !\n");
     free(bin);
     fclose(fBin);
-
 }

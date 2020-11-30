@@ -1,6 +1,6 @@
 #include "InteractWithFile.h"
 
-// prints the main error, for file not found
+/// prints the main error, for file not found
 void error1(){
     printf("No such file or directory - error 1\n");
     exit(1);
@@ -50,10 +50,10 @@ void printFile(FILE* file, char* content){
 // returns the number of chars in a .txt file
 int countCharFile(FILE* file){
     int count = 0, ch;
-    
+
     if (!file) error1();
     fseek(file, 0, SEEK_SET);
-    
+
     while (1) {
         ch = fgetc(file);
         if (ch == EOF) break;
@@ -66,7 +66,7 @@ int countCharFile(FILE* file){
 // creates an empty file, or empty the file, with the name given in argument
 void emptyFile(char* name){
     FILE* file = fopen(name, "w+");
-    
+
     if (!file) error1();
     char ch[1] = {"\0"};
     // writes down the empty char \0
