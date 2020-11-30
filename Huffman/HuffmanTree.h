@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "Occurrences.h"
 
 #ifndef HUFFMAN_HUFFMANTREE_H
 #define HUFFMAN_HUFFMANTREE_H
