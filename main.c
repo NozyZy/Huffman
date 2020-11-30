@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "Huffman/Coding.h"
 
 int main(void) {
