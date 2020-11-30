@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "HuffmanTree.h"
 
 #ifndef HUFFMAN_DICO_H
 #define HUFFMAN_DICO_H
