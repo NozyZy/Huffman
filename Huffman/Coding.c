@@ -18,14 +18,14 @@ void int2bin(int n, char* bin){
 }
 
 // converts a text file in argument into an output.txt in binary
-void textFileToBinFile(FILE* file){
+void textFileToBinFile(FILE* file, char* fBinName){
     FILE* fBin;
     char *content = NULL, *bin = NULL;
     size_t size = 0, i = 0;
     // empty the output.txt file
-    emptyFile("../output.txt");
+    emptyFile(fBinName);
     // open outputs.txt to add binary number, one by one (so not write "w+")
-    fBin = fopen("../output.txt", "a+");
+    fBin = fopen(fBinName, "a+");
     // if no file found
     if(!fBin) error1();
 
@@ -42,5 +42,4 @@ void textFileToBinFile(FILE* file){
     printf("\nThe file has been succesfully converted to binary !\n");
     free(bin);
     fclose(fBin);
-
 }
