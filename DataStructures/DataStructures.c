@@ -1,6 +1,6 @@
 #include "DataStructures.h"
 
-void afficherListe(char* label, Element*  l) {
+void afficherListe(char* label, List  l) {
     if (label) printf("%s : ", label);
     while (l) {
         printf("->(%c|%d)", l->ch, l->occ);
@@ -9,7 +9,7 @@ void afficherListe(char* label, Element*  l) {
     printf("->x\n");
 }
 
-Element * creerElement(char ch) {
+Element* creerElement(char ch) {
     Element* lNew = (Element*)malloc(sizeof(Element));
     lNew->ch = ch;
     lNew->occ = 1;
@@ -17,7 +17,7 @@ Element * creerElement(char ch) {
     return lNew;
 }
 
-int verifElement(Element* l, char ch) {
+int verifElement(List l, char ch) {
     if (!l) return 0;									// le caractère n'est pas listé
     else {
         if (l->ch == ch) return 1;						// on a trouvé le caractère dans la liste
@@ -25,16 +25,16 @@ int verifElement(Element* l, char ch) {
     }
 }
 
-void ajoutListe(Element** l, char ch) {
+void ajoutListe(List* l, char ch) {
     if (*l) {
         if ((*l)->ch == ch) (*l)->occ = (*l)->occ + 1;   // on a trouvé le caractère dans la liste
         else ajoutListe(&((*l)->suivant), ch);    // rien a signaler, le caractère n'est pas encore listé, on regarde pour le suivant
     }
 }
 
-void freeList(Element* l) {
+void freeList(List l) {
     if (l) {
-        freeList((l)->suivant);
+        freeList(l->suivant);
         free(l);
     }
 }

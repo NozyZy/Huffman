@@ -12,15 +12,15 @@ typedef struct Element {
 
 typedef Element* List;
 
-void afficherListe(char* label, Element* l);
+void afficherListe(char* label, List l);
 
-Element* creerElement(char ch);
+List creerElement(char ch);
 
-int verifElement(Element* l, char ch);
+int verifElement(List l, char ch);
 
-void ajoutListe(Element** l, char ch);
+void ajoutListe(List* l, char ch);
 
-void freeList(Element* l);
+void freeList(List l);
 
 
 #endif //HUFFMAN_DATASTRUCTURES_H
