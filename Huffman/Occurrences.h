@@ -6,4 +6,9 @@
 
 Element* creerListeOccurrences(const char* content, size_t nombreCaractere);
 
+Element* elementMinimum(List l);
+
+Noeud* creeArbreOccurrences(List l);
+
+
 #endif //HUFFMAN_OCCURRENCES_H
