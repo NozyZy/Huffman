@@ -3,20 +3,11 @@
 #ifndef HUFFMAN_DICO_H
 #define HUFFMAN_DICO_H
 
-int verifElement(Element* l, char ch);
-Element* creerListeOccurrences(const char* content, size_t nombreCaractere);
-void triTabNodes(Noeud** tab, size_t size);
-
-void addNodeBSTocc(Arbre* a, Arbre add);
-void addNodeBSTch(Arbre* a, Arbre add);
-int getMinNoEmptyBST(Arbre a);
-size_t depth(Arbre a);
-int getBF(Arbre a);
-void leftRotation(Arbre* a);
-void rightRotation(Arbre* a);
-void balance(Arbre* a);
-void addNodeAVL(Arbre* a, Arbre add);
-void createAVLDico(Arbre* a, Arbre* add, size_t size);
+                                                                            // counts the number of char between all label given in argument (without \0 and \n)
+void countNbBitLine(FILE* file, size_t line, size_t* count, char label);    // in a single line, given in argument, of a .txt file, given in argument
+                                                                            // the counting is put in an array of int given in argument
+void readFileDef(FILE* file, Def* def, size_t line);                        // fills a Def* given in argument, with the line of a file, all given in argument
+void readFileDico(Dico* dico);                                              // fills a Dico* with a dico.txt file
 
 
 #endif //HUFFMAN_DICO_H

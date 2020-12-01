@@ -62,3 +62,15 @@ int countCharFile(FILE* file){
     fseek(file, 0, SEEK_SET);
     return count;
 }
+
+/// returns the number of chars in a .txt file
+size_t countLineFile(FILE* file){
+    size_t line = 0;
+    int ch = 0;
+    while (ch != EOF) {
+        ch = fgetc(file);
+        if (ch == '\n' || ch == EOF) line++;
+    }
+    fseek(file, 0, SEEK_SET);
+    return line;
+}
