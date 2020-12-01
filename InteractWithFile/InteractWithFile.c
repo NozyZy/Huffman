@@ -6,7 +6,7 @@ void error1(){
     exit(1);
 }
 
-// returns the content of a .txt file, given in argument, in a char*
+/// returns the content of a .txt file, given in argument, in a char*
 char* loadFile(FILE* file){
     int ch;
     char *text;
@@ -41,13 +41,13 @@ char* loadFile(FILE* file){
     return text;
 }
 
-// prints the content given in argument in a .txt file given in argument
+/// prints the content given in argument in a .txt file given in argument
 void printFile(FILE* file, char* content){
     if (!file) error1();
     fprintf(file, "%s", content);
 }
 
-// returns the number of chars in a .txt file
+/// returns the number of chars in a .txt file
 int countCharFile(FILE* file){
     int count = 0, ch;
 
@@ -63,7 +63,20 @@ int countCharFile(FILE* file){
     return count;
 }
 
-// creates an empty file, or empty the file, with the name given in argument
+/// returns the number of chars in a .txt file
+size_t countLineFile(FILE* file){
+    size_t line = 0;
+    int ch = 0;
+    while (ch != EOF) {
+        ch = fgetc(file);
+        if (ch == '\n' || ch == EOF) line++;
+    }
+    fseek(file, 0, SEEK_SET);
+    return line;
+}
+
+
+/// creates an empty file, or empty the file, with the name given in argument
 void emptyFile(char* name){
     FILE* file = fopen(name, "w+");
 

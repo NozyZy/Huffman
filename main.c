@@ -1,9 +1,7 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "Huffman/Coding.h"
 
 int main(void) {
-    printf("oui");
+    zipFile("../input.txt", "../huffman.txt");
 
     return EXIT_SUCCESS;
 }
