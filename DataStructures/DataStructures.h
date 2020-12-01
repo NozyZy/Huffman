@@ -4,37 +4,22 @@
 #ifndef HUFFMAN_DATASTRUCTURES_H
 #define HUFFMAN_DATASTRUCTURES_H
 
-typedef struct Element {
-    char ch;
-    int occ;
-    struct Element* suivant;
-}Element;
+typedef struct Def{
+    char ch; // the char
+    char* bin; // his binary code
+    size_t nbBit; // the number of bit in the binary code
+}Def;
 
-typedef Element* Liste;
-
-typedef struct Noeud {
-    char ch;
-    size_t occ;
-    char* bin;
-    struct Noeud* sad;
-    struct Noeud* sag;
-}Noeud;
-
-typedef Noeud* Arbre;
+typedef struct Dico{
+    struct Def** arrayDico; // array of def
+    size_t sizeDico; // size of array, number of def
+    size_t maxBitSize; // size of the biggest binary code
+}Dico;
 
 
-void afficherListe(char* label, Element* l);
-Element* creerElement(char ch);
-void ajoutListe(Element** l, char ch);
-size_t tailleListe(Liste l);
-void freeList(Element* l);
-
-void afficherArbreOcc(Noeud* a);
-void afficherArbreBin(Noeud* a);
-Noeud* creerNoeud(char ch, size_t occ, char* bin);
-void freeArbre(Noeud* a);
-
-void afficherTabNoeuds(Arbre* tab, size_t size, char* label);
+void printDef(Def* def, char doesJumpLine);     // prints a Def given in argument, with the choice of jumping a line
+void printDico(Dico* dico, char doesJumpLine);  // prints a Dico given in argument, with the choice of jumping a line
+void freeDico(Dico* dico);                      // free the memory of all the def, the array and the dico itself
 
 
 #endif //HUFFMAN_DATASTRUCTURES_H
