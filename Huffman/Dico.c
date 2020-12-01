@@ -1,89 +1,130 @@
 #include "Dico.h"
 
-// counts the number of char between all label given in argument (without \0 and \n)
-// in a single line, given in argument, of a .txt file, given in argument
-// the counting is put in an array of int given in argument
-void countNbBitLine(FILE* file, size_t line, size_t* count, char label){
-    if (count) {
-        int ch;
-        // i, nbLine, and nbC are only positive int, so size_t type is appropriate
-        size_t i = 0, nbLine = 0, nbC = 0;
-
-        // if file not found
-        if (!file) error1();
-        // sett the SEEK at the beginning of the file
-        fseek(file, 0, SEEK_SET);
-        // while not at the EOF, or the line asked for
-        while ((ch = fgetc(file)) != EOF && nbLine < line - 1) {
-            // counts all the char encountered, to set the SEEK later
-            nbC++;
-            if ((char) ch == '\n') nbLine++;
-        }
-
-        while (1) {
-            // if the line has been totally read
-            if (ch == EOF || (char) ch == '\n') break;
-            // separates the counting array by the label
-            if ((char) ch == label) {
-                i++;
-                // deletes the counting of the label itself
-                count[i]--;
-            }
-            count[i]++;
-            ch = fgetc(file);
-        }
-        // sett the SEEK at the beginning of the line asked (SEEK_SET need the number of char, here nbC + line - 1)
-        fseek(file, (int) (nbC + line - 1), SEEK_SET);
+int verifElement(Element* l, char ch) {
+    if (!l) return 0;									// le caractère n'est pas listé
+    else {
+        if (l->ch == ch) return 1;						// on a trouvé le caractère dans la liste
+        else return verifElement(l->suivant, ch);		// rien a signaler, le caractère n'est pas encore listé, on regarde pour le suivant
     }
 }
 
-// fill a Def* given in argument, with the line of a file, all given in argument
-void readFileDef(FILE* file, Def* def, size_t line){
-    if (!file) error1();
-    if (def) {
-        size_t* nbChar = (size_t *) calloc(3, sizeof(size_t));
-        // counts the number of char before and after the ':'
-        countNbBitLine(file, line, nbChar, ':');
-        if (nbChar) {
-            if (nbChar[1] == 0) def->nbBit = nbChar[2];
-            else def->nbBit = nbChar[1];
-            def->bin = (char *) malloc(def->nbBit + 1 * sizeof(char));
-
-            fscanf(file, "%c", &def->ch);
-            // jump a line is /n in the dico, so we check the / first
-            if (def->ch == '/') {
-                char temp;
-                fscanf(file, "%c", &temp);
-                // if it's /n, change bin value, and do next the same way
-                if (temp == 'n') {
-                    def->ch = '\n';
-                    fscanf(file, ":%s", def->bin);
+Element* creerListeOccurrences(const char* content, size_t nbCaractere) {
+    if (nbCaractere == 0) return NULL;
+    else {
+        Element* lpremiere = creerElement(content[0]);
+        Element* l;
+        l = lpremiere;
+        size_t i;										    // compter de 1 à nbCaractere - 1
+        for (i = 1; i < nbCaractere; i++) {
+            char ch = content[i];
+            if (ch != '\0') {
+                if (verifElement(lpremiere, ch) == 1) {		// on doit ajouter une occurrence
+                    ajoutListe(&lpremiere, ch);
                 }
-                    // if it's /:, read the bin without the :
-                else fscanf(file, "%s", def->bin);
-            } else fscanf(file, ":%s", def->bin);
+                else {										// on doit l'ajouter à la liste
+                    l->suivant = creerElement(ch);
+                    l = l->suivant;
+                }
+            }
+        }
+        return lpremiere;
+    }
+}
 
-            free(nbChar);
+void triTabNodes(Noeud** tab, size_t size){
+    if (tab && *tab && size > 0) {
+        int i = 0, j = 0, curr;
+        Noeud *tmp;
+        for (i = 0; i < size - 1; i++) {
+            curr = i;
+
+            for (j = i + 1; j < size; j++) {
+                if (tab[curr]->occ > tab[j]->occ) curr = j;
+            }
+            if (curr != i) {
+                tmp = tab[i];
+                tab[i] = tab[curr];
+                tab[curr] = tmp;
+            }
         }
     }
 }
 
-// fills a Dico* with a dico.txt file
-void readFileDico(Dico* dico){
-    FILE* fDico = fopen("../dico.txt", "r+");
-    if (!fDico) error1();
-    size_t nbLine = countLineFile(fDico), i = 0;
-    // double dynamic allocation of the arrayDico
-    dico->arrayDico = (Def**)malloc(nbLine*sizeof(Def*));
-    dico->maxBitSize = 0;
-    // dynamic allocation of each index of the array
-    for (i = 0; i < nbLine; i++){
-        dico->arrayDico[i] = (Def*)malloc(sizeof(Def));
-        // fill the index, the Def, with the proper line of the dico.txt file
-        readFileDef(fDico, dico->arrayDico[i], i+1);
-        if (dico->arrayDico[i]->nbBit > dico->maxBitSize) dico->maxBitSize = dico->arrayDico[i]->nbBit;
-    }
-    dico->sizeDico = nbLine;
 
-    fclose(fDico);
+void addNodeBSTocc(Arbre* a, Arbre add){
+    if (!(*a)) *a = creerNoeud(add->ch, add->occ, add->bin);
+    else if (add->occ < (*a)->occ) addNodeBSTocc(&((*a)->sag), add);
+    else if (add->occ > (*a)->occ) addNodeBSTocc(&((*a)->sad), add);
+}
+
+void addNodeBSTch(Arbre* a, Arbre add){
+    if (!(*a)) *a = add;
+    else if (add->ch < (*a)->ch) addNodeBSTch(&((*a)->sag), add);
+    else if (add->ch > (*a)->ch) addNodeBSTch(&((*a)->sad), add);
+}
+
+int getMinNoEmptyBST(Arbre a){
+    if(!(a->sag)) return a->occ;
+    return getMinNoEmptyBST(a->sag);
+}
+
+size_t depth(Arbre a){
+    if(!a) return 0;
+    else {
+        size_t dl = depth(a->sag);
+        size_t dr = depth(a->sad);
+        if (dl > dr) return 1 + dl;
+        else return 1 + dr;
+    }
+}
+
+int getBF(Arbre a){
+    if (!a) return 0;
+    return (int)(depth(a->sad) - depth(a->sag));
+}
+
+void leftRotation(Arbre* a){
+    if (*a){
+        Arbre temp = (*a)->sad;
+        (*a)->sad = temp->sag;
+        temp->sag = *a;
+        *a = temp;
+    }
+}
+
+void rightRotation(Arbre* a){
+    if (*a){
+        Arbre temp = (*a)->sag;
+        (*a)->sag = temp->sad;
+        temp->sad = *a;
+        *a = temp;
+    }
+}
+
+void balance(Arbre* a){
+    if (*a){
+        balance(&((*a)->sag));
+        balance(&((*a)->sad));
+
+        int BF = getBF(*a);
+        if (BF <= -2) {
+            if (getBF((*a)->sag) > 0) leftRotation(&((*a)->sag));
+            rightRotation(a);
+        }else if (BF >= 2) {
+            if (getBF((*a)->sad) <= 0) rightRotation(&((*a)->sad));
+            leftRotation(a);
+        }
+    }
+}
+
+void addNodeAVL(Arbre* a, Arbre add){
+    addNodeBSTch(a, add);
+    balance(a);
+}
+
+void createAVLDico(Arbre* dico, Arbre* addTab, size_t size){
+    size_t i = 0;
+    for(i = 0; i < size; i ++){
+        addNodeAVL(dico, addTab[i]);
+    }
 }
