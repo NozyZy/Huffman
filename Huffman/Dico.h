@@ -3,10 +3,6 @@
 #ifndef HUFFMAN_DICO_H
 #define HUFFMAN_DICO_H
 
-int verifElement(Element* l, char ch);
-Element* creerListeOccurrences(const char* content, size_t nombreCaractere);
-void triTabNodes(Noeud** tab, size_t size);
-
 void addNodeBSTocc(Arbre* a, Arbre add);
 void addNodeBSTch(Arbre* a, Arbre add);
 int getMinNoEmptyBST(Arbre a);
