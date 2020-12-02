@@ -103,3 +103,21 @@ void balance(Noeud** a) {
 		}
 	}
 }
+void afficherArbre(Noeud* a) {
+	if (a) {
+		printf("[%c] : [%d]", a->ch, a->occ);
+		if (a->sag) {
+			printf("\nA gauche de (%c|%d) : \t", a->ch, a->occ);
+			afficherArbre(a->sag);
+		}
+		else printf("\t");
+		if (a->sad) {
+			printf("\tA droite de (%c|%d) : \t", a->ch, a->occ);
+			afficherArbre(a->sad);
+		}
+	}
+	else
+	{
+		exit(EXIT_FAILURE);
+	}
+}
