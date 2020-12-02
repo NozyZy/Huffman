@@ -2,27 +2,20 @@
 
 int main()
 {
-    int *save = NULL;
-
-    save = malloc(sizeof(int));
-
-    char content[] = {'T', 'A', 'S', 'S', 'E', 'S', '\0'};
-
+    FILE* fInput = fopen("../input.txt", "r+");
+    char* content = loadFile(fInput);
     Element* l = NULL;
-    l = creerListe(content, 7);
+    l = creerListeOccurrences(content, countCharFile(fInput));
+    fclose(fInput);
     afficherListe("la liste", l);
     
     Noeud* a = NULL;
-    a = creeArbre(l);
+    a = creeArbreOccurrences(l);
+    afficherArbre(a);
 
-    
-    chemin(a,'S');
-    chemin(a,'E');
-    chemin(a,'A');
-    chemin(a,'T');
-    
-    
+    createDicoFile(a, "../dico.txt");
 
     freeList(l);
     freeArbre(a);
+    fclose(fInput);
 }

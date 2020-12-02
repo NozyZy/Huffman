@@ -3,7 +3,6 @@
 #ifndef HUFFMAN_DICO_H
 #define HUFFMAN_DICO_H
 
-void lecture_arbre(Noeud*);
-int *chemin(Noeud* , char);
+void createDicoFile(Arbre a, char* dicoName);
 
 #endif //HUFFMAN_DICO_H
