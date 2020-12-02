@@ -58,7 +58,7 @@ void addNodeBSTocc(Arbre* a, Arbre add){
 }
 
 void addNodeBSTch(Arbre* a, Arbre add){
-    if (!(*a)) *a = add;
+    if (!(*a)) *a = creerNoeud(add->ch, add->occ, add->bin);
     else if (add->ch < (*a)->ch) addNodeBSTch(&((*a)->sag), add);
     else if (add->ch > (*a)->ch) addNodeBSTch(&((*a)->sad), add);
 }
@@ -122,9 +122,12 @@ void addNodeAVL(Arbre* a, Arbre add){
     balance(a);
 }
 
-void createAVLDico(Arbre* dico, Arbre* addTab, size_t size){
-    size_t i = 0;
-    for(i = 0; i < size; i ++){
-        addNodeAVL(dico, addTab[i]);
+void createAVLDico(Arbre* dico, Arbre add){
+    if (add) {
+        if (add->ch != '\0') addNodeAVL(dico, add);
+        else {
+            createAVLDico(dico, add->sag);
+            createAVLDico(dico, add->sad);
+        }
     }
 }

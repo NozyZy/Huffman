@@ -16,7 +16,7 @@ void leftRotation(Arbre* a);
 void rightRotation(Arbre* a);
 void balance(Arbre* a);
 void addNodeAVL(Arbre* a, Arbre add);
-void createAVLDico(Arbre* a, Arbre* add, size_t size);
+void createAVLDico(Arbre* a, Arbre add);
 
 
 #endif //HUFFMAN_DICO_H
