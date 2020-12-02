@@ -19,6 +19,7 @@ typedef struct Noeud {
 	struct Noeud* sag;
 }Noeud;
 
+void afficherArbre(Noeud* a);
 void addNodeBSTch(Noeud** AVL, Noeud* tmp);
 size_t depth(Noeud* a);
 int getBF(Noeud* a);
