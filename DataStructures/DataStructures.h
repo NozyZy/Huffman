@@ -27,7 +27,6 @@ void rightRotation(Noeud** a);
 void balance(Noeud** a);
 void addNodeAVL(Noeud** AVL, Noeud* tmp);
 void createAVLcaractere(Noeud** AVL, char* content, size_t taille);
-void triNodesOccurence(Noeud** AVL);
 void freeArbre(Noeud* a);
 
 #endif //HUFFMAN_DATASTRUCTURES_H
