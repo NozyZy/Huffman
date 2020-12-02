@@ -42,8 +42,9 @@ char* loadFile(FILE* file){
 }
 
 // returns the number of chars in a .txt file
-int countCharFile(FILE* file){
-    int count = 0, ch;
+long unsigned int countCharFile(FILE* file){
+    long unsigned int count = 0;
+    int ch;
 
     if (!file) error1();
     fseek(file, 0, SEEK_SET);
