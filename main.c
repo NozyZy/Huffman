@@ -1,4 +1,4 @@
-#include "fonction.h"
+#include "Coding.h"
 
 int main()
 {
@@ -25,8 +25,5 @@ int main()
 
     freeList(l);
     freeArbre(a);
-
-    
-
 }
 

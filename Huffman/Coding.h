@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "Dico.h"
 
 #ifndef HUFFMAN_CODING_H
 #define HUFFMAN_CODING_H
