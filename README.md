@@ -1,2 +1,0 @@
-# Huffman
-Huffman file compressor

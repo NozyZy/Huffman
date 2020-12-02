@@ -1,1 +1,1 @@
-a
+Lettre = E et son bit = 10
