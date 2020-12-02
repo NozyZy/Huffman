@@ -309,7 +309,7 @@ int *chemin(Noeud* a, char lettre){
 
 	dico = fopen("C:/Users/Juanito/Desktop/programmation/Huffman/dico.txt","a+");//open file
 
-	fprintf(dico,"%c :",lettre);
+	fprintf(dico,"%c : ",lettre);
 
     Noeud* ojo = a; //oeil pour checker la lettre
     int buscando = 1;//demarage d'une boucle infini
@@ -347,28 +347,26 @@ int *chemin(Noeud* a, char lettre){
     }
 }
 
-void lecture_arbre(Noeud *a){
-	Noeud *check = a;
+void lecture_arbre(Noeud *a){//permet de lire l'abre en fonction des char et de les afficher dans l'odre de poids
+	Noeud *check = a;//idem a ojo
 
-	Noeud *copy = a;
+	Noeud *copy = a;//copie de l'abre en local
 
-	check = copy->sag;
+	check = copy->sag;//idem que ojo
 
 	while (copy)
 	{
 		if (check->ch != NULL)
 		{
 			printf("Lettre = %c\n", check->ch);
-
-
+			//Normalement ici on appelle la fonction chemin mais l'adresse de l'abre ne fonctionne pas 
 		}
 
 		copy = copy->sad;
 		if (copy->ch != NULL)
 		{
 			printf("Lettre = %c\n", copy->ch);
-
-
+			//Normalement ici on appelle la fonction chemin mais l'adresse de l'abre ne fonctionne pas 
 		}
 		check = copy->sag;
 		
