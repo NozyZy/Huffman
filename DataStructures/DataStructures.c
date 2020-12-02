@@ -1,7 +1,5 @@
 #include "DataStructures.h"
 
-#include "DataStructures.h"
-
 void afficherListe(char* label, Element*  l) {
     
 }
