@@ -26,4 +26,3 @@ int main()
     freeList(l);
     freeArbre(a);
 }
-
