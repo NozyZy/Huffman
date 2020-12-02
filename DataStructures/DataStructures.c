@@ -20,11 +20,12 @@ void afficherArbreOcc(Noeud* a) {
     if (a) {
         printf("[%c] : [%d]\n", a->ch, a->occ);
         if (a->sag) {
-            printf("A gauche de (%c|%d) : ", a->ch, a->occ);
+            printf("A gauche de (%c|%d) : \t", a->ch, a->occ);
             afficherArbreOcc(a->sag);
         }
+        else printf("\t");
         if (a->sad) {
-            printf("A droite de (%c|%d) : ", a->ch, a->occ);
+            printf("\tA droite de (%c|%d) : \t", a->ch, a->occ);
             afficherArbreOcc(a->sad);
         }
     }
