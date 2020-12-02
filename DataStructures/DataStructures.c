@@ -51,13 +51,3 @@ void freeArbre(Noeud* a) {
         free(a);
     }
 }
-
-void afficherTabNoeuds(Arbre* tab, size_t size, char* label){
-    printf("%s", label);
-    if (*tab && size > 0) {
-        size_t i = 0;
-        for (i = 0; i < size; i++) {
-            printf("(%c|%d|%s)->", tab[i]->ch, tab[i]->occ, tab[i]->bin);
-        }
-    }
-}
