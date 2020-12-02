@@ -1,1 +1,9 @@
+Lettre = S et son bit = 0
 Lettre = E et son bit = 10
+Lettre = A et son bit = 110
+Lettre = T et son bit = 111
+
+S :0
+E :10
+A :110
+T :111

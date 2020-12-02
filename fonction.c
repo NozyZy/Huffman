@@ -307,48 +307,44 @@ Noeud* creeArbre(Element* l)
 int *chemin(Noeud* a, char lettre){
 	FILE *dico = NULL;
 
-	dico = fopen("C:/Users/Juanito/Desktop/programmation/Huffman/dico.txt","r+");
+	dico = fopen("C:/Users/Juanito/Desktop/programmation/Huffman/dico.txt","a+");//open file
 
-	fprintf(dico,"Lettre = %c et son bit = ",lettre);
+	fprintf(dico,"%c :",lettre);
 
-    Noeud* ojo = a;
-    int buscando = 1;
-	int i = 0;
-	int *save = NULL;
-	save = malloc(sizeof(int));
-
+    Noeud* ojo = a; //oeil pour checker la lettre
+    int buscando = 1;//demarage d'une boucle infini
+	
     while(buscando == 1){
 
-        ojo = a->sag;
+        ojo = a->sag;//l'oeil check toujours a gauche
 
-        if (lettre != ojo->ch)
+        if (lettre != ojo->ch)//si la lettre ne correspond pas
         {
             printf("Vous n'etes pas sur la bonne lettre : %c & buscando %c bit : 1\n", ojo->ch, lettre);
-			fputc('1',dico);
-            a = a->sad;
-			save[i] = 1;
-			i++;
+
+			fputc('1',dico);//on écrit 1 dans le dico
+
+            a = a->sad;//on va au noeud suivant
+
+
 
         }
         if (lettre == ojo->ch)
         {
             printf("Aqui esta : %c                                        bit : 0\n", ojo->ch);
+
 			fputc('0',dico);
 			fprintf(dico,"\n");
-			save[i] = 0;
-            buscando = 0;
+
+            buscando = 0;//fin de la boucle infini
         }
         if (lettre == a->ch)
         {
             printf("Aqui esta : %c\n", a->ch);
-			fputc('1',dico);
-			save[i] = 1;
+
             buscando = 0;
         }
     }
-	return save;
-	free(save);
-	
 }
 
 void lecture_arbre(Noeud *a){

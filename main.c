@@ -16,7 +16,10 @@ int main()
     a = creeArbre(l);
 
     
+    chemin(a,'S');
     chemin(a,'E');
+    chemin(a,'A');
+    chemin(a,'T');
     
     
 
