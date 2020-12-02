@@ -1,41 +1,5 @@
 #include "DataStructures.h"
 
-void afficherListe(char* label, Element*  l) {
-    if (label) printf("%s : ", label);
-    while (l) {
-        printf("->(%c|%d)", l->ch, l->occ);
-        l = l->suivant;
-    }
-    printf("->x\n");
-}
-
-Element * creerElement(char ch) {
-    Element* lNew = (Element*)malloc(sizeof(Element));
-    lNew->ch = ch;
-    lNew->occ = 1;
-    lNew->suivant = NULL;
-    return lNew;
-}
-
-void ajoutListe(Element** l, char ch) {
-    if (*l) {
-        if ((*l)->ch == ch) (*l)->occ = (*l)->occ + 1;   // on a trouvé le caractère dans la liste
-        else ajoutListe(&((*l)->suivant), ch);    // rien a signaler, le caractère n'est pas encore listé, on regarde pour le suivant
-    }
-}
-
-size_t tailleListe(Liste l){
-    if (!l) return 0;
-    return 1 + tailleListe(l->suivant);
-}
-
-void freeList(Element* l) {
-    if (l) {
-        freeList(l->suivant);
-        free(l);
-    }
-}
-
 
 Noeud* creerNoeud(char ch, size_t occ, char* bin) {
     int i = 0;
@@ -86,15 +50,5 @@ void freeArbre(Noeud* a) {
         freeArbre(a->sad);
         freeArbre(a->sag);
         free(a);
-    }
-}
-
-void afficherTabNoeuds(Arbre* tab, size_t size, char* label){
-    printf("%s", label);
-    if (*tab && size > 0) {
-        size_t i = 0;
-        for (i = 0; i < size; i++) {
-            printf("(%c|%d|%s)->", tab[i]->ch, tab[i]->occ, tab[i]->bin);
-        }
     }
 }
