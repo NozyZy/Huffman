@@ -14,5 +14,4 @@ void balance(Arbre* a);
 void addNodeAVL(Arbre* a, Arbre add);
 void createAVLDico(Arbre* a, Arbre add);
 
-
 #endif //HUFFMAN_DICO_H
