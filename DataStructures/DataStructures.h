@@ -29,5 +29,6 @@ void balance(Noeud** a);
 void addNodeAVL(Noeud** AVL, Noeud* tmp);
 Noeud* creerNoeud(char ch, size_t occ);
 void freeArbre(Noeud* a);
+void triNodesOccurence(Noeud** AVL);
 
 #endif //HUFFMAN_DATASTRUCTURES_H

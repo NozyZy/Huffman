@@ -1,5 +1,6 @@
 #include "DataStructures.h"
 
+
 Noeud* creerNoeud(char ch, size_t occ) {
 	Noeud* a = (Noeud*)malloc(sizeof(Noeud));
 	if (a) {
@@ -103,6 +104,22 @@ void afficherArbre(Noeud* a) {
 		if (a->sad) {
 			printf("A droite de (%c|%d) : ", a->ch, a->occ);
 			afficherArbre(a->sad);
+
+void triNodesOccurence(Noeud** AVL){
+	if (*AVL) {
+		if ((*AVL)->sag) {
+			triNodesOccurence(&((*AVL)->sag));
+
+			if ((*AVL)->occ < (*AVL)->sag->occ) {
+				rightRotation(AVL);
+			}
+		}
+		if ((*AVL)->sad) {
+			triNodesOccurence(&((*AVL)->sad));
+
+			if ((*AVL)->occ < (*AVL)->sad->occ) {
+				leftRotation(AVL);
+			}
 		}
 	}
 }
