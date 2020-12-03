@@ -1,15 +1,5 @@
 #include "DataStructures.h"
 
-void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
-	size_t i = 0;
-	for (i = 0; i < taille; i++) {
-		Noeud* tmp = creerNoeud(content[i], 1);
-		if (tmp) {
-			addNodeAVL(AVL, tmp);
-		}
-	}
-}
-
 Noeud* creerNoeud(char ch, size_t occ) {
 	Noeud* a = (Noeud*)malloc(sizeof(Noeud));
 	if (a) {
@@ -25,28 +15,26 @@ Noeud* creerNoeud(char ch, size_t occ) {
 }
 
 void addNodeAVL(Noeud** AVL, Noeud* tmp) {
-	if (tmp) {
-		addNodeBSTch(AVL, tmp);
-		balance(AVL);
-	}
+    addNodeBSTch(AVL, tmp);
+    balance(AVL);
 }
-
 
 void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 	if (!(*AVL)) {
-		(*AVL) = tmp;
+		(*AVL) = creerNoeud(tmp->ch, tmp->occ);
 	}
 	else if	((*AVL)->ch == tmp->ch) {
 		(*AVL)->occ = (*AVL)->occ + 1;
 		freeArbre(tmp);
 	}
-	else if ((tmp->ch) < ((*AVL)->ch)) {
+	else if (tmp->ch < (*AVL)->ch) {
 		addNodeBSTch(&((*AVL)->sag), tmp);
 	}
-	else if ((*AVL)->ch < (tmp->ch)) {
+	else if ((*AVL)->ch < tmp->ch) {
 		addNodeBSTch(&((*AVL)->sad), tmp);
 	}
 }
+
 void freeArbre(Noeud* a) {
 	if (a) {
 		if (a->sad) freeArbre(a->sad);
@@ -54,6 +42,7 @@ void freeArbre(Noeud* a) {
 		free(a);
 	}
 }
+
 size_t depth(Noeud* a) {
 	if (!a) return 0;
 	else {
@@ -103,21 +92,17 @@ void balance(Noeud** a) {
 		}
 	}
 }
+
 void afficherArbre(Noeud* a) {
 	if (a) {
-		printf("[%c] : [%d]", a->ch, a->occ);
+		printf("[%c] : [%d]\n", a->ch, a->occ);
 		if (a->sag) {
-			printf("\nA gauche de (%c|%d) : \t", a->ch, a->occ);
+			printf("A gauche de (%c|%d) : ", a->ch, a->occ);
 			afficherArbre(a->sag);
 		}
-		else printf("\t");
 		if (a->sad) {
-			printf("\tA droite de (%c|%d) : \t", a->ch, a->occ);
+			printf("A droite de (%c|%d) : ", a->ch, a->occ);
 			afficherArbre(a->sad);
 		}
-	}
-	else
-	{
-		exit(EXIT_FAILURE);
 	}
 }
