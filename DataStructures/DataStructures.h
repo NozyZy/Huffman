@@ -25,15 +25,17 @@ typedef struct Queue{
 }Queue;
 
 
-void afficherArbre(Noeud* a);
+void afficherArbreOcc(Noeud* a);
+void afficherArbreBin(Noeud* a);
 void addNodeBSTch(Noeud** AVL, Noeud* tmp);
+void addNodeBSTocc(Noeud** AVL, Noeud* tmp);
 size_t depth(Noeud* a);
 int getBF(Noeud* a);
 void leftRotation(Noeud** a);
 void rightRotation(Noeud** a);
 void balance(Noeud** a);
 void addNodeAVL(Noeud** AVL, Noeud* tmp);
-Noeud* creerNoeud(char ch, size_t occ);
+Noeud* creerNoeud(char ch, size_t occ, char* bin);
 void freeArbre(Noeud* a);
 void triNodesOccurence(Noeud** AVL);
 
@@ -46,21 +48,8 @@ void pushQueue(Queue* q, Arbre val);
 Arbre popQueue(Queue* q);
 int sizeQueue(ElementNode* q);
 Arbre getMinQueues(Queue* q1, Queue* q2);
-
-
-typedef struct NoeudDico {
-    char ch;
-    size_t occ;
-    char* bin;
-    struct Noeud* sad;
-    struct Noeud* sag;
-}NoeudDico;
-
-
-void afficherArbreOcc(Noeud* a);
-void afficherArbreBin(NoeudDico* a);
-NoeudDico* creerNoeudDico(char ch, size_t occ, char* bin);
-void freeArbreDico(NoeudDico* a);
+void createAVLoccurrence(Noeud** AVL, Noeud* a);
+void addNodeAVLocc(Noeud **AVL, Noeud * tmp);
 
 
 

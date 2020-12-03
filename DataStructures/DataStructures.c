@@ -1,18 +1,17 @@
 #include "DataStructures.h"
 
 
-Noeud* creerNoeud(char ch, size_t occ) {
+Noeud* creerNoeud(char ch, size_t occ, char* bin) {
 	Noeud* a = (Noeud*)malloc(sizeof(Noeud));
 	if (a) {
 		a->ch = ch;
 		a->occ = occ;
+		a->bin = bin;
 		a->sag = NULL;
 		a->sad = NULL;
 		return a;
 	}
-	else {
-		exit(EXIT_FAILURE);
-	}	
+	return NULL;
 }
 
 void addNodeAVL(Noeud** AVL, Noeud* tmp) {
@@ -22,7 +21,7 @@ void addNodeAVL(Noeud** AVL, Noeud* tmp) {
 
 void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 	if (!(*AVL)) {
-		(*AVL) = creerNoeud(tmp->ch, tmp->occ);
+		(*AVL) = creerNoeud(tmp->ch, tmp->occ, tmp->bin);
 	}
 	else if	((*AVL)->ch == tmp->ch) {
 		(*AVL)->occ = (*AVL)->occ + 1;
@@ -34,6 +33,18 @@ void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 	else if ((*AVL)->ch < tmp->ch) {
 		addNodeBSTch(&((*AVL)->sad), tmp);
 	}
+}
+
+void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
+    if (!(*AVL)) {
+        (*AVL) = creerNoeud(tmp->ch, tmp->occ, NULL);
+    }
+    else if (tmp->occ <= (*AVL)->occ) {
+        addNodeBSTocc(&((*AVL)->sag), tmp);
+    }
+    else if ((*AVL)->occ < tmp->occ) {
+        addNodeBSTocc(&((*AVL)->sad), tmp);
+    }
 }
 
 void freeArbre(Noeud* a) {
@@ -111,7 +122,7 @@ void afficherArbre(Noeud* a) {
     }
 }
 
-void triNodesOccurence(Noeud** AVL){
+void triNodesOccurence(Noeud** AVL) {
     if (*AVL) {
         if (!(*AVL)->sad) {
             rightRotation(&((*AVL))->sad);
@@ -132,33 +143,19 @@ void triNodesOccurence(Noeud** AVL){
             if ((*AVL)->occ < (*AVL)->sad->occ) {
                 leftRotation(AVL);
             }
-
-Noeud* creerNoeudBin(char ch, size_t occ, char* bin) {
-    int i = 0;
-    while (bin[i] == '1' || bin[i] == '0'){
-        i++;
+        }
     }
-
-    Noeud* a = (Noeud*)malloc(sizeof(Noeud));
-    a->ch = ch;
-    a->occ = occ;
-    a->bin = (char*)malloc(i*sizeof(char));
-    a->bin = bin;
-    a->sag = NULL;
-    a->sad = NULL;
-    return a;
 }
 
 void afficherArbreOcc(Noeud* a) {
     if (a) {
         printf("[%c] : [%d]\n", a->ch, a->occ);
         if (a->sag) {
-            printf("A gauche de (%c|%d) : \t", a->ch, a->occ);
+            printf("A gauche de (%c|%d) : ", a->ch, a->occ);
             afficherArbreOcc(a->sag);
         }
-        else printf("\t");
         if (a->sad) {
-            printf("\tA droite de (%c|%d) : \t", a->ch, a->occ);
+            printf("A droite de (%c|%d) : ", a->ch, a->occ);
             afficherArbreOcc(a->sad);
 
         }
@@ -176,18 +173,21 @@ int isEmptyQueue(Queue* q){
     return 0;
 }
 
-void pushQueue(Queue* q, Arbre val){
+void pushQueue(Queue* q, Arbre val) {
     if (val) {
-        ElementNode* n = (ElementNode*)malloc(sizeof(ElementNode));
+        ElementNode *n = (ElementNode *) malloc(sizeof(ElementNode));
         n->data = val;
         n->suivant = NULL;
         if (isEmptyQueue(q)) q->last = n;
         else {
-            ElementNode* temp = q->last;
-            while(temp->suivant) {
+            ElementNode *temp = q->last;
+            while (temp->suivant) {
                 temp = temp->suivant;
             }
             temp->suivant = n;
+        }
+    }
+}
 
 void afficherArbreBin(Noeud* a) {
     if (a) {
@@ -230,11 +230,20 @@ Arbre getMinQueues(Queue* q1, Queue* q2) {
     return popQueue(q2);
 }
 
-void freeArbre(Noeud* a) {
+void createAVLoccurrence(Noeud** AVL, Noeud* a) {
     if (a) {
-        freeArbre(a->sad);
-        freeArbre(a->sag);
-        free(a);
+        createAVLoccurrence(AVL, a->sag);
+        Noeud* tmp = creerNoeud(a->ch, a->occ, NULL);
+        if (tmp) {
+            addNodeAVLocc(AVL, tmp);
+        }
+        createAVLoccurrence(AVL, a->sad);
     }
 }
 
+void addNodeAVLocc(Noeud **AVL, Noeud * tmp) {
+    if (tmp) {
+        addNodeBSTocc(AVL, tmp);
+        balance(AVL);
+    }
+}
