@@ -2,33 +2,21 @@
 
 Arbre creerArbreHuffman(Queue* occQueue) {
 
-    if (sizeQueue(occQueue->last) <= 1) { // Si la file initiale n'a qu'un HuffmanNode => rien à construire.
-        return popQueue(occQueue);    // returns NULL if empty, the only node if not
-    }
+    if (sizeQueue(occQueue->last) <= 1) return popQueue(occQueue);
 
     Queue *nodeQueue = createQueue();
+    Arbre minD = NULL, minG = NULL, huffmanTree = NULL;
+    while ( (sizeQueue(occQueue->last) + sizeQueue(nodeQueue->last)) > 1) {
+        minD = getMinQueues(occQueue, nodeQueue);
+        minG = getMinQueues(occQueue, nodeQueue);
+        if (minD->ch != '\0') minD->sad = minD->sag = NULL;
+        if (minG->ch != '\0') minG->sad = minG->sag = NULL;
 
-    while ((sizeQueue(occQueue->last) != 0) || (sizeQueue(nodeQueue->last) >= 1)) {
+        huffmanTree = creerNoeud('\0', minD->occ + minG->occ);
+        huffmanTree->sad = minD;
+        huffmanTree->sag = minG;
 
-        int occQSize = sizeQueue(occQueue->last);
-        int nodeQSize = sizeQueue(nodeQueue->last);
-        if ((occQSize + nodeQSize) < 2)  { // occQSize forcément nul et nodeQSize forcément égal à 1
-            return popQueue(nodeQueue);  // On retourne donc directement le parent final
-        } else {
-            Noeud* min1 = getMinQueues(occQueue, nodeQueue);
-            Noeud* min2 = getMinQueues(occQueue, nodeQueue);
-            if (min1->ch != '\0') {
-                min1->sad = min1->sag = NULL;
-            }
-            if (min2->ch != '\0') {
-                min2->sad = min2->sag = NULL;
-            }
-            Arbre huffman = creerNoeud('\0', min1->occ + min2->occ);
-            huffman->sad = min1;
-            huffman->sag = min2;
-
-            pushQueue(nodeQueue, huffman);
-        }
+        pushQueue(nodeQueue, huffmanTree);
     }
-    return NULL;
+    return popQueue(nodeQueue);
 }

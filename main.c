@@ -2,7 +2,7 @@
 
 int main(void) {
 
-    char content[] = {'T', 'A', 'S', 'S', 'E', 'S', 'E', 'E', 'E', '\0'};
+    //char content[] = {'T', 'A', 'S', 'S', 'E', 'S', 'E', 'E', 'E', '\0'};
 
     Noeud* AVL = NULL;
     Noeud* huffman = NULL;
@@ -30,11 +30,6 @@ int main(void) {
     }
     creerOccQueue(AVL, occQueue);
     pushQueue(occQueue, creerNoeud('D', 4));
-    pushQueue(occQueue, creerNoeud('E', 5));
-    pushQueue(occQueue, creerNoeud('F', 6));
-    pushQueue(occQueue, creerNoeud('G', 7));
-    pushQueue(occQueue, creerNoeud('H', 8));
-    pushQueue(occQueue, creerNoeud('I', 9));
     printf("\n !: ");
     huffman = creerArbreHuffman(occQueue);
     printf("\n_________\n");
