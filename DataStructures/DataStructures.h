@@ -5,12 +5,6 @@
 #define HUFFMAN_DATASTRUCTURES_H
 
 
-typedef struct Element {
-	char ch;
-	int occ;
-	struct Element* suivant;
-}Element;
-
 typedef struct Noeud {
 	char ch;
 	int occ;
@@ -18,6 +12,17 @@ typedef struct Noeud {
 	struct Noeud* sad;
 	struct Noeud* sag;
 }Noeud;
+typedef Noeud* Arbre;
+
+typedef struct ElementNode{
+    Arbre data;
+    struct ElementNode* suivant;
+}ElementNode;
+
+typedef struct Queue{
+    struct ElementNode* last;
+}Queue;
+
 
 void afficherArbre(Noeud* a);
 void addNodeBSTch(Noeud** AVL, Noeud* tmp);
@@ -30,5 +35,15 @@ void addNodeAVL(Noeud** AVL, Noeud* tmp);
 Noeud* creerNoeud(char ch, size_t occ);
 void freeArbre(Noeud* a);
 void triNodesOccurence(Noeud** AVL);
+
+Queue* createQueue();
+
+int isEmptyQueue(Queue* q);
+
+void pushQueue(Queue* q, Arbre val);
+
+Arbre popQueue(Queue* q);
+int sizeQueue(ElementNode* q);
+Arbre getMinQueues(Queue* q1, Queue* q2);
 
 #endif //HUFFMAN_DATASTRUCTURES_H

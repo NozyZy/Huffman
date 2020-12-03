@@ -95,31 +95,98 @@ void balance(Noeud** a) {
 }
 
 void afficherArbre(Noeud* a) {
-	if (a) {
-		printf("[%c] : [%d]\n", a->ch, a->occ);
-		if (a->sag) {
-			printf("A gauche de (%c|%d) : ", a->ch, a->occ);
-			afficherArbre(a->sag);
-		}
-		if (a->sad) {
-			printf("A droite de (%c|%d) : ", a->ch, a->occ);
-			afficherArbre(a->sad);
+    if (a) {
+        printf("[%c] : [%d]\n", a->ch, a->occ);
+        if (a->sag) {
+            printf("A gauche de (%c|%d) : ", a->ch, a->occ);
+            afficherArbre(a->sag);
+        }
+        if (a->sad) {
+            printf("A droite de (%c|%d) : ", a->ch, a->occ);
+            afficherArbre(a->sad);
+        }/*
+        afficherArbre(a->sag);
+        printf("(%c|%d) ", a->ch, a->occ);
+        afficherArbre(a->sad);*/
+    }
+}
 
 void triNodesOccurence(Noeud** AVL){
-	if (*AVL) {
-		if ((*AVL)->sag) {
-			triNodesOccurence(&((*AVL)->sag));
+    if (*AVL) {
+        if (!(*AVL)->sad) {
+            rightRotation(&((*AVL))->sad);
+        }
+        if (!(*AVL)->sag) {
+            leftRotation(&((*AVL))->sag);
+        }
+        if ((*AVL)->sag) {
+            triNodesOccurence(&((*AVL)->sag));
 
-			if ((*AVL)->occ < (*AVL)->sag->occ) {
-				rightRotation(AVL);
-			}
-		}
-		if ((*AVL)->sad) {
-			triNodesOccurence(&((*AVL)->sad));
+            if ((*AVL)->occ < (*AVL)->sag->occ) {
+                rightRotation(AVL);
+            }
+        }
+        if ((*AVL)->sad) {
+            triNodesOccurence(&((*AVL)->sad));
 
-			if ((*AVL)->occ < (*AVL)->sad->occ) {
-				leftRotation(AVL);
-			}
-		}
-	}
+            if ((*AVL)->occ < (*AVL)->sad->occ) {
+                leftRotation(AVL);
+            }
+        }
+    }
+}
+
+
+Queue* createQueue(){
+    Queue* q = (Queue*)malloc(sizeof(Queue));
+    q->last = NULL;
+    return q;
+}
+
+int isEmptyQueue(Queue* q){
+    if (!(q->last)) return 1;
+    return 0;
+}
+
+void pushQueue(Queue* q, Arbre val){
+    if (val) {
+        ElementNode* n = (ElementNode*)malloc(sizeof(ElementNode));
+        n->data = val;
+        n->suivant = NULL;
+        if (isEmptyQueue(q)) q->last = n;
+        else {
+            ElementNode* temp = q->last;
+            while(temp->suivant) {
+                temp = temp->suivant;
+            }
+            temp->suivant = n;
+        }
+    }
+}
+
+Arbre popQueue(Queue* q){
+    if (isEmptyQueue(q)) return NULL;
+    else {
+        ElementNode* bottom = q->last;
+        q->last = q->last->suivant;
+        Arbre temp = bottom->data;
+        free(bottom);
+        return temp;
+    }
+}
+
+int sizeQueue(ElementNode* q) {
+    if (!q) return 0;
+    return 1 + sizeQueue(q->suivant);
+}
+
+Arbre getMinQueues(Queue* q1, Queue* q2) {
+    if (!q1 && !q2) return NULL;
+    if (!q1) return popQueue(q2);
+    if (!q2) return popQueue(q1);
+    if (!(q1->last) && !(q2->last)) return NULL;
+    if (!(q1->last)) return popQueue(q2);
+    if (!(q2->last)) return popQueue(q1);
+    if (q1->last->data->occ < q2->last->data->occ) return popQueue(q1);
+    return popQueue(q2);
 }
