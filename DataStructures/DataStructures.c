@@ -132,10 +132,38 @@ void triNodesOccurence(Noeud** AVL){
             if ((*AVL)->occ < (*AVL)->sad->occ) {
                 leftRotation(AVL);
             }
+
+Noeud* creerNoeudBin(char ch, size_t occ, char* bin) {
+    int i = 0;
+    while (bin[i] == '1' || bin[i] == '0'){
+        i++;
+    }
+
+    Noeud* a = (Noeud*)malloc(sizeof(Noeud));
+    a->ch = ch;
+    a->occ = occ;
+    a->bin = (char*)malloc(i*sizeof(char));
+    a->bin = bin;
+    a->sag = NULL;
+    a->sad = NULL;
+    return a;
+}
+
+void afficherArbreOcc(Noeud* a) {
+    if (a) {
+        printf("[%c] : [%d]\n", a->ch, a->occ);
+        if (a->sag) {
+            printf("A gauche de (%c|%d) : \t", a->ch, a->occ);
+            afficherArbreOcc(a->sag);
+        }
+        else printf("\t");
+        if (a->sad) {
+            printf("\tA droite de (%c|%d) : \t", a->ch, a->occ);
+            afficherArbreOcc(a->sad);
+
         }
     }
 }
-
 
 Queue* createQueue(){
     Queue* q = (Queue*)malloc(sizeof(Queue));
@@ -160,6 +188,17 @@ void pushQueue(Queue* q, Arbre val){
                 temp = temp->suivant;
             }
             temp->suivant = n;
+
+void afficherArbreBin(Noeud* a) {
+    if (a) {
+        printf("[%c] : [%s]\n", a->ch, a->bin);
+        if (a->sag) {
+            printf("A gauche de (%c|%s) : ", a->ch, a->bin);
+            afficherArbreBin(a->sag);
+        }
+        if (a->sad) {
+            printf("A droite de (%c|%s) : ", a->ch, a->bin);
+            afficherArbreBin(a->sad);
         }
     }
 }
@@ -190,3 +229,12 @@ Arbre getMinQueues(Queue* q1, Queue* q2) {
     if (q1->last->data->occ < q2->last->data->occ) return popQueue(q1);
     return popQueue(q2);
 }
+
+void freeArbre(Noeud* a) {
+    if (a) {
+        freeArbre(a->sad);
+        freeArbre(a->sag);
+        free(a);
+    }
+}
+
