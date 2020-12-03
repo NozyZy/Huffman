@@ -2,8 +2,6 @@
 
 int main(void) {
 
-    //char content[] = {'T', 'A', 'S', 'S', 'E', 'S', 'E', 'E', 'E', '\0'};
-
     Noeud* AVL = NULL;
     Noeud* huffman = NULL;
 
@@ -16,22 +14,8 @@ int main(void) {
     printf("\n_____________\n");
     //triNodesOccurence(&AVL);
     afficherArbre(AVL);
-    Queue* occQueue = createQueue();
-    creerOccQueue(AVL, occQueue);
-    pushQueue(occQueue, creerNoeud('D', 4));
-    pushQueue(occQueue, creerNoeud('E', 5));
-    pushQueue(occQueue, creerNoeud('F', 6));
-    pushQueue(occQueue, creerNoeud('G', 7));
-    pushQueue(occQueue, creerNoeud('H', 8));
-    pushQueue(occQueue, creerNoeud('I', 9));
-    while (!isEmptyQueue(occQueue)) {
-        printf("%c|%d ", occQueue->last->data->ch, occQueue->last->data->occ);
-        popQueue(occQueue);
-    }
-    creerOccQueue(AVL, occQueue);
-    pushQueue(occQueue, creerNoeud('D', 4));
-    printf("\n !: ");
-    huffman = creerArbreHuffman(occQueue);
+
+    huffman = creerArbreHuffman(AVL);
     printf("\n_________\n");
     afficherArbre(huffman);
 
