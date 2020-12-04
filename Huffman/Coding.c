@@ -9,3 +9,14 @@ void int2bin(int n, char* bin){
 void textFileToBinFile(FILE* file, char* fBinName){
 
 }
+
+char* codeFromChar(char ch, Arbre dico) {
+
+    return NULL;
+}
+
+
+/// compress a file named toZipName into a file named zippedName
+void zipFile(char* toZipName, char* zippedName){
+
+}

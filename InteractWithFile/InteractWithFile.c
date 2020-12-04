@@ -16,7 +16,7 @@ void printFile(FILE* file, char* content){
 }
 
 // returns the number of chars in a .txt file
-int countCharFile(FILE* file){
+long unsigned int countCharFile(FILE* file){
     return 0;
 }
 
