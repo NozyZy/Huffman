@@ -10,4 +10,5 @@ void printFile(FILE* file, char* content); // prints the content of a .txt file
 long unsigned int countCharFile(FILE* file); // returns the number of chars in a .txt file
 void emptyFile(char* name); // create or empty a file
 
+
 #endif //HUFFMAN_INTERACTWITHFILE_H

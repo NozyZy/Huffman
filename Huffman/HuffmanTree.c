@@ -1,6 +1,8 @@
 #include "HuffmanTree.h"
 
-Arbre creerArbreHuffman(Queue* occQueue) {
+Arbre creerArbreHuffman(Arbre AVLocc) {
+    Queue* occQueue = createQueue();
+    creerOccQueue(AVLocc, occQueue);
 
     if (sizeQueue(occQueue->last) <= 1) return popQueue(occQueue);
 
@@ -12,7 +14,7 @@ Arbre creerArbreHuffman(Queue* occQueue) {
         if (minD->ch != '\0') minD->sad = minD->sag = NULL;
         if (minG->ch != '\0') minG->sad = minG->sag = NULL;
 
-        huffmanTree = creerNoeud('\0', minD->occ + minG->occ);
+        huffmanTree = creerNoeud('\0', minD->occ + minG->occ, NULL);
         huffmanTree->sad = minD;
         huffmanTree->sag = minG;
 

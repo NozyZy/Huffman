@@ -1,6 +1,6 @@
 #include "Occurrences.h"
 
-void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
+void createAVLcaractere(Noeud** AVL, const char* content, size_t taille) {
     size_t i = 0;
     for (i = 0; i < taille; i++) {
         if (content[i] != '\0') {
