@@ -4,8 +4,6 @@
 #ifndef HUFFMAN_DATASTRUCTURES_H
 #define HUFFMAN_DATASTRUCTURES_H
 
-
-
 typedef struct Noeud {
 	char ch;
 	int occ;
@@ -38,7 +36,6 @@ int getBF(Noeud* a);
 void leftRotation(Noeud** a);
 void rightRotation(Noeud** a);
 void balance(Noeud** a);
-
 
 Queue* createQueue();
 int isEmptyQueue(Queue* q);

@@ -28,30 +28,20 @@ void zipFile(char* toZipName, char* zippedName){
     Arbre AVL = NULL, AVLtrie = NULL, huffman = NULL, dico = NULL;
     size_t sizeContent = countCharFile(fToZip), i = 0;
 
-    //printf("\n_____________AVL trié par caractères :\n");
     createAVLcaractere(&AVL, content, sizeContent);
-    //afficherArbreOcc(AVL);
 
-    //printf("\n_____________AVL trié par occurrences :\n");
     createAVLoccurrence(&AVLtrie, AVL);
-    //afficherArbreOcc(AVLtrie);
 
-    //printf("\n_____________Arbre de Huffman :\n");
     huffman = creerArbreHuffman(AVLtrie);
-    //afficherArbreOcc(huffman);
 
-    //printf("\n_____________Abre de Huffman avec les codes binaires :\n");
     char* bin = (char*)malloc(huffman->occ*sizeof(char));
     createBinCode(huffman, bin, 0);
     free(bin);
-    //afficherArbreBin(huffman);
 
-    //printf("\n_____________Dico trié par caractères :\n\n");
     createAVLDico(&dico, huffman);
-    //afficherArbreBin(dico);
 
     end2 = clock();
-    printf("all trees : %f\n", (float)(end2-begin2)/CLOCKS_PER_SEC);
+    printf("\nall trees : %f sec\n", (float)(end2-begin2)/CLOCKS_PER_SEC);
 
     clock_t begin, end;
     begin = clock();
@@ -59,7 +49,7 @@ void zipFile(char* toZipName, char* zippedName){
         printFile(fZipped, codeFromChar(content[i], dico));
     }
     end = clock();
-    printf("zip : %f\n", (float)(end-begin)/CLOCKS_PER_SEC);
+    printf("The file has been succesfully compressed !\n\nzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
 
     freeArbre(dico);
     freeArbre(huffman);

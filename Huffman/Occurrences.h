@@ -4,7 +4,6 @@
 #ifndef HUFFMAN_OCCURRENCES_H
 #define HUFFMAN_OCCURRENCES_H
 
-
 void createAVLcaractere(Noeud** AVL, char* content, size_t taille);
 void triNodesOccurence(Noeud** AVL);
 void addNodeAVLocc(Noeud **AVL, Noeud * tmp);
