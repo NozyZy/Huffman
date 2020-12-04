@@ -29,13 +29,15 @@ void afficherArbreBin(Noeud* a);
 Noeud* creerNoeud(char ch, size_t occ, char* bin);
 void freeArbre(Noeud* a);
 
+void addNodeAVL(Noeud** AVL, Noeud* tmp);
 void addNodeBSTch(Noeud** AVL, Noeud* tmp);
+void addNodeBSTocc(Noeud** AVL, Noeud* tmp);
+
 size_t depth(Noeud* a);
 int getBF(Noeud* a);
 void leftRotation(Noeud** a);
 void rightRotation(Noeud** a);
 void balance(Noeud** a);
-void addNodeAVL(Noeud** AVL, Noeud* tmp);
 
 Queue* createQueue();
 int isEmptyQueue(Queue* q);
