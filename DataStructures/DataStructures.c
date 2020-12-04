@@ -4,12 +4,11 @@ void afficherArbreOcc(Noeud* a) {
     if (a) {
         printf("[%c] : [%d]\n", a->ch, a->occ);
         if (a->sag) {
-            printf("A gauche de (%c|%d) : \t", a->ch, a->occ);
+            printf("A gauche de (%c|%d) : ", a->ch, a->occ);
             afficherArbreOcc(a->sag);
         }
-        else printf("\t");
         if (a->sad) {
-            printf("\tA droite de (%c|%d) : \t", a->ch, a->occ);
+            printf("A droite de (%c|%d) : ", a->ch, a->occ);
             afficherArbreOcc(a->sad);
 
         }
@@ -45,6 +44,15 @@ Noeud* creerNoeud(char ch, size_t occ, char* bin) {
 	}	
 }
 
+void freeArbre(Noeud* a) {
+    if (a) {
+        if (a->sad) freeArbre(a->sad);
+        if (a->sag) freeArbre(a->sag);
+        free(a);
+    }
+}
+
+
 void addNodeAVL(Noeud** AVL, Noeud* tmp) {
     addNodeBSTch(AVL, tmp);
     balance(AVL);
@@ -66,13 +74,18 @@ void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 	}
 }
 
-void freeArbre(Noeud* a) {
-	if (a) {
-		if (a->sad) freeArbre(a->sad);
-		if (a->sag) freeArbre(a->sag);
-		free(a);
-	}
+void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
+    if (!(*AVL)) {
+        (*AVL) = creerNoeud(tmp->ch, tmp->occ, NULL);
+    }
+    else if (tmp->occ <= (*AVL)->occ) {
+        addNodeBSTocc(&((*AVL)->sag), tmp);
+    }
+    else if ((*AVL)->occ < tmp->occ) {
+        addNodeBSTocc(&((*AVL)->sad), tmp);
+    }
 }
+
 
 size_t depth(Noeud* a) {
 	if (!a) return 0;
@@ -123,6 +136,7 @@ void balance(Noeud** a) {
 		}
 	}
 }
+
 
 Queue* createQueue(){
     Queue* q = (Queue*)malloc(sizeof(Queue));
