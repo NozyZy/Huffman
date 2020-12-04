@@ -14,7 +14,7 @@ Arbre creerArbreHuffman(Arbre AVLocc) {
         if (minD->ch != '\0') minD->sad = minD->sag = NULL;
         if (minG->ch != '\0') minG->sad = minG->sag = NULL;
 
-        huffmanTree = creerNoeud('\0', minD->occ + minG->occ);
+        huffmanTree = creerNoeud('\0', minD->occ + minG->occ, NULL);
         huffmanTree->sad = minD;
         huffmanTree->sag = minG;
 
