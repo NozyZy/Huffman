@@ -1,6 +1,35 @@
 #include "DataStructures.h"
 
 
+void afficherArbreOcc(Noeud* a) {
+    if (a) {
+        printf("[%c] : [%d]\n", a->ch, a->occ);
+        if (a->sag) {
+            printf("A gauche de (%c|%d) : ", a->ch, a->occ);
+            afficherArbreOcc(a->sag);
+        }
+        if (a->sad) {
+            printf("A droite de (%c|%d) : ", a->ch, a->occ);
+            afficherArbreOcc(a->sad);
+
+        }
+    }
+}
+
+void afficherArbreBin(Noeud* a) {
+    if (a) {
+        printf("[%c] : [%s]\n", a->ch, a->bin);
+        if (a->sag) {
+            printf("A gauche de (%c|%s) : ", a->ch, a->bin);
+            afficherArbreBin(a->sag);
+        }
+        if (a->sad) {
+            printf("A droite de (%c|%s) : ", a->ch, a->bin);
+            afficherArbreBin(a->sad);
+        }
+    }
+}
+
 Noeud* creerNoeud(char ch, size_t occ, char* bin) {
 	Noeud* a = (Noeud*)malloc(sizeof(Noeud));
 	if (a) {
@@ -13,6 +42,15 @@ Noeud* creerNoeud(char ch, size_t occ, char* bin) {
 	}
 	return NULL;
 }
+
+void freeArbre(Noeud* a) {
+    if (a) {
+        if (a->sad) freeArbre(a->sad);
+        if (a->sag) freeArbre(a->sag);
+        free(a);
+    }
+}
+
 
 void addNodeAVL(Noeud** AVL, Noeud* tmp) {
     addNodeBSTch(AVL, tmp);
@@ -47,13 +85,6 @@ void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
     }
 }
 
-void freeArbre(Noeud* a) {
-	if (a) {
-		if (a->sad) freeArbre(a->sad);
-		if (a->sag) freeArbre(a->sag);
-		free(a);
-	}
-}
 
 size_t depth(Noeud* a) {
 	if (!a) return 0;
@@ -105,62 +136,6 @@ void balance(Noeud** a) {
 	}
 }
 
-void afficherArbre(Noeud* a) {
-    if (a) {
-        printf("[%c] : [%d]\n", a->ch, a->occ);
-        if (a->sag) {
-            printf("A gauche de (%c|%d) : ", a->ch, a->occ);
-            afficherArbre(a->sag);
-        }
-        if (a->sad) {
-            printf("A droite de (%c|%d) : ", a->ch, a->occ);
-            afficherArbre(a->sad);
-        }/*
-        afficherArbre(a->sag);
-        printf("(%c|%d) ", a->ch, a->occ);
-        afficherArbre(a->sad);*/
-    }
-}
-
-void triNodesOccurence(Noeud** AVL) {
-    if (*AVL) {
-        if (!(*AVL)->sad) {
-            rightRotation(&((*AVL))->sad);
-        }
-        if (!(*AVL)->sag) {
-            leftRotation(&((*AVL))->sag);
-        }
-        if ((*AVL)->sag) {
-            triNodesOccurence(&((*AVL)->sag));
-
-            if ((*AVL)->occ < (*AVL)->sag->occ) {
-                rightRotation(AVL);
-            }
-        }
-        if ((*AVL)->sad) {
-            triNodesOccurence(&((*AVL)->sad));
-
-            if ((*AVL)->occ < (*AVL)->sad->occ) {
-                leftRotation(AVL);
-            }
-        }
-    }
-}
-
-void afficherArbreOcc(Noeud* a) {
-    if (a) {
-        printf("[%c] : [%d]\n", a->ch, a->occ);
-        if (a->sag) {
-            printf("A gauche de (%c|%d) : ", a->ch, a->occ);
-            afficherArbreOcc(a->sag);
-        }
-        if (a->sad) {
-            printf("A droite de (%c|%d) : ", a->ch, a->occ);
-            afficherArbreOcc(a->sad);
-
-        }
-    }
-}
 
 Queue* createQueue(){
     Queue* q = (Queue*)malloc(sizeof(Queue));
@@ -185,20 +160,6 @@ void pushQueue(Queue* q, Arbre val) {
                 temp = temp->suivant;
             }
             temp->suivant = n;
-        }
-    }
-}
-
-void afficherArbreBin(Noeud* a) {
-    if (a) {
-        printf("[%c] : [%s]\n", a->ch, a->bin);
-        if (a->sag) {
-            printf("A gauche de (%c|%s) : ", a->ch, a->bin);
-            afficherArbreBin(a->sag);
-        }
-        if (a->sad) {
-            printf("A droite de (%c|%s) : ", a->ch, a->bin);
-            afficherArbreBin(a->sad);
         }
     }
 }
@@ -230,20 +191,4 @@ Arbre getMinQueues(Queue* q1, Queue* q2) {
     return popQueue(q2);
 }
 
-void createAVLoccurrence(Noeud** AVL, Noeud* a) {
-    if (a) {
-        createAVLoccurrence(AVL, a->sag);
-        Noeud* tmp = creerNoeud(a->ch, a->occ, NULL);
-        if (tmp) {
-            addNodeAVLocc(AVL, tmp);
-        }
-        createAVLoccurrence(AVL, a->sad);
-    }
-}
 
-void addNodeAVLocc(Noeud **AVL, Noeud * tmp) {
-    if (tmp) {
-        addNodeBSTocc(AVL, tmp);
-        balance(AVL);
-    }
-}

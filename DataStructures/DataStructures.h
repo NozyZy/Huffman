@@ -24,33 +24,27 @@ typedef struct Queue{
     struct ElementNode* last;
 }Queue;
 
-
+Noeud* creerNoeud(char ch, size_t occ, char* bin);
 void afficherArbreOcc(Noeud* a);
 void afficherArbreBin(Noeud* a);
+void freeArbre(Noeud* a);
+
+void addNodeAVL(Noeud** AVL, Noeud* tmp);
 void addNodeBSTch(Noeud** AVL, Noeud* tmp);
 void addNodeBSTocc(Noeud** AVL, Noeud* tmp);
+
 size_t depth(Noeud* a);
 int getBF(Noeud* a);
 void leftRotation(Noeud** a);
 void rightRotation(Noeud** a);
 void balance(Noeud** a);
-void addNodeAVL(Noeud** AVL, Noeud* tmp);
-Noeud* creerNoeud(char ch, size_t occ, char* bin);
-void freeArbre(Noeud* a);
-void triNodesOccurence(Noeud** AVL);
+
 
 Queue* createQueue();
-
 int isEmptyQueue(Queue* q);
-
 void pushQueue(Queue* q, Arbre val);
-
 Arbre popQueue(Queue* q);
 int sizeQueue(ElementNode* q);
 Arbre getMinQueues(Queue* q1, Queue* q2);
-void createAVLoccurrence(Noeud** AVL, Noeud* a);
-void addNodeAVLocc(Noeud **AVL, Noeud * tmp);
-
-
 
 #endif //HUFFMAN_DATASTRUCTURES_H
