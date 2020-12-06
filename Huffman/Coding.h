@@ -1,3 +1,13 @@
+/**
+ * @file Coding.h
+ * @author Gianlucca Annichiarico (agianlucca@gmail.com)
+ * @brief Headers des fonctions de conversion
+ * @version 0.1
+ * @date 2020-12-06
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include "Dico.h"
 #include <time.h>
 
