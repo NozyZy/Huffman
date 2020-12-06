@@ -49,6 +49,7 @@ char* loadFile(FILE* file){
     fseek(file, 0, SEEK_SET);
     return text;
 }
+
 /**
  * @brief Affiche le contenue donné en argument dans un .txt, fichier donné en argument
  * 
@@ -82,6 +83,14 @@ long unsigned int countCharFile(FILE* file){
     fseek(file, 0, SEEK_SET);
     return count;
 }
+
+// prints the content given in argument in a .txt file given in argument
+void printFile(FILE* file, char* content){
+    if (!file) error1();
+    fprintf(file, "%s", content);
+}
+
+
 /**
  * @brief Créer un fichier vide ou vide un fichier, avec le nom donné en argument
  * 

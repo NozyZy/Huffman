@@ -1,4 +1,67 @@
 #include "Coding.h"
+
+char* codeFromChar(char ch, Arbre dico) {
+    if (dico) {
+        if ((int)ch < (int)dico->ch) return codeFromChar(ch, dico->sag);
+        if ((int)ch > (int)dico->ch) return codeFromChar(ch, dico->sad);
+        if ((int)ch == (int)dico->ch) return dico->bin;
+    }
+    return NULL;
+}
+
+
+/// compress a file named toZipName into a file named zippedName
+void zipFile(char* toZipName, char* zippedName){
+    clock_t begin2, end2;
+    begin2 = clock();
+
+    FILE* fZipped, *fToZip;
+
+    emptyFile(zippedName);
+    fZipped = fopen(zippedName, "a+");
+    if (!fZipped) error1();
+
+    fToZip = fopen(toZipName, "r+");
+    if (!fToZip) error1();
+
+    char* content = loadFile(fToZip);
+    Arbre AVL = NULL, AVLtrie = NULL, huffman = NULL, dico = NULL;
+    size_t sizeContent = countCharFile(fToZip), i = 0;
+
+    createAVLcaractere(&AVL, content, sizeContent);
+
+    createAVLoccurrence(&AVLtrie, AVL);
+
+    huffman = creerArbreHuffman(AVLtrie);
+
+    char* bin = (char*)malloc(huffman->occ*sizeof(char));
+    createBinCode(huffman, bin, 0);
+    free(bin);
+
+    createAVLDico(&dico, huffman);
+
+    end2 = clock();
+    printf("\nall trees : %f sec\n", (float)(end2-begin2)/CLOCKS_PER_SEC);
+
+    clock_t begin, end;
+    begin = clock();
+    for (i = 0; i < sizeContent; i++) {
+        printFile(fZipped, codeFromChar(content[i], dico));
+    }
+    end = clock();
+    printf("The file has been succesfully compressed !\n\nzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
+
+    freeArbre(dico);
+    freeArbre(huffman);
+    freeArbre(AVL);
+    freeArbre(AVLtrie);
+    free(content);
+
+    fclose(fZipped);
+    fclose(fToZip);
+}
+
+
 /**
  * @brief Convertie un nombre donné en argument en son écriture en binaire
  * 
@@ -21,6 +84,7 @@ void int2bin(int n, char* bin){
         bin[8] = '\0';
     }
 }
+
 /**
  * @brief Convertie un fichier.txt texte donné en argument en fichier.txt binaire
  * 
