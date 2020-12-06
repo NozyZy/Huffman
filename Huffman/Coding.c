@@ -1,5 +1,10 @@
 #include "Coding.h"
-
+/**
+ * @brief Convertie un nombre donné en argument en son écriture en binaire
+ * 
+ * @param n 
+ * @param bin 
+ */
 // converts a decimal int given in argument in a char* binary given in argument
 void int2bin(int n, char* bin){
     // only for positive decimal
@@ -16,7 +21,12 @@ void int2bin(int n, char* bin){
         bin[8] = '\0';
     }
 }
-
+/**
+ * @brief Convertie un fichier.txt texte donné en argument en fichier.txt binaire
+ * 
+ * @param file 
+ * @param fBinName 
+ */
 // converts a text file in argument into an output.txt in binary
 void textFileToBinFile(FILE* file, char* fBinName){
     FILE* fBin;

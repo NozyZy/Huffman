@@ -1,11 +1,20 @@
 #include "InteractWithFile.h"
 
-/// prints the main error, for file not found
+/**
+ * @brief Affiche les erreurs, pour les documents non trouvés
+ * 
+ */
+// prints the main error, for file not found
 void error1(){
     printf("No such file or directory - error 1\n");
     exit(1);
 }
-
+/**
+ * @brief Retourne le contenu d'un fichier.txt
+ * 
+ * @param file 
+ * @return char* 
+ */
 // returns the content of a .txt file, given in argument, in a char*
 char* loadFile(FILE* file){
     int ch;
@@ -40,13 +49,23 @@ char* loadFile(FILE* file){
     fseek(file, 0, SEEK_SET);
     return text;
 }
-
+/**
+ * @brief Affiche le contenue donné en argument dans un .txt, fichier donné en argument
+ * 
+ * @param file 
+ * @param content 
+ */
 // prints the content given in argument in a .txt file given in argument
 void printFile(FILE* file, char* content){
     if (!file) error1();
     fprintf(file, "%s", content);
 }
-
+/**
+ * @brief Retourne le nombre de charactère dans un fichier.txt
+ * 
+ * @param file 
+ * @return long unsigned int 
+ */
 // returns the number of chars in a .txt file
 long unsigned int countCharFile(FILE* file){
     long unsigned int count = 0;
@@ -63,7 +82,11 @@ long unsigned int countCharFile(FILE* file){
     fseek(file, 0, SEEK_SET);
     return count;
 }
-
+/**
+ * @brief Créer un fichier vide ou vide un fichier, avec le nom donné en argument
+ * 
+ * @param name 
+ */
 // creates an empty file, or empty the file, with the name given in argument
 void emptyFile(char* name){
     FILE* file = fopen(name, "w+");

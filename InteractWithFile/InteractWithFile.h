@@ -1,3 +1,13 @@
+/**
+ * @file InteractWithFile.h
+ * @author Gianlucca Annichiarico (agianlucca@gmail.com)
+ * @brief Headers des fonctions de gestion de fichiers textes
+ * @version 0.1
+ * @date 2020-12-06
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <stdlib.h>
 #include <stdio.h>
 
