@@ -117,3 +117,34 @@ void textFileToBinFile(FILE* file, char* fBinName){
     free(bin);
     fclose(fBin);
 }
+void deZipFile(char* dicoName, char* zippName) {
+    
+    Noeud* arb = creerNoeud('\0', 1, NULL);
+    creatHuffmanFromDico(dicoName, &arb);
+    printf("\nArbre dico :\n");
+    afficherArbreBin(arb);
+
+    emptyFile("../output.txt");
+    FILE* dezip = fopen(".. /output.txt", "a+");
+    FILE* huffman = fopen(zippName, "r");
+
+    char bin[TAILLE_MAX] = "";
+    char ch = NULL;
+    int i;
+
+    while ((bin[0] = (char)fgetc(huffman)) != EOF) {
+        i = 1;
+        while (ch == '\0') {
+            ch = chercheArbreCh(arb, bin);
+            bin[i] = fgetc(huffman);
+            i++;
+        }
+        printf("-%c-", ch);
+        fprintf(zippName, "%c", ch);
+        ch = NULL;
+        //bin = "";
+    }
+
+    fclose(dezip);
+    fclose(huffman);
+}
