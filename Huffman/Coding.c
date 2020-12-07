@@ -15,7 +15,7 @@ void zipFile(char* toZipName, char* zippedName){
     clock_t begin2, end2;
     begin2 = clock();
 
-    FILE* fZipped, *fToZip;
+    FILE* fZipped, *fToZip, *fDico = NULL;
 
     emptyFile(zippedName);
     fZipped = fopen(zippedName, "a+");
@@ -51,6 +51,10 @@ void zipFile(char* toZipName, char* zippedName){
     end = clock();
     printf("The file has been succesfully compressed !\n\nzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
 
+    emptyFile("../dico.txt");
+    fDico = fopen("../dico.txt", "a+");
+    printDicoFile(dico, fDico);
+
     freeArbre(dico);
     freeArbre(huffman);
     freeArbre(AVL);
@@ -59,6 +63,7 @@ void zipFile(char* toZipName, char* zippedName){
 
     fclose(fZipped);
     fclose(fToZip);
+    fclose(fDico);
 }
 
 
