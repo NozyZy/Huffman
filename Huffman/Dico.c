@@ -24,3 +24,12 @@ void createBinCode(Arbre huffmanTree, char* binCode, int index) {
         createBinCode(huffmanTree->sad, binCode, index+1);
     }
 }
+
+void printDicoFile(Arbre dico, FILE* fDico) {
+    if (!fDico) error1();
+    if (dico) {
+        printDicoFile(dico->sag, fDico);
+        fprintf(fDico, "%c:%s\n", dico->ch, dico->bin);
+        printDicoFile(dico->sad, fDico);
+    }
+}
