@@ -25,10 +25,12 @@ int main(void) {
     // calculate the ratio, only if cI != 0
     if (cI) ratio = (float)(cH/cI)*100;
 
-    printf("\n\n Compression Ratio : %f %% ", ratio);
+    printf("\nCompression Ratio : %f %% ", ratio);
     fclose(fBin);
     fclose(fHuffman);
     fclose(fInput);
-
+    char close;
+    printf("\n\n\tPress enter to close...");
+    scanf("%c", &close);
     return EXIT_SUCCESS;
 }
