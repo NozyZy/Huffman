@@ -147,32 +147,31 @@ int nbrCaractere(char* ch) {
     return nbr;
 }
 
-void deZipFile(char* dicoName, char* zippName) {
+void deZipFile(char* dicoName, char* dezippName) {
     Noeud* arb = creerNoeud('\0', 1, NULL);
     creatHuffmanFromDico(dicoName, &arb);
-    printf("\nArbre dico :\n");
-    afficherArbreBin(arb);
-
     emptyFile("../output.txt");
-    FILE* dezip = fopen(".. /output.txt", "a+");
-    FILE* huffman = fopen(zippName, "r");
-
-    char bin[TAILLE_MAX] = "";
-    char ch = NULL;
-    int i;
-
-    while ((bin[0] = (char)fgetc(huffman)) != EOF) {
-        i = 1;
+    FILE* dezip = fopen("../output.txt", "a+");
+    FILE* huffman = fopen(dezippName, "r");
+    char ch = '\0';
+    int j; 
+    char* content = loadFile(huffman);
+    for (int i = 0; i < countCharFile(huffman); i++) {
+        char bin[TAILLE_MAX] = "";
+        bin[0] = content[i];
+        bin[1] = '\0';
+        j = 1;
         while (ch == '\0') {
             ch = chercheArbreCh(arb, bin);
-            bin[i] = fgetc(huffman);
-            i++;
+            if (ch == '\0') {
+                bin[j] = content[j + i];
+                j++;
+                bin[j] = '\0';
+            }
         }
-        fprintf(zippName, "%c", ch);
-        ch = NULL;
-        //bin = "";
+        i = j-1 + i;
+        ch = '\0';
     }
-
     fclose(dezip);
     fclose(huffman);
 }
