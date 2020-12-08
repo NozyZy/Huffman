@@ -9,3 +9,6 @@ void createBinCode(Arbre huffmanTree, char* binCode, int index) {
 
 }
 
+void printDicoFile(Arbre dico, FILE* fDico) {
+
+}
