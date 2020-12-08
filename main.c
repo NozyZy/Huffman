@@ -1,4 +1,4 @@
-#include "Huffman/Coding.h"
+#include "bin/Huffman/Coding.h"
 
 #if defined POSIX
     #define CLEAR system ( "clear" )
