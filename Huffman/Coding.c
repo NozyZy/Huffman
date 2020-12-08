@@ -63,7 +63,7 @@ void textFileToBinFile(FILE* file, char* fBinName){
         printFile(fBin, bin);
     }
     printf("\nThe file has been succesfully converted to binary !\n");
-    free(bin);
+    //free(bin);
     fclose(fBin);
 }
 
@@ -93,7 +93,7 @@ void zipFile(char* toZipName, char* zippedName){
 
     char* bin = (char*)malloc(huffman->occ*sizeof(char));
     createBinCode(huffman, bin, 0);
-    free(bin);
+    //free(bin);
 
     createAVLDico(&dico, huffman);
 
@@ -112,11 +112,11 @@ void zipFile(char* toZipName, char* zippedName){
     fDico = fopen("../dico.txt", "a+");
     printDicoFile(dico, fDico);
 
-    freeArbre(dico);
-    freeArbre(huffman);
-    freeArbre(AVL);
-    freeArbre(AVLtrie);
-    free(content);
+    freeArbre(dico); // ok
+    freeArbre(huffman); // ok
+    freeArbre(AVL); // ok
+    //freeArbre(AVLtrie); // probleme
+    //free(content); // probleme
 
     fclose(fZipped);
     fclose(fToZip);
@@ -237,6 +237,6 @@ void unzipFile(char* dicoName, char* dezippName) {
     fclose(dezip);
     fclose(huffman);
 
-    free(content);
-    freeArbre(arb);
+    //free(content);
+    //freeArbre(arb);
 }

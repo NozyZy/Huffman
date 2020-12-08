@@ -44,11 +44,12 @@ Noeud* creerNoeud(char ch, size_t occ, char* bin) {
 }
 
 void freeArbre(Noeud* a) {
-    if (a) {
+    if (a != NULL) {
         if (a->sad) freeArbre(a->sad);
         if (a->sag) freeArbre(a->sag);
         free(a);
     }
+
 }
 
 
