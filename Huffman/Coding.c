@@ -1,4 +1,6 @@
 #include "Coding.h"
+#include <string.h>
+#define TAILLE_MAX 1000 
 
 char* codeFromChar(char ch, Arbre dico) {
     if (dico) {
@@ -122,8 +124,30 @@ void textFileToBinFile(FILE* file, char* fBinName){
     free(bin);
     fclose(fBin);
 }
+
+void addNodeDico(Noeud** a, Noeud* tmp, int index) {
+    if (tmp) {
+        if (!(*a)) {
+            if (tmp->bin[index] != '\0') *a = creerNoeud('\0', 1, NULL);
+            else *a = creerNoeud(tmp->ch, 1, tmp->bin);
+        }
+        if (tmp->bin[index] == '0') addNodeDico(&((*a)->sag), tmp, index + 1);
+        else if (tmp->bin[index] == '1') addNodeDico(&((*a)->sad), tmp, index + 1);
+    }
+}
+int nbrCaractere(char* ch) {
+    int nbr = 0;
+    for (int i = 0; ch[i] != '\0'; i++)
+    {
+        if (ch[i] == '0' || ch[i] == '1')
+        {
+            nbr++;
+        }
+    }
+    return nbr;
+}
+
 void deZipFile(char* dicoName, char* zippName) {
-    
     Noeud* arb = creerNoeud('\0', 1, NULL);
     creatHuffmanFromDico(dicoName, &arb);
     printf("\nArbre dico :\n");
@@ -144,7 +168,6 @@ void deZipFile(char* dicoName, char* zippName) {
             bin[i] = fgetc(huffman);
             i++;
         }
-        printf("-%c-", ch);
         fprintf(zippName, "%c", ch);
         ch = NULL;
         //bin = "";
@@ -152,4 +175,51 @@ void deZipFile(char* dicoName, char* zippName) {
 
     fclose(dezip);
     fclose(huffman);
+}
+
+void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
+    FILE* file = fopen(dicoName, "r");
+    if (!file) exit(1);
+    int i, tmp;
+    while (((tmp = fgetc(file))) != EOF) {
+        i = 0;
+        char ch = (char)tmp;
+        char info[TAILLE_MAX] = "";
+        tmp = fgetc(file);
+        while (tmp != '\n' && tmp != EOF) {
+            if (tmp == '0' || tmp == '1') {
+                info[i] = tmp;
+                i++;
+            }
+            tmp = fgetc(file);
+        }
+        if (!info) return NULL;
+        char* chtmp = malloc(nbrCaractere(info) * sizeof(char));
+        strcpy(chtmp, info);
+        addNodeDico(arb, creerNoeud(ch, 1, chtmp), 0);
+    }
+    fseek(file, 0, SEEK_SET);
+    fclose(file);
+}
+
+char chercheArbreCh(Noeud* arb, char* bin) {
+    if (!bin) exit(1);
+    //int nbr = nbrCaractere(bin);
+    if (!(arb)) {
+        return NULL;
+    }
+
+    int i = 0;
+    while (bin[i] != '\0') {
+        if (arb) {
+            if (bin[i] == '0') {
+                arb = arb->sag;
+            }
+            else if (bin[i] == '1') {
+                arb = arb->sad;
+            }
+            i++;
+        }
+    }
+    return arb->ch;   
 }
