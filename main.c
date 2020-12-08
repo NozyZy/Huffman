@@ -1,39 +1,29 @@
 #include "Huffman/Coding.h"
 
 int main(void) {
-    clock_t begin, end;
-    begin = clock();
+    int choice = 0;
+    printf("\n--------------Compresseur de fichier Huffman---------------\n");
+    printf("\n\n   Que desirez-vous faire ?");
+    printf("\n .1 -> Compresser mon fichier 'input.txt'");
+    printf("\n .2 -> Decompresser mon fichier 'huffman.txt'");
+    printf("\n .3 -> Fermer le programme");
+    printf("\n\n ATTENTION : Tous vos fichiers seront ecrases par les nouveaux, assurez-vous de faire les sauvegardes necessaires si besoin.\n\n");
+    while (choice < 1 || choice > 3) {
+        printf(" Votre choix -> ");
+        scanf("%d", &choice);
+    }
 
-    zipFile("../input.txt", "../huffman.txt");
-
-
-    FILE *fInput, *fHuffman, *fBin; // files input.txt and binary.txt
-    double cI, cH; // charIn, charOut, and ratio cB/cI (should be 8, or 0 if empty, so integer)
-    float ratio = 0;
-
-    fInput = fopen("../input.txt", "r+"); // <- Penser à changer le chemin d'acces !!
-    if(!fInput) error1(); // if file is not found
-    textFileToBinFile(fInput, "../binary.txt");
-
-    fHuffman = fopen("../huffman.txt", "r+");
-    if(!fHuffman) error1();
-
-    fBin = fopen("../binary.txt", "r+");
-
-    cI = countCharFile(fBin);
-    cH = countCharFile(fHuffman);
-    // calculate the ratio, only if cI != 0
-    if (cI) ratio = (float)(cH/cI)*100;
-
-    printf("\nCompression Ratio : %f %% ", ratio);
-    fclose(fBin);
-    fclose(fHuffman);
-    fclose(fInput);
-
-    unzipFile("../dico.txt", "../huffman.txt");
-
-    end = clock();
-    printf("\n\tall : %f sec\n\n\t", (float)(end-begin)/CLOCKS_PER_SEC);
+    switch (choice){
+        case (1):
+            zipFile("../input.txt", "../huffman.txt");
+            break;
+        case (2):
+            unzipFile("../dico.txt", "../huffman.txt");
+            break;
+        default:
+            printf("\nFermeture du programme...\n");
+            break;
+    }
 
     system("PAUSE");
 

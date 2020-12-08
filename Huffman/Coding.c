@@ -67,7 +67,6 @@ void textFileToBinFile(FILE* file, char* fBinName){
     fclose(fBin);
 }
 
-
 /// compress a file named toZipName into a file named zippedName
 void zipFile(char* toZipName, char* zippedName){
     clock_t begin2, end2;
@@ -166,10 +165,11 @@ void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
             tmp = fgetc(file);
         }
 
-        //if (info[0] != '\0')
-        char* chtmp = malloc(nbrCaractere(info) * sizeof(char));
-        strcpy(chtmp, info);
-        addNodeDico(arb, creerNoeud(ch, 1, chtmp), 0);
+        if (info[0] != '\0') {
+            char* chtmp = malloc(nbrCaractere(info) * sizeof(char));
+            strcpy(chtmp, info);
+            addNodeDico(arb, creerNoeud(ch, 1, chtmp), 0);
+        }
     }
     fseek(file, 0, SEEK_SET);
     fclose(file);
@@ -204,7 +204,7 @@ void unzipFile(char* dicoName, char* dezippName) {
 
     emptyFile("../output.txt");
     FILE* dezip = fopen("../output.txt", "a+");
-    FILE* huffman = fopen(dezippName, "r+");
+    FILE* huffman = fopen(dezippName, "r");
 
     char ch = '\0';
     int j;
@@ -225,7 +225,6 @@ void unzipFile(char* dicoName, char* dezippName) {
                 bin[j] = '\0';
             }
         }
-
         fprintf(dezip,"%c", ch);
         i = j-1 + i;
         ch = '\0';
@@ -234,6 +233,10 @@ void unzipFile(char* dicoName, char* dezippName) {
 
     end = clock();
     printf("\n\nThe file has been succesfully decompressed !\nunzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
+
     fclose(dezip);
     fclose(huffman);
+
+    free(content);
+    freeArbre(arb);
 }
