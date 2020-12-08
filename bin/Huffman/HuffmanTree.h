@@ -1,7 +1,7 @@
 /**
  * @file HuffmanTree.h
  * @author Gianlucca Annichiarico (agianlucca@gmail.com)
- * @brief Headers des fonction de l'arbre de Huffman
+ * @brief Headers des fonctions de l'arbre de Huffman
  * @version 0.1
  * @date 2020-12-06
  * 

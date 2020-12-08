@@ -1,5 +1,5 @@
-\hypertarget{_data_structures_8h}{}\doxysection{Référence du fichier Data\+Structures/\+Data\+Structures.h}
-\label{_data_structures_8h}\index{DataStructures/DataStructures.h@{DataStructures/DataStructures.h}}
+\hypertarget{_data_structures_8h}{}\doxysection{Référence du fichier bin/\+Data\+Structures/\+Data\+Structures.h}
+\label{_data_structures_8h}\index{bin/DataStructures/DataStructures.h@{bin/DataStructures/DataStructures.h}}
 
 
 Headers des fonction des structures de données.  
@@ -13,9 +13,9 @@ Headers des fonction des structures de données.
 struct \mbox{\hyperlink{struct_noeud}{Noeud}}
 \begin{DoxyCompactList}\small\item\em Structure pour un \mbox{\hyperlink{struct_noeud}{Noeud}}. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_element_node}{Element\+Node}}
-\begin{DoxyCompactList}\small\item\em Structure pour un element du noeud. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Structure pour un element \mbox{\hyperlink{struct_noeud}{Noeud}} d\textquotesingle{}une file. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_queue}{Queue}}
-\begin{DoxyCompactList}\small\item\em Structure pour la queue d\textquotesingle{}un arbre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure pour une file de Noeuds. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,49 +27,49 @@ typedef \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$ {\bfseries Arbre}
 \item 
 \mbox{\Hypertarget{_data_structures_8h_aa6c0071625016598b3a9da1798e66833}\label{_data_structures_8h_aa6c0071625016598b3a9da1798e66833}} 
 typedef struct \mbox{\hyperlink{struct_element_node}{Element\+Node}} \mbox{\hyperlink{_data_structures_8h_aa6c0071625016598b3a9da1798e66833}{Element\+Node}}
-\begin{DoxyCompactList}\small\item\em Structure pour un element du noeud. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Structure pour un element \mbox{\hyperlink{struct_noeud}{Noeud}} d\textquotesingle{}une file. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{_data_structures_8h_ad4f29a362a072ba563b41ae8e935c6fc}\label{_data_structures_8h_ad4f29a362a072ba563b41ae8e935c6fc}} 
 typedef struct \mbox{\hyperlink{struct_queue}{Queue}} \mbox{\hyperlink{_data_structures_8h_ad4f29a362a072ba563b41ae8e935c6fc}{Queue}}
-\begin{DoxyCompactList}\small\item\em Structure pour la queue d\textquotesingle{}un arbre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure pour une file de Noeuds. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$ \mbox{\hyperlink{_data_structures_8h_a13b514a4b0485b669f721170711882c8}{creer\+Noeud}} (char ch, size\+\_\+t occ, char $\ast$bin)
-\begin{DoxyCompactList}\small\item\em Crée un noeud. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Crée un noeud alloué dynamiquement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_a4f85cfb498e3e0d5f815f4b235d678d8}{afficher\+Arbre\+Occ}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
-\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arbre d\textquotesingle{}occurence. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arbre avec ses occurrences. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_a8da495e3c909a211785b3dcc86409b90}{afficher\+Arbre\+Bin}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
-\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arbre binaire. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arbre avec ses codes binaires. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_abe921b1637c43ab26e6714eb2cc1e8c2}{free\+Arbre}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
 \begin{DoxyCompactList}\small\item\em Libère l\textquotesingle{}arbre. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_a1f6490f3d21b6acbde30af92922e187f}{add\+Node\+A\+V\+Lch}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp)
 \begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}A\+VL. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_a61b5f54b1ed3b90d855662ab14680c86}{add\+Node\+B\+S\+Tch}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp)
-\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}abre de trié (alphabétique) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}abre de tri (alphabétique) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_ae99d92d75c5b154f6e7d8587c2b19fc2}{add\+Node\+B\+S\+Tocc}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp)
-\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}arbre trié (Occurrence) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}arbre de tri (Occurrence) \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{_data_structures_8h_ae137073626dac01e3bf2d8d5fc3b51e6}{depth}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
 \begin{DoxyCompactList}\small\item\em Renvoie la prodonfeur de l\textquotesingle{}arbre (0 si l\textquotesingle{}arbre n\textquotesingle{}existe pas) \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_data_structures_8h_a048c517b0ff675a302cf7dbac40ef815}{get\+BF}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
 \begin{DoxyCompactList}\small\item\em Renvoie le balance factor de l\textquotesingle{}A\+VL. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_a87f8a1c3c2b9e608fbc55c544e192cb0}{left\+Rotation}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$a)
-\begin{DoxyCompactList}\small\item\em Rotation vers la gauche dans un arbre. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Rotation gauche de noeuds. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_a2b0c4a945fa68242d14f642be284b31e}{right\+Rotation}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$a)
-\begin{DoxyCompactList}\small\item\em Rotation vers la droite dans un arbre. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Rotation droite de noeuds. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_aeef7e1682c1e389ff2c8d73f0bdf1526}{balance}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$a)
-\begin{DoxyCompactList}\small\item\em Tant que le Balance Factor $>$ 2 Réequillibre l\textquotesingle{}arbre. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Tant que le Balance Factor $>$ 2 Réequillibre l\textquotesingle{}arbre \+: avoir un A\+VL. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_queue}{Queue}} $\ast$ \mbox{\hyperlink{_data_structures_8h_aa4fc1988b6de9949c88d1247b763b0d4}{create\+Queue}} ()
-\begin{DoxyCompactList}\small\item\em Créer une queue. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Crée une file allouée dynamiquement. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_data_structures_8h_af2770b8a3db2abbf230cd55a0ec9fed3}{is\+Empty\+Queue}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q)
-\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}état de la queue, vidé ou non. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}état de la file, vidée ou non. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_data_structures_8h_a4a0b76239793855e5aba1a4ec20130b3}{push\+Queue}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q, \mbox{\hyperlink{struct_noeud}{Arbre}} val)
-\begin{DoxyCompactList}\small\item\em Envoie la queue dans l\textquotesingle{}arbre. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enfile un noeud. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_noeud}{Arbre}} \mbox{\hyperlink{_data_structures_8h_a0c2405a26fe5e87cf5d4769f5e3477cd}{pop\+Queue}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q)
-\begin{DoxyCompactList}\small\item\em Fait apparaitre la queue dans l\textquotesingle{}arbre. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Défile un noeud. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_data_structures_8h_afbe23de9a17bf5692f73ced06a3075ba}{size\+Queue}} (\mbox{\hyperlink{struct_element_node}{Element\+Node}} $\ast$q)
-\begin{DoxyCompactList}\small\item\em Renvoie la taille de la queue. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Renvoie la taille de la file. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_noeud}{Arbre}} \mbox{\hyperlink{_data_structures_8h_a27890fc5027694e27aba1ae31ae3cc5e}{get\+Min\+Queues}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q1, \mbox{\hyperlink{struct_queue}{Queue}} $\ast$q2)
-\begin{DoxyCompactList}\small\item\em Compare et choisi la queue la plus petite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Compare et choisi le noeud avec l\textquotesingle{}occurrence la plus petite. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -115,7 +115,7 @@ Ajoute un noeud dans l\textquotesingle{}A\+VL.
 
 
 
-Ajoute un noeud dans l\textquotesingle{}abre de trié (alphabétique) 
+Ajoute un noeud dans l\textquotesingle{}abre de tri (alphabétique) 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -132,7 +132,7 @@ Ajoute un noeud dans l\textquotesingle{}abre de trié (alphabétique)
 
 
 
-Ajoute un noeud dans l\textquotesingle{}arbre trié (Occurrence) 
+Ajoute un noeud dans l\textquotesingle{}arbre de tri (Occurrence) 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -149,7 +149,7 @@ Ajoute un noeud dans l\textquotesingle{}arbre trié (Occurrence)
 
 
 
-Affiche l\textquotesingle{}arbre binaire. 
+Affiche l\textquotesingle{}arbre avec ses codes binaires. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -164,7 +164,7 @@ Affiche l\textquotesingle{}arbre binaire.
 
 
 
-Affiche l\textquotesingle{}arbre d\textquotesingle{}occurence. 
+Affiche l\textquotesingle{}arbre avec ses occurrences. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -179,7 +179,7 @@ Affiche l\textquotesingle{}arbre d\textquotesingle{}occurence.
 
 
 
-Tant que le Balance Factor $>$ 2 Réequillibre l\textquotesingle{}arbre. 
+Tant que le Balance Factor $>$ 2 Réequillibre l\textquotesingle{}arbre \+: avoir un A\+VL. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -194,7 +194,7 @@ Tant que le Balance Factor $>$ 2 Réequillibre l\textquotesingle{}arbre.
 
 
 
-Créer une queue. 
+Crée une file allouée dynamiquement. 
 
 \begin{DoxyReturn}{Renvoie}
 Queue$\ast$ 
@@ -207,7 +207,7 @@ Queue$\ast$
 
 
 
-Crée un noeud. 
+Crée un noeud alloué dynamiquement. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -280,7 +280,7 @@ int
 
 
 
-Compare et choisi la queue la plus petite. 
+Compare et choisi le noeud avec l\textquotesingle{}occurrence la plus petite. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -300,7 +300,7 @@ Arbre
 
 
 
-Renvoie l\textquotesingle{}état de la queue, vidé ou non. 
+Renvoie l\textquotesingle{}état de la file, vidée ou non. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -318,7 +318,7 @@ int
 
 
 
-Rotation vers la gauche dans un arbre. 
+Rotation gauche de noeuds. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -333,7 +333,7 @@ Rotation vers la gauche dans un arbre.
 
 
 
-Fait apparaitre la queue dans l\textquotesingle{}arbre. 
+Défile un noeud. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -351,7 +351,7 @@ Arbre
 
 
 
-Envoie la queue dans l\textquotesingle{}arbre. 
+Enfile un noeud. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -368,7 +368,7 @@ Envoie la queue dans l\textquotesingle{}arbre.
 
 
 
-Rotation vers la droite dans un arbre. 
+Rotation droite de noeuds. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -383,7 +383,7 @@ Rotation vers la droite dans un arbre.
 
 
 
-Renvoie la taille de la queue. 
+Renvoie la taille de la file. 
 
 
 \begin{DoxyParams}{Paramètres}

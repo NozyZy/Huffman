@@ -2,7 +2,7 @@
 #define TAILLE_MAX 1000 
 
 /**
- * @brief Renvoie le code binaire à partir de di char stocker dans l'arbre dico
+ * @brief Renvoie le code binaire correpondant au caractère dans l'arbre dico
  * 
  * @param ch 
  * @param dico 
@@ -19,7 +19,7 @@ char* codeFromChar(char ch, Arbre dico) {
 
 
 /**
- * @brief Convertie un nombre donné en argument en son écriture en binaire
+ * @brief Converti un nombre décimal donné en argument en son écriture en binaire
  * 
  * @param n 
  * @param bin 
@@ -42,7 +42,7 @@ void int2bin(int n, char* bin){
 }
 
 /**
- * @brief Convertie un fichier.txt texte donné en argument en fichier.txt binaire
+ * @brief Convertie un fichier .txt donné en argument en fichier .txt binaire
  * 
  * @param file 
  * @param fBinName 
@@ -73,7 +73,12 @@ void textFileToBinFile(FILE* file, char* fBinName){
     fclose(fBin);
 }
 
-/// compress a file named toZipName into a file named zippedName
+/**
+ * @brief Compresses un fichier 'toZipName' en un fichier 'zippedName'
+ *
+ * @param toZipName
+ * @param zippedName
+ */
 void zipFile(char* toZipName, char* zippedName){
     //clock_t begin2, end2;
     //begin2 = clock();
@@ -133,6 +138,7 @@ void zipFile(char* toZipName, char* zippedName){
     fclose(fToZip);
 
 }
+
 /**
  * @brief Ajoute un noeud dans l'arbre dico
  * 
@@ -150,8 +156,9 @@ void addNodeDico(Noeud** a, Noeud* tmp, int index) {
         else if (tmp->bin[index] == '1') addNodeDico(&((*a)->sad), tmp, index + 1);
     }
 }
+
 /**
- * @brief Renvoie le nombre de caractère
+ * @brief Renvoie le nombre de caractères d'une chaine de caractères
  * 
  * @param ch 
  * @return int 
@@ -167,8 +174,9 @@ int nbrCaractere(const char* ch) {
     }
     return nbr;
 }
+
 /**
- * @brief Créer un arbre d'Huffman à partir du dico
+ * @brief Crée un arbre d'Huffman à partir du fichier .txt 'dicoName'
  * 
  * @param dicoName 
  * @param arb 
@@ -201,8 +209,9 @@ void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
     fseek(file, 0, SEEK_SET);
     fclose(file);
 }
+
 /**
- * @brief Cherche dans l'abre un char
+ * @brief Cherche le code binaire d'un caractère dans l'arbre d'Huffman
  * 
  * @param arb 
  * @param bin 
@@ -227,19 +236,20 @@ char chercheArbreCh(Noeud* arb, const char* bin) {
     if (arb) return arb->ch;
     return '\0';
 }
+
 /**
- * @brief Decompresse le zip
+ * @brief Décompresse un fichier 'unzipName' en 'ouutpu.txt' grâce au fichier 'dicoName'
  * 
  * @param dicoName 
- * @param dezippName 
+ * @param unzipName
  */
-void unzipFile(char* dicoName, char* dezippName) {
+void unzipFile(char* dicoName, char* unzipName) {
     clock_t begin, end;
     begin = clock();
 
     emptyFile("../output.txt");
     FILE* dezip = fopen("../output.txt", "a+");
-    FILE* huffman = fopen(dezippName, "r");
+    FILE* huffman = fopen(unzipName, "r");
 
     char* content = loadFile(huffman);
     size_t sizeContent = countCharFile(huffman);
@@ -279,15 +289,15 @@ void unzipFile(char* dicoName, char* dezippName) {
         printf("Le fichier huffman.txt est vide !");
     }
 
-
     fclose(dezip);
     fclose(huffman);
 
-    //free(content);
-    //freeArbre(arb);
+    //free(content); // erreur de free
+    //freeArbre(arb); // erreur de free
 }
+
 /**
- * @brief calcule et renvoie le ration
+ * @brief calcule et renvoie le ration de nombre de caractères entre binary.txt et huffman.txt
  * 
  * @return float 
  */

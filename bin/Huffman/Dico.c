@@ -1,6 +1,7 @@
 #include "Dico.h"
+
 /**
- * @brief Créer un dicionnaire AVL
+ * @brief Créer un dicionnaire AVL, trié par caractère
  * 
  * @param dico 
  * @param add 
@@ -16,7 +17,7 @@ void createAVLDico(Arbre* dico, Arbre add){
 }
 
 /**
- * @brief Créer un code binaire à partir de l'arbre d'Huffman
+ * @brief Crée tous les codes binaires des caractères à partir de l'arbre d'Huffman
  * 
  * @param huffmanTree 
  * @param binCode 
@@ -35,8 +36,9 @@ void createBinCode(Arbre huffmanTree, char* binCode, int index) {
         createBinCode(huffmanTree->sad, binCode, index+1);
     }
 }
+
 /**
- * @brief Affiche le dictionnaire
+ * @brief Ecrit le dictionnaire dans un fichier fDico
  * 
  * @param dico 
  * @param fDico 

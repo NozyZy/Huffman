@@ -1,35 +1,30 @@
 #include "InteractWithFile.h"
 
 /**
- * @brief Affiche les erreurs, pour les documents non trouvés
+ * @brief Affiche l'erreur principal, pour un document non trouvé
  * 
  */
-// prints the main error, for file not found
 void error1(){
     printf("No such file or directory - error 1\n");
     exit(1);
 }
+
 /**
  * @brief Retourne le contenu d'un fichier.txt
  * 
  * @param file 
  * @return char* 
  */
-// returns the content of a .txt file, given in argument, in a char*
 char* loadFile(FILE* file){
     int ch;
     char *text;
-    // if no file, exit
     if (!file) error1();
     // first position to 0 / guessed size is 8 (2^3)
     size_t pos = 0, size = 8;
 
     text = malloc(size*sizeof(char));
-    // if allocation fails, return NULL
     if (!text) return NULL;
-    // set the SEEK at the beginning of the file
     fseek(file, 0, SEEK_SET);
-    // it checks all the chars, until it found the End of File (EOF = -1)
     while ((ch = fgetc(file)) != EOF) {
         text[pos] = (char)ch;
         pos++;
@@ -51,23 +46,22 @@ char* loadFile(FILE* file){
 }
 
 /**
- * @brief Affiche le contenue donné en argument dans un .txt, fichier donné en argument
+ * @brief Affiche le contenu donné en argument dans un fichier donné en argument
  * 
  * @param file 
  * @param content 
  */
-// prints the content given in argument in a .txt file given in argument
 void printFile(FILE* file, char* content){
     if (!file) error1();
     fprintf(file, "%s", content);
 }
+
 /**
- * @brief Retourne le nombre de charactère dans un fichier.txt
+ * @brief Retourne le nombre de charactères dans un fichier .txt
  * 
  * @param file 
  * @return long unsigned int 
  */
-// returns the number of chars in a .txt file
 long unsigned int countCharFile(FILE* file){
     long unsigned int count = 0;
     int ch;
@@ -85,11 +79,10 @@ long unsigned int countCharFile(FILE* file){
 }
 
 /**
- * @brief Créer un fichier vide ou vide un fichier, avec le nom donné en argument
+ * @brief Crée un fichier vide ou vide un fichier, avec le nom donné en argument
  * 
  * @param name 
  */
-// creates an empty file, or empty the file, with the name given in argument
 void emptyFile(char* name){
     FILE* file = fopen(name, "w+");
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Huffman: Référence du fichier Huffman/Coding.h</title>
+<title>Huffman: Référence du fichier bin/Huffman/Coding.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,7 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Logo-Efrei-2017-Eng-Web.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Logo-efrei.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Huffman
    </div>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_1a267c128e570eec1b436dacbfd39e3f.html">Huffman</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2ea30aa2956a8db99dd22aa5e597f384.html">bin</a></li><li class="navelem"><a class="el" href="dir_5eb9527d277504ce672f788adaa7821f.html">Huffman</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,7 +73,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Headers des fonctions de conversion.  
+<p>Headers des fonctions de conversion (encodage decodage)  
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_dico_8h_source.html">Dico.h</a>&quot;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
@@ -83,39 +83,38 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a694b089f892a27be571997f763993e1a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#a694b089f892a27be571997f763993e1a">codeFromChar</a> (char ch, <a class="el" href="struct_noeud.html">Arbre</a> dico)</td></tr>
-<tr class="memdesc:a694b089f892a27be571997f763993e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le code binaire à partir de di char stocker dans l'arbre dico.  <a href="_coding_8h.html#a694b089f892a27be571997f763993e1a">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a694b089f892a27be571997f763993e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le code binaire correpondant au caractère dans l'arbre dico.  <a href="_coding_8h.html#a694b089f892a27be571997f763993e1a">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a694b089f892a27be571997f763993e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3790de9f07281137661483ad0dfbc9ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#a3790de9f07281137661483ad0dfbc9ab">int2bin</a> (int n, char *bin)</td></tr>
-<tr class="memdesc:a3790de9f07281137661483ad0dfbc9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertie un nombre donné en argument en son écriture en binaire.  <a href="_coding_8h.html#a3790de9f07281137661483ad0dfbc9ab">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a3790de9f07281137661483ad0dfbc9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti un nombre décimal donné en argument en son écriture en binaire.  <a href="_coding_8h.html#a3790de9f07281137661483ad0dfbc9ab">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a3790de9f07281137661483ad0dfbc9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbbb9d67c19111a90e3b57331d670c2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#afbbb9d67c19111a90e3b57331d670c2c">textFileToBinFile</a> (FILE *file, char *fBinName)</td></tr>
-<tr class="memdesc:afbbb9d67c19111a90e3b57331d670c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertie un fichier.txt texte donné en argument en fichier.txt binaire.  <a href="_coding_8h.html#afbbb9d67c19111a90e3b57331d670c2c">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:afbbb9d67c19111a90e3b57331d670c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertie un fichier .txt donné en argument en fichier .txt binaire.  <a href="_coding_8h.html#afbbb9d67c19111a90e3b57331d670c2c">Plus de détails...</a><br /></td></tr>
 <tr class="separator:afbbb9d67c19111a90e3b57331d670c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d208f085d3e3ff5ef7db08c110f24f9"><td class="memItemLeft" align="right" valign="top"><a id="a2d208f085d3e3ff5ef7db08c110f24f9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#a2d208f085d3e3ff5ef7db08c110f24f9">zipFile</a> (char *toZipName, char *zippedName)</td></tr>
-<tr class="memdesc:a2d208f085d3e3ff5ef7db08c110f24f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">compress a file named toZipName into a file named zippedName <br /></td></tr>
+<tr class="memitem:a2d208f085d3e3ff5ef7db08c110f24f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#a2d208f085d3e3ff5ef7db08c110f24f9">zipFile</a> (char *toZipName, char *zippedName)</td></tr>
+<tr class="memdesc:a2d208f085d3e3ff5ef7db08c110f24f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compresses un fichier 'toZipName' en un fichier 'zippedName'.  <a href="_coding_8h.html#a2d208f085d3e3ff5ef7db08c110f24f9">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2d208f085d3e3ff5ef7db08c110f24f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ba41a20b33555684685a1affca82583"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#a7ba41a20b33555684685a1affca82583">addNodeDico</a> (<a class="el" href="struct_noeud.html">Noeud</a> **a, <a class="el" href="struct_noeud.html">Noeud</a> *tmp, int index)</td></tr>
 <tr class="memdesc:a7ba41a20b33555684685a1affca82583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un noeud dans l'arbre dico.  <a href="_coding_8h.html#a7ba41a20b33555684685a1affca82583">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a7ba41a20b33555684685a1affca82583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8d4f4d0c86b0bbe3b980f2740ca5437"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#af8d4f4d0c86b0bbe3b980f2740ca5437">nbrCaractere</a> (const char *ch)</td></tr>
-<tr class="memdesc:af8d4f4d0c86b0bbe3b980f2740ca5437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de caractère.  <a href="_coding_8h.html#af8d4f4d0c86b0bbe3b980f2740ca5437">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:af8d4f4d0c86b0bbe3b980f2740ca5437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de caractères d'une chaine de caractères.  <a href="_coding_8h.html#af8d4f4d0c86b0bbe3b980f2740ca5437">Plus de détails...</a><br /></td></tr>
 <tr class="separator:af8d4f4d0c86b0bbe3b980f2740ca5437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b63be50ddc1455375cc1c371749f8d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#a2b63be50ddc1455375cc1c371749f8d6">creatHuffmanFromDico</a> (char *dicoName, <a class="el" href="struct_noeud.html">Noeud</a> **arb)</td></tr>
-<tr class="memdesc:a2b63be50ddc1455375cc1c371749f8d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créer un arbre d'Huffman à partir du dico.  <a href="_coding_8h.html#a2b63be50ddc1455375cc1c371749f8d6">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a2b63be50ddc1455375cc1c371749f8d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un arbre d'Huffman à partir du fichier .txt 'dicoName'.  <a href="_coding_8h.html#a2b63be50ddc1455375cc1c371749f8d6">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2b63be50ddc1455375cc1c371749f8d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae17e8f1867ce1b99190865b25079fe18"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#ae17e8f1867ce1b99190865b25079fe18">chercheArbreCh</a> (<a class="el" href="struct_noeud.html">Noeud</a> *arb, const char *bin)</td></tr>
-<tr class="memdesc:ae17e8f1867ce1b99190865b25079fe18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cherche dans l'abre un char.  <a href="_coding_8h.html#ae17e8f1867ce1b99190865b25079fe18">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:ae17e8f1867ce1b99190865b25079fe18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cherche le code binaire d'un caractère dans l'arbre d'Huffman.  <a href="_coding_8h.html#ae17e8f1867ce1b99190865b25079fe18">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ae17e8f1867ce1b99190865b25079fe18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affadad89926e27f6307914de62d4f5ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#affadad89926e27f6307914de62d4f5ba">unzipFile</a> (char *dicoName, char *dezippName)</td></tr>
-<tr class="memdesc:affadad89926e27f6307914de62d4f5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decompresse le zip.  <a href="_coding_8h.html#affadad89926e27f6307914de62d4f5ba">Plus de détails...</a><br /></td></tr>
-<tr class="separator:affadad89926e27f6307914de62d4f5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9161d04bceff2b87bd4d8c179fe0b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#aff9161d04bceff2b87bd4d8c179fe0b6">unzipFile</a> (char *dicoName, char *unzipName)</td></tr>
+<tr class="memdesc:aff9161d04bceff2b87bd4d8c179fe0b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Décompresse un fichier 'unzipName' en 'ouutpu.txt' grâce au fichier 'dicoName'.  <a href="_coding_8h.html#aff9161d04bceff2b87bd4d8c179fe0b6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aff9161d04bceff2b87bd4d8c179fe0b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace1c442d9713a792ca301e74e4977377"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_coding_8h.html#ace1c442d9713a792ca301e74e4977377">calculateRatio</a> ()</td></tr>
-<tr class="memdesc:ace1c442d9713a792ca301e74e4977377"><td class="mdescLeft">&#160;</td><td class="mdescRight">calcule et renvoie le ration  <a href="_coding_8h.html#ace1c442d9713a792ca301e74e4977377">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:ace1c442d9713a792ca301e74e4977377"><td class="mdescLeft">&#160;</td><td class="mdescRight">calcule et renvoie le ration de nombre de caractères entre binary.txt et huffman.txt  <a href="_coding_8h.html#ace1c442d9713a792ca301e74e4977377">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ace1c442d9713a792ca301e74e4977377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Headers des fonctions de conversion. </p>
+<div class="textblock"><p>Headers des fonctions de conversion (encodage decodage) </p>
 <dl class="section author"><dt>Auteur</dt><dd>Gianlucca Annichiarico (<a href="#" onclick="location.href='mai'+'lto:'+'agi'+'an'+'luc'+'ca'+'@gm'+'ai'+'l.c'+'om'; return false;">agian<span style="display: none;">.nosp@m.</span>lucc<span style="display: none;">.nosp@m.</span>a@gma<span style="display: none;">.nosp@m.</span>il.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-12-06</dd></dl>
@@ -180,7 +179,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>calcule et renvoie le ration </p>
+<p>calcule et renvoie le ration de nombre de caractères entre binary.txt et huffman.txt </p>
 <dl class="section return"><dt>Renvoie</dt><dd>float </dd></dl>
 
 </div>
@@ -211,7 +210,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>Cherche dans l'abre un char. </p>
+<p>Cherche le code binaire d'un caractère dans l'arbre d'Huffman. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">arb</td><td></td></tr>
@@ -249,7 +248,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>Renvoie le code binaire à partir de di char stocker dans l'arbre dico. </p>
+<p>Renvoie le code binaire correpondant au caractère dans l'arbre dico. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">ch</td><td></td></tr>
@@ -287,7 +286,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>Créer un arbre d'Huffman à partir du dico. </p>
+<p>Crée un arbre d'Huffman à partir du fichier .txt 'dicoName'. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">dicoName</td><td></td></tr>
@@ -324,7 +323,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>Convertie un nombre donné en argument en son écriture en binaire. </p>
+<p>Converti un nombre décimal donné en argument en son écriture en binaire. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td></td></tr>
@@ -351,7 +350,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>Renvoie le nombre de caractère. </p>
+<p>Renvoie le nombre de caractères d'une chaine de caractères. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">ch</td><td></td></tr>
@@ -388,7 +387,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>Convertie un fichier.txt texte donné en argument en fichier.txt binaire. </p>
+<p>Convertie un fichier .txt donné en argument en fichier .txt binaire. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">file</td><td></td></tr>
@@ -399,8 +398,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
 
 </div>
 </div>
-<a id="affadad89926e27f6307914de62d4f5ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affadad89926e27f6307914de62d4f5ba">&#9670;&nbsp;</a></span>unzipFile()</h2>
+<a id="aff9161d04bceff2b87bd4d8c179fe0b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff9161d04bceff2b87bd4d8c179fe0b6">&#9670;&nbsp;</a></span>unzipFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -415,7 +414,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>dezippName</em>&#160;</td>
+          <td class="paramname"><em>unzipName</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -425,11 +424,48 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cod
       </table>
 </div><div class="memdoc">
 
-<p>Decompresse le zip. </p>
+<p>Décompresse un fichier 'unzipName' en 'ouutpu.txt' grâce au fichier 'dicoName'. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">dicoName</td><td></td></tr>
-    <tr><td class="paramname">dezippName</td><td></td></tr>
+    <tr><td class="paramname">unzipName</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d208f085d3e3ff5ef7db08c110f24f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d208f085d3e3ff5ef7db08c110f24f9">&#9670;&nbsp;</a></span>zipFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zipFile </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>toZipName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>zippedName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compresses un fichier 'toZipName' en un fichier 'zippedName'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">toZipName</td><td></td></tr>
+    <tr><td class="paramname">zippedName</td><td></td></tr>
   </table>
   </dd>
 </dl>

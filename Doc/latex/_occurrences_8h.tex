@@ -1,29 +1,27 @@
-\hypertarget{_occurrences_8h}{}\doxysection{Référence du fichier Huffman/\+Occurrences.h}
-\label{_occurrences_8h}\index{Huffman/Occurrences.h@{Huffman/Occurrences.h}}
+\hypertarget{_occurrences_8h}{}\doxysection{Référence du fichier bin/\+Huffman/\+Occurrences.h}
+\label{_occurrences_8h}\index{bin/Huffman/Occurrences.h@{bin/Huffman/Occurrences.h}}
 
 
-Headers des fonctions des Occurrences.  
+Headers des fonctions des occurrences.  
 
 
-{\ttfamily \#include \char`\"{}Interact\+With\+File.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Data\+Structures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+Interact\+With\+File/\+Interact\+With\+File.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+Data\+Structures/\+Data\+Structures.\+h\char`\"{}}\newline
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{_occurrences_8h_a039c9ea4cd8b32caf5ed438001c5a916}{create\+A\+V\+Lcaractere}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, char $\ast$content, size\+\_\+t taille)
-\begin{DoxyCompactList}\small\item\em Crée un caractere pour l\textquotesingle{}A\+VL. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_occurrences_8h_a818f290090cf7f1f39fda42b1559862b}{tri\+Nodes\+Occurence}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL)
-\begin{DoxyCompactList}\small\item\em Trie les noeuds d\textquotesingle{}occurence. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Crée un A\+VL trié par caractères. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_occurrences_8h_a1e20a1a6c423330a854449a3b7ecb3c2}{add\+Node\+A\+V\+Locc}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp)
-\begin{DoxyCompactList}\small\item\em Ajoute un noeud A\+VL. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Ajoute un noeud à un A\+VL trié en occurrences. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_occurrences_8h_a59b663a9c1190234ec1b855fd3211940}{create\+A\+V\+Loccurrence}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
-\begin{DoxyCompactList}\small\item\em Créer l\textquotesingle{}A\+VL. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Crée un A\+VL trié en occurrences. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_occurrences_8h_ab79456302b17cddb642398ef44510a0d}{creer\+Occ\+Queue}} (\mbox{\hyperlink{struct_noeud}{Arbre}} A\+VL, \mbox{\hyperlink{struct_queue}{Queue}} $\ast$q)
-\begin{DoxyCompactList}\small\item\em Créer la queue de l\textquotesingle{}A\+VL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Crée une file de noeuds triés par occurrences, grâce à l\textquotesingle{}A\+VL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
-Headers des fonctions des Occurrences. 
+Headers des fonctions des occurrences. 
 
 \begin{DoxyAuthor}{Auteur}
 Gianlucca Annichiarico (\href{mailto:agianlucca@gmail.com}{\texttt{ agianlucca@gmail.\+com}}) 
@@ -48,7 +46,7 @@ Copyright (c) 2020
 
 
 
-Ajoute un noeud A\+VL. 
+Ajoute un noeud à un A\+VL trié en occurrences. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -65,7 +63,7 @@ Ajoute un noeud A\+VL.
 
 
 
-Crée un caractere pour l\textquotesingle{}A\+VL. 
+Crée un A\+VL trié par caractères. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -84,7 +82,7 @@ Crée un caractere pour l\textquotesingle{}A\+VL.
 
 
 
-Créer l\textquotesingle{}A\+VL. 
+Crée un A\+VL trié en occurrences. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -101,27 +99,12 @@ Créer l\textquotesingle{}A\+VL.
 
 
 
-Créer la queue de l\textquotesingle{}A\+VL. 
+Crée une file de noeuds triés par occurrences, grâce à l\textquotesingle{}A\+VL. 
 
 
 \begin{DoxyParams}{Paramètres}
 {\em A\+VL} & \\
 \hline
 {\em q} & \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{_occurrences_8h_a818f290090cf7f1f39fda42b1559862b}\label{_occurrences_8h_a818f290090cf7f1f39fda42b1559862b}} 
-\index{Occurrences.h@{Occurrences.h}!triNodesOccurence@{triNodesOccurence}}
-\index{triNodesOccurence@{triNodesOccurence}!Occurrences.h@{Occurrences.h}}
-\doxysubsubsection{\texorpdfstring{triNodesOccurence()}{triNodesOccurence()}}
-{\footnotesize\ttfamily void tri\+Nodes\+Occurence (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{A\+VL }\end{DoxyParamCaption})}
-
-
-
-Trie les noeuds d\textquotesingle{}occurence. 
-
-
-\begin{DoxyParams}{Paramètres}
-{\em A\+VL} & \\
 \hline
 \end{DoxyParams}

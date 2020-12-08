@@ -1,7 +1,7 @@
 /**
  * @file Coding.h
  * @author Gianlucca Annichiarico (agianlucca@gmail.com)
- * @brief Headers des fonctions de conversion
+ * @brief Headers des fonctions de conversion (encodage decodage)
  * @version 0.1
  * @date 2020-12-06
  * 
@@ -22,7 +22,7 @@ void addNodeDico(Noeud** a, Noeud* tmp, int index);
 int nbrCaractere(const char* ch);
 void creatHuffmanFromDico(char* dicoName, Noeud** arb);
 char chercheArbreCh(Noeud* arb, const char* bin);
-void unzipFile(char* dicoName, char* dezippName);
+void unzipFile(char* dicoName, char* unzipName);
 float calculateRatio();
 
 #endif //HUFFMAN_CODING_H

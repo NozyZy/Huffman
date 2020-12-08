@@ -1,5 +1,5 @@
-\hypertarget{_dico_8h}{}\doxysection{Référence du fichier Huffman/\+Dico.h}
-\label{_dico_8h}\index{Huffman/Dico.h@{Huffman/Dico.h}}
+\hypertarget{_dico_8h}{}\doxysection{Référence du fichier bin/\+Huffman/\+Dico.h}
+\label{_dico_8h}\index{bin/Huffman/Dico.h@{bin/Huffman/Dico.h}}
 
 
 Headers des fonctions du dictionnaire.  
@@ -11,11 +11,11 @@ Headers des fonctions du dictionnaire.
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{_dico_8h_a0ddfb8b654bea06892a188cae7f47f73}{create\+A\+V\+L\+Dico}} (\mbox{\hyperlink{struct_noeud}{Arbre}} $\ast$a, \mbox{\hyperlink{struct_noeud}{Arbre}} add)
-\begin{DoxyCompactList}\small\item\em Créer un dicionnaire A\+VL. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Créer un dicionnaire A\+VL, trié par caractère. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_dico_8h_af9e9f89a7133aa68b718096ffec448c8}{create\+Bin\+Code}} (\mbox{\hyperlink{struct_noeud}{Arbre}} huffman\+Tree, char $\ast$bin\+Code, int index)
-\begin{DoxyCompactList}\small\item\em Créer un code binaire à partir de l\textquotesingle{}arbre d\textquotesingle{}Huffman. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Crée tous les codes binaires des caractères à partir de l\textquotesingle{}arbre d\textquotesingle{}Huffman. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_dico_8h_a0e8a27eca8d51e2e542ffee6aead22e8}{print\+Dico\+File}} (\mbox{\hyperlink{struct_noeud}{Arbre}} dico, F\+I\+LE $\ast$f\+Dico)
-\begin{DoxyCompactList}\small\item\em Affiche le dictionnaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Ecrit le dictionnaire dans un fichier f\+Dico. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -44,7 +44,7 @@ Copyright (c) 2020
 
 
 
-Créer un dicionnaire A\+VL. 
+Créer un dicionnaire A\+VL, trié par caractère. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -61,7 +61,7 @@ Créer un dicionnaire A\+VL.
 
 
 
-Créer un code binaire à partir de l\textquotesingle{}arbre d\textquotesingle{}Huffman. 
+Crée tous les codes binaires des caractères à partir de l\textquotesingle{}arbre d\textquotesingle{}Huffman. 
 
 
 \begin{DoxyParams}{Paramètres}
@@ -80,7 +80,7 @@ Créer un code binaire à partir de l\textquotesingle{}arbre d\textquotesingle{}
 
 
 
-Affiche le dictionnaire. 
+Ecrit le dictionnaire dans un fichier f\+Dico. 
 
 
 \begin{DoxyParams}{Paramètres}

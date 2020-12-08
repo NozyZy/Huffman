@@ -1,6 +1,7 @@
 #include "Occurrences.h"
+
 /**
- * @brief Crée un caractere pour l'AVL
+ * @brief Crée un AVL trié par caractères
  * 
  * @param AVL 
  * @param content 
@@ -19,37 +20,7 @@ void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
 }
 
 /**
- * @brief Trie les noeuds d'occurence
- * 
- * @param AVL 
- */
-void triNodesOccurence(Noeud** AVL) {
-    if (*AVL) {
-        if (!(*AVL)->sad) {
-            rightRotation(&((*AVL))->sad);
-        }
-        if (!(*AVL)->sag) {
-            leftRotation(&((*AVL))->sag);
-        }
-        if ((*AVL)->sag) {
-            triNodesOccurence(&((*AVL)->sag));
-
-            if ((*AVL)->occ < (*AVL)->sag->occ) {
-                rightRotation(AVL);
-            }
-        }
-        if ((*AVL)->sad) {
-            triNodesOccurence(&((*AVL)->sad));
-
-            if ((*AVL)->occ < (*AVL)->sad->occ) {
-                leftRotation(AVL);
-            }
-        }
-    }
-}
-
-/**
- * @brief Ajoute un noeud AVL
+ * @brief Ajoute un noeud à un AVL trié en occurrences
  * 
  * @param AVL 
  * @param tmp 
@@ -61,7 +32,7 @@ void addNodeAVLocc(Noeud **AVL, Noeud * tmp) {
     }
 }
 /**
- * @brief Créer l'AVL
+ * @brief Crée un AVL trié en occurrences
  * 
  * @param AVL 
  * @param a 
@@ -76,8 +47,9 @@ void createAVLoccurrence(Noeud** AVL, Noeud* a) {
         createAVLoccurrence(AVL, a->sad);
     }
 }
+
 /**
- * @brief Créer la queue de l'AVL
+ * @brief Crée une file de noeuds triés par occurrences, grâce à l'AVL
  * 
  * @param AVL 
  * @param q 

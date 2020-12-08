@@ -1,7 +1,7 @@
 #include "DataStructures.h"
 #define TAILLE_MAX 1000 
 /**
- * @brief Affiche l'arbre d'occurence
+ * @brief Affiche l'arbre avec ses occurrences
  * 
  * @param a 
  */
@@ -20,7 +20,7 @@ void afficherArbreOcc(Noeud* a) {
     }
 }
 /**
- * @brief Affiche l'arbre binaire
+ * @brief Affiche l'arbre avec ses codes binaires
  * 
  * @param a 
  */
@@ -38,7 +38,7 @@ void afficherArbreBin(Noeud* a) {
     }
 }
 /**
- * @brief Crée un noeud
+ * @brief Crée un noeud alloué dynamiquement
  * 
  * @param ch 
  * @param occ 
@@ -84,7 +84,7 @@ void addNodeAVLch(Noeud** AVL, Noeud* tmp) {
 }
 
 /**
- * @brief Ajoute un noeud dans l'abre de trié (alphabétique)
+ * @brief Ajoute un noeud dans l'abre de tri (alphabétique)
  * 
  * @param AVL 
  * @param tmp 
@@ -105,7 +105,7 @@ void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 	}
 }
 /**
- * @brief Ajoute un noeud dans l'arbre trié (Occurrence)
+ * @brief Ajoute un noeud dans l'arbre de tri (Occurrence)
  * 
  * @param AVL 
  * @param tmp 
@@ -148,7 +148,7 @@ int getBF(Noeud* a) {
 	return (int)(depth(a->sad) - depth(a->sag));
 }
 /**
- * @brief Rotation vers la gauche dans un arbre
+ * @brief Rotation gauche de noeuds
  * 
  * @param a 
  */
@@ -161,7 +161,7 @@ void leftRotation(Noeud** a) {
 	}
 }
 /**
- * @brief Rotation vers la droite dans un arbre
+ * @brief Rotation droite de noeuds
  * 
  * @param a 
  */
@@ -174,7 +174,7 @@ void rightRotation(Noeud** a) {
 	}
 }
 /**
- * @brief Tant que le Balance Factor > 2 Réequillibre l'arbre
+ * @brief Tant que le Balance Factor > 2 Réequillibre l'arbre : avoir un AVL
  * 
  * @param a 
  */
@@ -196,7 +196,7 @@ void balance(Noeud** a) {
 }
 
 /**
- * @brief Créer une queue
+ * @brief Crée une file allouée dynamiquement
  * 
  * @return Queue* 
  */
@@ -206,7 +206,7 @@ Queue* createQueue(){
     return q;
 }
 /**
- * @brief Renvoie l'état de la queue, vidé ou non
+ * @brief Renvoie l'état de la file, vidée ou non
  * 
  * @param q 
  * @return int 
@@ -216,7 +216,7 @@ int isEmptyQueue(Queue* q){
     return 0;
 }
 /**
- * @brief Envoie la queue dans l'arbre
+ * @brief Enfile un noeud
  * 
  * @param q 
  * @param val 
@@ -237,7 +237,7 @@ void pushQueue(Queue* q, Arbre val) {
     }
 }
 /**
- * @brief Fait apparaitre la queue dans l'arbre
+ * @brief Défile un noeud
  * 
  * @param q 
  * @return Arbre 
@@ -253,7 +253,7 @@ Arbre popQueue(Queue* q){
     }
 }
 /**
- * @brief Renvoie la taille de la queue
+ * @brief Renvoie la taille de la file
  * 
  * @param q 
  * @return int 
@@ -263,7 +263,7 @@ int sizeQueue(ElementNode* q) {
     return 1 + sizeQueue(q->suivant);
 }
 /**
- * @brief Compare et choisi la queue la plus petite
+ * @brief Compare et choisi le noeud avec l'occurrence la plus petite
  * 
  * @param q1 
  * @param q2 
