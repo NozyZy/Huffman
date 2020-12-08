@@ -20,5 +20,6 @@ Arbre creerArbreHuffman(Arbre AVLocc) {
 
         pushQueue(nodeQueue, huffmanTree);
     }
+
     return popQueue(nodeQueue);
 }

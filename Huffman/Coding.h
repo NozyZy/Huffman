@@ -23,5 +23,6 @@ int nbrCaractere(const char* ch);
 void creatHuffmanFromDico(char* dicoName, Noeud** arb);
 char chercheArbreCh(Noeud* arb, const char* bin);
 void unzipFile(char* dicoName, char* dezippName);
+float calculateRatio();
 
 #endif //HUFFMAN_CODING_H

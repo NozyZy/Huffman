@@ -62,15 +62,14 @@ void textFileToBinFile(FILE* file, char* fBinName){
         // pints the binary char* into the fBin file
         printFile(fBin, bin);
     }
-    printf("\nThe file has been succesfully converted to binary !\n");
     //free(bin);
     fclose(fBin);
 }
 
 /// compress a file named toZipName into a file named zippedName
 void zipFile(char* toZipName, char* zippedName){
-    clock_t begin2, end2;
-    begin2 = clock();
+    //clock_t begin2, end2;
+    //begin2 = clock();
 
     FILE* fZipped, *fToZip, *fDico = NULL;
 
@@ -84,43 +83,48 @@ void zipFile(char* toZipName, char* zippedName){
     char* content = loadFile(fToZip);
     Arbre AVL = NULL, AVLtrie = NULL, huffman = NULL, dico = NULL;
     size_t sizeContent = countCharFile(fToZip), i = 0;
+    if (sizeContent > 0) {
+        createAVLcaractere(&AVL, content, sizeContent);
 
-    createAVLcaractere(&AVL, content, sizeContent);
+        createAVLoccurrence(&AVLtrie, AVL);
 
-    createAVLoccurrence(&AVLtrie, AVL);
+        huffman = creerArbreHuffman(AVLtrie);
 
-    huffman = creerArbreHuffman(AVLtrie);
+        char *bin = (char *) malloc(huffman->occ * sizeof(char));
+        createBinCode(huffman, bin, 0);
+        //free(bin);
 
-    char* bin = (char*)malloc(huffman->occ*sizeof(char));
-    createBinCode(huffman, bin, 0);
-    //free(bin);
+        createAVLDico(&dico, huffman);
 
-    createAVLDico(&dico, huffman);
+        //end2 = clock();
+        //printf("\nall trees : %f sec\n", (float)(end2-begin2)/CLOCKS_PER_SEC);
 
-    end2 = clock();
-    printf("\nall trees : %f sec\n", (float)(end2-begin2)/CLOCKS_PER_SEC);
+        clock_t begin, end;
+        begin = clock();
+        for (i = 0; i < sizeContent; i++) {
+            printFile(fZipped, codeFromChar(content[i], dico));
+        }
+        end = clock();
+        printf("\nThe file has been succesfully compressed !\nzip : %f sec\n", (float) (end - begin) / CLOCKS_PER_SEC);
 
-    clock_t begin, end;
-    begin = clock();
-    for (i = 0; i < sizeContent; i++) {
-        printFile(fZipped, codeFromChar(content[i], dico));
+        emptyFile("../dico.txt");
+        fDico = fopen("../dico.txt", "a+");
+        printDicoFile(dico, fDico);
+
+        freeArbre(dico); // ok
+        freeArbre(huffman); // ok
+        freeArbre(AVL); // ok
+        //freeArbre(AVLtrie); // probleme
+        //free(content); // probleme
+        fclose(fDico);
     }
-    end = clock();
-    printf("\nThe file has been succesfully compressed !\nzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
-
-    emptyFile("../dico.txt");
-    fDico = fopen("../dico.txt", "a+");
-    printDicoFile(dico, fDico);
-
-    freeArbre(dico); // ok
-    freeArbre(huffman); // ok
-    freeArbre(AVL); // ok
-    //freeArbre(AVLtrie); // probleme
-    //free(content); // probleme
+    else {
+        printf("\nVotre fichier input est vide !");
+    }
 
     fclose(fZipped);
     fclose(fToZip);
-    fclose(fDico);
+
 }
 
 void addNodeDico(Noeud** a, Noeud* tmp, int index) {
@@ -199,44 +203,74 @@ void unzipFile(char* dicoName, char* dezippName) {
     clock_t begin, end;
     begin = clock();
 
-    Noeud* arb = creerNoeud('\0', 1, NULL);
-    creatHuffmanFromDico(dicoName, &arb);
-
     emptyFile("../output.txt");
     FILE* dezip = fopen("../output.txt", "a+");
     FILE* huffman = fopen(dezippName, "r");
 
-    char ch = '\0';
-    int j;
     char* content = loadFile(huffman);
     size_t sizeContent = countCharFile(huffman);
-    for (int i = 0; i < sizeContent; i++) {
-        char bin[TAILLE_MAX] = "";
-        bin[0] = content[i];
-        bin[1] = '\0';
 
-        j = 1;
-        while (ch == '\0') {
+    if (sizeContent > 0) {
+        Noeud* arb = creerNoeud('\0', 1, NULL);
+        creatHuffmanFromDico(dicoName, &arb);
 
-            ch = chercheArbreCh(arb, bin);
-            if (ch == '\0') {
-                bin[j] = content[j + i];
-                j++;
-                bin[j] = '\0';
+        char ch = '\0';
+        int j;
+
+        for (int i = 0; i < sizeContent; i++) {
+            char bin[TAILLE_MAX] = "";
+            bin[0] = content[i];
+            bin[1] = '\0';
+
+            j = 1;
+            while (ch == '\0') {
+
+                ch = chercheArbreCh(arb, bin);
+                if (ch == '\0') {
+                    bin[j] = content[j + i];
+                    j++;
+                    bin[j] = '\0';
+                }
             }
-        }
-        fprintf(dezip,"%c", ch);
-        i = j-1 + i;
-        ch = '\0';
+            fprintf(dezip,"%c", ch);
+            i = j-1 + i;
+            ch = '\0';
 
+        }
+
+        end = clock();
+        printf("\nThe file has been succesfully decompressed !\nunzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
+    }
+    else {
+        printf("Le fichier huffman.txt est vide !");
     }
 
-    end = clock();
-    printf("\n\nThe file has been succesfully decompressed !\nunzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
 
     fclose(dezip);
     fclose(huffman);
 
     //free(content);
     //freeArbre(arb);
+}
+
+float calculateRatio() {
+    FILE *fInput, *fHuffman, *fBin; // files input.txt and binary.txt
+    double cI, cH; // charIn, charOut, and ratio cB/cI (should be 8, or 0 if empty, so integer)
+    float ratio = 0;
+
+    fInput = fopen("../input.txt", "r+"); // <- Penser à changer le chemin d'acces !!
+    if(!fInput) error1(); // if file is not found
+    textFileToBinFile(fInput, "../binary.txt");
+
+    fHuffman = fopen("../huffman.txt", "r+");
+    if(!fHuffman) error1(); // if file is not found
+
+    fBin = fopen("../binary.txt", "r+");
+
+    cI = countCharFile(fBin);
+    cH = countCharFile(fHuffman);
+    // calculate the ratio, only if cI != 0
+    if (cI) ratio = (float)(cH/cI)*100;
+
+    return ratio;
 }

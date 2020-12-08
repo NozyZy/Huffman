@@ -75,14 +75,14 @@ void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 }
 
 void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
-    if (!(*AVL)) {
-        (*AVL) = creerNoeud(tmp->ch, tmp->occ, NULL);
-    }
-    else if (tmp->occ <= (*AVL)->occ) {
-        addNodeBSTocc(&((*AVL)->sag), tmp);
-    }
-    else if ((*AVL)->occ < tmp->occ) {
-        addNodeBSTocc(&((*AVL)->sad), tmp);
+    if (tmp) {
+        if (!(*AVL)) {
+            (*AVL) = creerNoeud(tmp->ch, tmp->occ, NULL);
+        } else if (tmp->occ <= (*AVL)->occ) {
+            addNodeBSTocc(&((*AVL)->sag), tmp);
+        } else if ((*AVL)->occ < tmp->occ) {
+            addNodeBSTocc(&((*AVL)->sad), tmp);
+        }
     }
 }
 
