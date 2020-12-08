@@ -37,7 +37,7 @@ void afficherArbreOcc(Noeud* a);
 void afficherArbreBin(Noeud* a);
 void freeArbre(Noeud* a);
 
-void addNodeAVL(Noeud** AVL, Noeud* tmp);
+void addNodeAVLch(Noeud** AVL, Noeud* tmp);
 void addNodeBSTch(Noeud** AVL, Noeud* tmp);
 void addNodeBSTocc(Noeud** AVL, Noeud* tmp);
 

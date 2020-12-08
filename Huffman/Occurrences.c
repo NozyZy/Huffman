@@ -6,7 +6,7 @@ void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
         if (content[i] != '\0') {
             Noeud *tmp = creerNoeud(content[i], 1, NULL);
             if (tmp) {
-                addNodeAVL(AVL, tmp);
+                addNodeAVLch(AVL, tmp);
             }
         }
     }

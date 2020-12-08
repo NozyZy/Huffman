@@ -84,13 +84,6 @@ long unsigned int countCharFile(FILE* file){
     return count;
 }
 
-// prints the content given in argument in a .txt file given in argument
-void printFile(FILE* file, char* content){
-    if (!file) error1();
-    fprintf(file, "%s", content);
-}
-
-
 /**
  * @brief Créer un fichier vide ou vide un fichier, avec le nom donné en argument
  * 

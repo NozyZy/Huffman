@@ -52,7 +52,7 @@ void freeArbre(Noeud* a) {
 }
 
 
-void addNodeAVL(Noeud** AVL, Noeud* tmp) {
+void addNodeAVLch(Noeud** AVL, Noeud* tmp) {
     addNodeBSTch(AVL, tmp);
     balance(AVL);
 }
@@ -191,88 +191,5 @@ Arbre getMinQueues(Queue* q1, Queue* q2) {
     return popQueue(q2);
 }
 
-void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
-    FILE* file = fopen(dicoName, "r");
-    if (!file) exit(1);
-
-    int i, tmp;
-    while (((tmp = fgetc(file))) != EOF) {
-        i = 0;
-        char ch = (char)tmp;
-        char info[TAILLE_MAX] = "";
-
-        tmp = fgetc(file);
-        while (tmp != '\n' && tmp != EOF) {
-            if (tmp == '0' || tmp == '1') {
-                info[i] = tmp;
-                i++;
-            }
-            tmp = fgetc(file);
-        }
-
-        if (!info) return NULL;
-        addNoeudDico(arb, ch, info);
-    }
-    fseek(file, 0, SEEK_SET);
-    fclose(file);
-}
-
-void addNoeudDico(Noeud** a, char ch, char* info) {
-    int index = nbrCaractere(info);
-    Noeud* tmp = *a;
-    Noeud* tmpv2 = tmp;
-
-    for (int i = 0; i < index; i++) {
-        if (!(tmp)) {
-            tmp = creerNoeud('\0', 1, NULL);
-        }
-        if (info[i] == '0') {
-            if (!(tmp->sad)) {
-                tmp->sad = creerNoeud('\0', 1, NULL);
-            }
-            tmp = tmp->sad;
-        }
-        else if (info[i] == '1') {
-            if (!(tmp->sag)) {
-                tmp->sag = creerNoeud('\0', 1, NULL);
-            }
-            tmp = tmp->sag;
-        }
-        printf("\n%d", i);
-        afficherArbreBin(tmp);
-    }
-    tmp = creerNoeud(ch, 1, info);
-    *a = tmpv2;
-}
-
-int nbrCaractere(char* ch) {
-    int nbr = 0;
-    for (int i = 0; ch[i] != '\0'; i++)
-    {
-        if (ch[i] == '0' || ch[i] == '1')
-        {
-            nbr++;
-        }
-    }
-    return nbr;
-}
-
-char chercheArbreCh(Noeud* arb, char* bin) {
-    int nbr = nbrCaractere(bin);
-
-    for (int i = 0; i < nbr; i++) {
-        if (!(arb)) {
-            return NULL;
-        }
-
-        if (bin[i] == '0') {
-            arb = arb->sad;
-        }
-        else if (bin[i] == '1') {
-            arb = arb->sag;
-        }
-    }
-    return (arb->ch);
-}
 
 

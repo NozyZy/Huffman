@@ -1,9 +1,8 @@
 #include "Dico.h"
-#include <string.h>
 
 void createAVLDico(Arbre* dico, Arbre add){
     if (add) {
-        if (add->ch != '\0') addNodeAVL(dico, add);
+        if (add->ch != '\0') addNodeAVLch(dico, add);
         else {
             createAVLDico(dico, add->sad);
             createAVLDico(dico, add->sag);

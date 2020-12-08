@@ -9,6 +9,8 @@
  * 
  */
 #include "HuffmanTree.h"
+#include <string.h>
+
 
 #ifndef HUFFMAN_DICO_H
 #define HUFFMAN_DICO_H
