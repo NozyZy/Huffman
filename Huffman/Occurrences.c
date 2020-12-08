@@ -1,5 +1,11 @@
 #include "Occurrences.h"
-
+/**
+ * @brief Crée un caractere pour l'AVL
+ * 
+ * @param AVL 
+ * @param content 
+ * @param taille 
+ */
 void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
     size_t i = 0;
     for (i = 0; i < taille; i++) {
@@ -12,6 +18,11 @@ void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
     }
 }
 
+/**
+ * @brief Trie les noeuds d'occurence
+ * 
+ * @param AVL 
+ */
 void triNodesOccurence(Noeud** AVL) {
     if (*AVL) {
         if (!(*AVL)->sad) {
@@ -37,13 +48,24 @@ void triNodesOccurence(Noeud** AVL) {
     }
 }
 
+/**
+ * @brief Ajoute un noeud AVL
+ * 
+ * @param AVL 
+ * @param tmp 
+ */
 void addNodeAVLocc(Noeud **AVL, Noeud * tmp) {
     if (tmp) {
         addNodeBSTocc(AVL, tmp);
         balance(AVL);
     }
 }
-
+/**
+ * @brief Créer l'AVL
+ * 
+ * @param AVL 
+ * @param a 
+ */
 void createAVLoccurrence(Noeud** AVL, Noeud* a) {
     if (a) {
         createAVLoccurrence(AVL, a->sag);
@@ -54,7 +76,12 @@ void createAVLoccurrence(Noeud** AVL, Noeud* a) {
         createAVLoccurrence(AVL, a->sad);
     }
 }
-
+/**
+ * @brief Créer la queue de l'AVL
+ * 
+ * @param AVL 
+ * @param q 
+ */
 void creerOccQueue(Arbre AVL, Queue* q) {
     if (AVL) {
         creerOccQueue(AVL->sag, q);

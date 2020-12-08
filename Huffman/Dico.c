@@ -1,5 +1,10 @@
 #include "Dico.h"
-
+/**
+ * @brief Créer un dicionnaire AVL
+ * 
+ * @param dico 
+ * @param add 
+ */
 void createAVLDico(Arbre* dico, Arbre add){
     if (add) {
         if (add->ch != '\0') addNodeAVLch(dico, add);
@@ -10,6 +15,13 @@ void createAVLDico(Arbre* dico, Arbre add){
     }
 }
 
+/**
+ * @brief Créer un code binaire à partir de l'arbre d'Huffman
+ * 
+ * @param huffmanTree 
+ * @param binCode 
+ * @param index 
+ */
 void createBinCode(Arbre huffmanTree, char* binCode, int index) {
     if (huffmanTree) {
         if (huffmanTree->ch != '\0') {
@@ -23,7 +35,12 @@ void createBinCode(Arbre huffmanTree, char* binCode, int index) {
         createBinCode(huffmanTree->sad, binCode, index+1);
     }
 }
-
+/**
+ * @brief Affiche le dictionnaire
+ * 
+ * @param dico 
+ * @param fDico 
+ */
 void printDicoFile(Arbre dico, FILE* fDico) {
     if (!fDico) error1();
     if (dico) {

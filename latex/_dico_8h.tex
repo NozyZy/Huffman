@@ -1,0 +1,91 @@
+\hypertarget{_dico_8h}{}\doxysection{Référence du fichier Huffman/\+Dico.h}
+\label{_dico_8h}\index{Huffman/Dico.h@{Huffman/Dico.h}}
+
+
+Headers des fonctions du dictionnaire.  
+
+
+{\ttfamily \#include \char`\"{}Huffman\+Tree.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_dico_8h_a0ddfb8b654bea06892a188cae7f47f73}{create\+A\+V\+L\+Dico}} (\mbox{\hyperlink{struct_noeud}{Arbre}} $\ast$a, \mbox{\hyperlink{struct_noeud}{Arbre}} add)
+\begin{DoxyCompactList}\small\item\em Créer un dicionnaire A\+VL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_dico_8h_af9e9f89a7133aa68b718096ffec448c8}{create\+Bin\+Code}} (\mbox{\hyperlink{struct_noeud}{Arbre}} huffman\+Tree, char $\ast$bin\+Code, int index)
+\begin{DoxyCompactList}\small\item\em Créer un code binaire à partir de l\textquotesingle{}arbre d\textquotesingle{}Huffman. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_dico_8h_a0e8a27eca8d51e2e542ffee6aead22e8}{print\+Dico\+File}} (\mbox{\hyperlink{struct_noeud}{Arbre}} dico, F\+I\+LE $\ast$f\+Dico)
+\begin{DoxyCompactList}\small\item\em Affiche le dictionnaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Headers des fonctions du dictionnaire. 
+
+\begin{DoxyAuthor}{Auteur}
+Gianlucca Annichiarico (\href{mailto:agianlucca@gmail.com}{\texttt{ agianlucca@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/12-\/06
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{_dico_8h_a0ddfb8b654bea06892a188cae7f47f73}\label{_dico_8h_a0ddfb8b654bea06892a188cae7f47f73}} 
+\index{Dico.h@{Dico.h}!createAVLDico@{createAVLDico}}
+\index{createAVLDico@{createAVLDico}!Dico.h@{Dico.h}}
+\doxysubsubsection{\texorpdfstring{createAVLDico()}{createAVLDico()}}
+{\footnotesize\ttfamily void create\+A\+V\+L\+Dico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Arbre}} $\ast$}]{dico,  }\item[{\mbox{\hyperlink{struct_noeud}{Arbre}}}]{add }\end{DoxyParamCaption})}
+
+
+
+Créer un dicionnaire A\+VL. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em dico} & \\
+\hline
+{\em add} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_dico_8h_af9e9f89a7133aa68b718096ffec448c8}\label{_dico_8h_af9e9f89a7133aa68b718096ffec448c8}} 
+\index{Dico.h@{Dico.h}!createBinCode@{createBinCode}}
+\index{createBinCode@{createBinCode}!Dico.h@{Dico.h}}
+\doxysubsubsection{\texorpdfstring{createBinCode()}{createBinCode()}}
+{\footnotesize\ttfamily void create\+Bin\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Arbre}}}]{huffman\+Tree,  }\item[{char $\ast$}]{bin\+Code,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Créer un code binaire à partir de l\textquotesingle{}arbre d\textquotesingle{}Huffman. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em huffman\+Tree} & \\
+\hline
+{\em bin\+Code} & \\
+\hline
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_dico_8h_a0e8a27eca8d51e2e542ffee6aead22e8}\label{_dico_8h_a0e8a27eca8d51e2e542ffee6aead22e8}} 
+\index{Dico.h@{Dico.h}!printDicoFile@{printDicoFile}}
+\index{printDicoFile@{printDicoFile}!Dico.h@{Dico.h}}
+\doxysubsubsection{\texorpdfstring{printDicoFile()}{printDicoFile()}}
+{\footnotesize\ttfamily void print\+Dico\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Arbre}}}]{dico,  }\item[{F\+I\+LE $\ast$}]{f\+Dico }\end{DoxyParamCaption})}
+
+
+
+Affiche le dictionnaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em dico} & \\
+\hline
+{\em f\+Dico} & \\
+\hline
+\end{DoxyParams}

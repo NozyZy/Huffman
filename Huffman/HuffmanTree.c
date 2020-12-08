@@ -1,5 +1,10 @@
 #include "HuffmanTree.h"
-
+/**
+ * @brief Créer l'arbre Huffman
+ * 
+ * @param AVLocc 
+ * @return Arbre 
+ */
 Arbre creerArbreHuffman(Arbre AVLocc) {
     Queue* occQueue = createQueue();
     creerOccQueue(AVLocc, occQueue);

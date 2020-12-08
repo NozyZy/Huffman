@@ -1,6 +1,13 @@
 #include "Coding.h"
 #define TAILLE_MAX 1000 
 
+/**
+ * @brief Renvoie le code binaire à partir de di char stocker dans l'arbre dico
+ * 
+ * @param ch 
+ * @param dico 
+ * @return char* 
+ */
 char* codeFromChar(char ch, Arbre dico) {
     if (dico) {
         if ((int)ch < (int)dico->ch) return codeFromChar(ch, dico->sag);
@@ -126,7 +133,13 @@ void zipFile(char* toZipName, char* zippedName){
     fclose(fToZip);
 
 }
-
+/**
+ * @brief Ajoute un noeud dans l'arbre dico
+ * 
+ * @param a 
+ * @param tmp 
+ * @param index 
+ */
 void addNodeDico(Noeud** a, Noeud* tmp, int index) {
     if (tmp) {
         if (!(*a)) {
@@ -137,7 +150,12 @@ void addNodeDico(Noeud** a, Noeud* tmp, int index) {
         else if (tmp->bin[index] == '1') addNodeDico(&((*a)->sad), tmp, index + 1);
     }
 }
-
+/**
+ * @brief Renvoie le nombre de caractère
+ * 
+ * @param ch 
+ * @return int 
+ */
 int nbrCaractere(const char* ch) {
     int nbr = 0;
     for (int i = 0; ch[i] != '\0'; i++)
@@ -149,7 +167,12 @@ int nbrCaractere(const char* ch) {
     }
     return nbr;
 }
-
+/**
+ * @brief Créer un arbre d'Huffman à partir du dico
+ * 
+ * @param dicoName 
+ * @param arb 
+ */
 void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
     FILE* file = fopen(dicoName, "r");
     if (!file) exit(1);
@@ -178,7 +201,13 @@ void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
     fseek(file, 0, SEEK_SET);
     fclose(file);
 }
-
+/**
+ * @brief Cherche dans l'abre un char
+ * 
+ * @param arb 
+ * @param bin 
+ * @return char 
+ */
 char chercheArbreCh(Noeud* arb, const char* bin) {
     if (!bin) exit(1);
     if (!(arb)) return '\0';
@@ -198,7 +227,12 @@ char chercheArbreCh(Noeud* arb, const char* bin) {
     if (arb) return arb->ch;
     return '\0';
 }
-
+/**
+ * @brief Decompresse le zip
+ * 
+ * @param dicoName 
+ * @param dezippName 
+ */
 void unzipFile(char* dicoName, char* dezippName) {
     clock_t begin, end;
     begin = clock();
@@ -252,7 +286,11 @@ void unzipFile(char* dicoName, char* dezippName) {
     //free(content);
     //freeArbre(arb);
 }
-
+/**
+ * @brief calcule et renvoie le ration
+ * 
+ * @return float 
+ */
 float calculateRatio() {
     FILE *fInput, *fHuffman, *fBin; // files input.txt and binary.txt
     double cI, cH; // charIn, charOut, and ratio cB/cI (should be 8, or 0 if empty, so integer)

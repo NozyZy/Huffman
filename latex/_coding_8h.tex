@@ -1,0 +1,211 @@
+\hypertarget{_coding_8h}{}\doxysection{Référence du fichier Huffman/\+Coding.h}
+\label{_coding_8h}\index{Huffman/Coding.h@{Huffman/Coding.h}}
+
+
+Headers des fonctions de conversion.  
+
+
+{\ttfamily \#include \char`\"{}Dico.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{_coding_8h_a694b089f892a27be571997f763993e1a}{code\+From\+Char}} (char ch, \mbox{\hyperlink{struct_noeud}{Arbre}} dico)
+\begin{DoxyCompactList}\small\item\em Renvoie le code binaire à partir de di char stocker dans l\textquotesingle{}arbre dico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_coding_8h_a3790de9f07281137661483ad0dfbc9ab}{int2bin}} (int n, char $\ast$bin)
+\begin{DoxyCompactList}\small\item\em Convertie un nombre donné en argument en son écriture en binaire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_coding_8h_afbbb9d67c19111a90e3b57331d670c2c}{text\+File\+To\+Bin\+File}} (F\+I\+LE $\ast$file, char $\ast$f\+Bin\+Name)
+\begin{DoxyCompactList}\small\item\em Convertie un fichier.\+txt texte donné en argument en fichier.\+txt binaire. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_coding_8h_a2d208f085d3e3ff5ef7db08c110f24f9}\label{_coding_8h_a2d208f085d3e3ff5ef7db08c110f24f9}} 
+void \mbox{\hyperlink{_coding_8h_a2d208f085d3e3ff5ef7db08c110f24f9}{zip\+File}} (char $\ast$to\+Zip\+Name, char $\ast$zipped\+Name)
+\begin{DoxyCompactList}\small\item\em compress a file named to\+Zip\+Name into a file named zipped\+Name \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_coding_8h_a7ba41a20b33555684685a1affca82583}{add\+Node\+Dico}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$a, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp, int index)
+\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}arbre dico. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_coding_8h_af8d4f4d0c86b0bbe3b980f2740ca5437}{nbr\+Caractere}} (const char $\ast$ch)
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre de caractère. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_coding_8h_a2b63be50ddc1455375cc1c371749f8d6}{creat\+Huffman\+From\+Dico}} (char $\ast$dico\+Name, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$arb)
+\begin{DoxyCompactList}\small\item\em Créer un arbre d\textquotesingle{}Huffman à partir du dico. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{_coding_8h_ae17e8f1867ce1b99190865b25079fe18}{cherche\+Arbre\+Ch}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$arb, const char $\ast$bin)
+\begin{DoxyCompactList}\small\item\em Cherche dans l\textquotesingle{}abre un char. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_coding_8h_affadad89926e27f6307914de62d4f5ba}{unzip\+File}} (char $\ast$dico\+Name, char $\ast$dezipp\+Name)
+\begin{DoxyCompactList}\small\item\em Decompresse le zip. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{_coding_8h_ace1c442d9713a792ca301e74e4977377}{calculate\+Ratio}} ()
+\begin{DoxyCompactList}\small\item\em calcule et renvoie le ration \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Headers des fonctions de conversion. 
+
+\begin{DoxyAuthor}{Auteur}
+Gianlucca Annichiarico (\href{mailto:agianlucca@gmail.com}{\texttt{ agianlucca@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/12-\/06
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{_coding_8h_a7ba41a20b33555684685a1affca82583}\label{_coding_8h_a7ba41a20b33555684685a1affca82583}} 
+\index{Coding.h@{Coding.h}!addNodeDico@{addNodeDico}}
+\index{addNodeDico@{addNodeDico}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{addNodeDico()}{addNodeDico()}}
+{\footnotesize\ttfamily void add\+Node\+Dico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{a,  }\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{tmp,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Ajoute un noeud dans l\textquotesingle{}arbre dico. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+{\em tmp} & \\
+\hline
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_coding_8h_ace1c442d9713a792ca301e74e4977377}\label{_coding_8h_ace1c442d9713a792ca301e74e4977377}} 
+\index{Coding.h@{Coding.h}!calculateRatio@{calculateRatio}}
+\index{calculateRatio@{calculateRatio}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{calculateRatio()}{calculateRatio()}}
+{\footnotesize\ttfamily float calculate\+Ratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+calcule et renvoie le ration 
+
+\begin{DoxyReturn}{Renvoie}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_coding_8h_ae17e8f1867ce1b99190865b25079fe18}\label{_coding_8h_ae17e8f1867ce1b99190865b25079fe18}} 
+\index{Coding.h@{Coding.h}!chercheArbreCh@{chercheArbreCh}}
+\index{chercheArbreCh@{chercheArbreCh}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{chercheArbreCh()}{chercheArbreCh()}}
+{\footnotesize\ttfamily char cherche\+Arbre\+Ch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{arb,  }\item[{const char $\ast$}]{bin }\end{DoxyParamCaption})}
+
+
+
+Cherche dans l\textquotesingle{}abre un char. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em arb} & \\
+\hline
+{\em bin} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+char 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_coding_8h_a694b089f892a27be571997f763993e1a}\label{_coding_8h_a694b089f892a27be571997f763993e1a}} 
+\index{Coding.h@{Coding.h}!codeFromChar@{codeFromChar}}
+\index{codeFromChar@{codeFromChar}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{codeFromChar()}{codeFromChar()}}
+{\footnotesize\ttfamily char$\ast$ code\+From\+Char (\begin{DoxyParamCaption}\item[{char}]{ch,  }\item[{\mbox{\hyperlink{struct_noeud}{Arbre}}}]{dico }\end{DoxyParamCaption})}
+
+
+
+Renvoie le code binaire à partir de di char stocker dans l\textquotesingle{}arbre dico. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ch} & \\
+\hline
+{\em dico} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+char$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_coding_8h_a2b63be50ddc1455375cc1c371749f8d6}\label{_coding_8h_a2b63be50ddc1455375cc1c371749f8d6}} 
+\index{Coding.h@{Coding.h}!creatHuffmanFromDico@{creatHuffmanFromDico}}
+\index{creatHuffmanFromDico@{creatHuffmanFromDico}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{creatHuffmanFromDico()}{creatHuffmanFromDico()}}
+{\footnotesize\ttfamily void creat\+Huffman\+From\+Dico (\begin{DoxyParamCaption}\item[{char $\ast$}]{dico\+Name,  }\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{arb }\end{DoxyParamCaption})}
+
+
+
+Créer un arbre d\textquotesingle{}Huffman à partir du dico. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em dico\+Name} & \\
+\hline
+{\em arb} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_coding_8h_a3790de9f07281137661483ad0dfbc9ab}\label{_coding_8h_a3790de9f07281137661483ad0dfbc9ab}} 
+\index{Coding.h@{Coding.h}!int2bin@{int2bin}}
+\index{int2bin@{int2bin}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{int2bin()}{int2bin()}}
+{\footnotesize\ttfamily void int2bin (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{char $\ast$}]{bin }\end{DoxyParamCaption})}
+
+
+
+Convertie un nombre donné en argument en son écriture en binaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & \\
+\hline
+{\em bin} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_coding_8h_af8d4f4d0c86b0bbe3b980f2740ca5437}\label{_coding_8h_af8d4f4d0c86b0bbe3b980f2740ca5437}} 
+\index{Coding.h@{Coding.h}!nbrCaractere@{nbrCaractere}}
+\index{nbrCaractere@{nbrCaractere}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{nbrCaractere()}{nbrCaractere()}}
+{\footnotesize\ttfamily int nbr\+Caractere (\begin{DoxyParamCaption}\item[{const char $\ast$}]{ch }\end{DoxyParamCaption})}
+
+
+
+Renvoie le nombre de caractère. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ch} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_coding_8h_afbbb9d67c19111a90e3b57331d670c2c}\label{_coding_8h_afbbb9d67c19111a90e3b57331d670c2c}} 
+\index{Coding.h@{Coding.h}!textFileToBinFile@{textFileToBinFile}}
+\index{textFileToBinFile@{textFileToBinFile}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{textFileToBinFile()}{textFileToBinFile()}}
+{\footnotesize\ttfamily void text\+File\+To\+Bin\+File (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file,  }\item[{char $\ast$}]{f\+Bin\+Name }\end{DoxyParamCaption})}
+
+
+
+Convertie un fichier.\+txt texte donné en argument en fichier.\+txt binaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em file} & \\
+\hline
+{\em f\+Bin\+Name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_coding_8h_affadad89926e27f6307914de62d4f5ba}\label{_coding_8h_affadad89926e27f6307914de62d4f5ba}} 
+\index{Coding.h@{Coding.h}!unzipFile@{unzipFile}}
+\index{unzipFile@{unzipFile}!Coding.h@{Coding.h}}
+\doxysubsubsection{\texorpdfstring{unzipFile()}{unzipFile()}}
+{\footnotesize\ttfamily void unzip\+File (\begin{DoxyParamCaption}\item[{char $\ast$}]{dico\+Name,  }\item[{char $\ast$}]{dezipp\+Name }\end{DoxyParamCaption})}
+
+
+
+Decompresse le zip. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em dico\+Name} & \\
+\hline
+{\em dezipp\+Name} & \\
+\hline
+\end{DoxyParams}

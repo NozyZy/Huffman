@@ -1,6 +1,10 @@
 #include "DataStructures.h"
 #define TAILLE_MAX 1000 
-
+/**
+ * @brief Affiche l'arbre d'occurence
+ * 
+ * @param a 
+ */
 void afficherArbreOcc(Noeud* a) {
     if (a) {
         printf("[%c] : [%d]\n", a->ch, a->occ);
@@ -15,7 +19,11 @@ void afficherArbreOcc(Noeud* a) {
         }
     }
 }
-
+/**
+ * @brief Affiche l'arbre binaire
+ * 
+ * @param a 
+ */
 void afficherArbreBin(Noeud* a) {
     if (a) {
         printf("[%c] : [%s]\n", a->ch, a->bin);
@@ -29,7 +37,14 @@ void afficherArbreBin(Noeud* a) {
         }
     }
 }
-
+/**
+ * @brief Crée un noeud
+ * 
+ * @param ch 
+ * @param occ 
+ * @param bin 
+ * @return Noeud* 
+ */
 Noeud* creerNoeud(char ch, size_t occ, char* bin) {
 	Noeud* a = (Noeud*)malloc(sizeof(Noeud));
 	if (a) {
@@ -43,6 +58,11 @@ Noeud* creerNoeud(char ch, size_t occ, char* bin) {
 	return NULL;
 }
 
+/**
+ * @brief Libère l'arbre
+ * 
+ * @param a 
+ */
 void freeArbre(Noeud* a) {
     if (a != NULL) {
         if (a->sad) freeArbre(a->sad);
@@ -52,12 +72,23 @@ void freeArbre(Noeud* a) {
 
 }
 
-
+/**
+ * @brief Ajoute un noeud dans l'AVL
+ * 
+ * @param AVL 
+ * @param tmp 
+ */
 void addNodeAVLch(Noeud** AVL, Noeud* tmp) {
     addNodeBSTch(AVL, tmp);
     balance(AVL);
 }
 
+/**
+ * @brief Ajoute un noeud dans l'abre de trié (alphabétique)
+ * 
+ * @param AVL 
+ * @param tmp 
+ */
 void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 	if (!(*AVL)) {
 		(*AVL) = creerNoeud(tmp->ch, tmp->occ, tmp->bin);
@@ -73,7 +104,12 @@ void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
 		addNodeBSTch(&((*AVL)->sad), tmp);
 	}
 }
-
+/**
+ * @brief Ajoute un noeud dans l'arbre trié (Occurrence)
+ * 
+ * @param AVL 
+ * @param tmp 
+ */
 void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
     if (tmp) {
         if (!(*AVL)) {
@@ -86,7 +122,12 @@ void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
     }
 }
 
-
+/**
+ * @brief Renvoie la prodonfeur de l'arbre (0 si l'arbre n'existe pas)
+ * 
+ * @param a 
+ * @return size_t 
+ */
 size_t depth(Noeud* a) {
 	if (!a) return 0;
 	else {
@@ -96,12 +137,21 @@ size_t depth(Noeud* a) {
 		else return 1 + dr;
 	}
 }
-
+/**
+ * @brief Renvoie le balance factor de l'AVL
+ * 
+ * @param a 
+ * @return int 
+ */
 int getBF(Noeud* a) {
 	if (!a) return 0;
 	return (int)(depth(a->sad) - depth(a->sag));
 }
-
+/**
+ * @brief Rotation vers la gauche dans un arbre
+ * 
+ * @param a 
+ */
 void leftRotation(Noeud** a) {
 	if (*a) {
 		Noeud* temp = (*a)->sad;
@@ -110,7 +160,11 @@ void leftRotation(Noeud** a) {
 		*a = temp;
 	}
 }
-
+/**
+ * @brief Rotation vers la droite dans un arbre
+ * 
+ * @param a 
+ */
 void rightRotation(Noeud** a) {
 	if (*a) {
 		Noeud* temp = (*a)->sag;
@@ -119,7 +173,11 @@ void rightRotation(Noeud** a) {
 		*a = temp;
 	}
 }
-
+/**
+ * @brief Tant que le Balance Factor > 2 Réequillibre l'arbre
+ * 
+ * @param a 
+ */
 void balance(Noeud** a) {
 	if (*a) {
 		balance(&((*a)->sag));
@@ -137,18 +195,32 @@ void balance(Noeud** a) {
 	}
 }
 
-
+/**
+ * @brief Créer une queue
+ * 
+ * @return Queue* 
+ */
 Queue* createQueue(){
     Queue* q = (Queue*)malloc(sizeof(Queue));
     q->last = NULL;
     return q;
 }
-
+/**
+ * @brief Renvoie l'état de la queue, vidé ou non
+ * 
+ * @param q 
+ * @return int 
+ */
 int isEmptyQueue(Queue* q){
     if (!(q->last)) return 1;
     return 0;
 }
-
+/**
+ * @brief Envoie la queue dans l'arbre
+ * 
+ * @param q 
+ * @param val 
+ */
 void pushQueue(Queue* q, Arbre val) {
     if (val) {
         ElementNode *n = (ElementNode *) malloc(sizeof(ElementNode));
@@ -164,7 +236,12 @@ void pushQueue(Queue* q, Arbre val) {
         }
     }
 }
-
+/**
+ * @brief Fait apparaitre la queue dans l'arbre
+ * 
+ * @param q 
+ * @return Arbre 
+ */
 Arbre popQueue(Queue* q){
     if (isEmptyQueue(q)) return NULL;
     else {
@@ -175,12 +252,23 @@ Arbre popQueue(Queue* q){
         return temp;
     }
 }
-
+/**
+ * @brief Renvoie la taille de la queue
+ * 
+ * @param q 
+ * @return int 
+ */
 int sizeQueue(ElementNode* q) {
     if (!q) return 0;
     return 1 + sizeQueue(q->suivant);
 }
-
+/**
+ * @brief Compare et choisi la queue la plus petite
+ * 
+ * @param q1 
+ * @param q2 
+ * @return Arbre 
+ */
 Arbre getMinQueues(Queue* q1, Queue* q2) {
     if (!q1 && !q2) return NULL;
     if (!q1) return popQueue(q2);
