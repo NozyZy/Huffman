@@ -5,7 +5,7 @@
  * 
  * @param a 
  */
-void afficherArbreOcc(Noeud* a) {
+void afficherArbreOcc(Arbre a) {
     if (a) {
         printf("[%c] : [%d]\n", a->ch, a->occ);
         if (a->sag) {
@@ -24,7 +24,7 @@ void afficherArbreOcc(Noeud* a) {
  * 
  * @param a 
  */
-void afficherArbreBin(Noeud* a) {
+void afficherArbreBin(Arbre a) {
     if (a) {
         printf("[%c] : [%s]\n", a->ch, a->bin);
         if (a->sag) {
@@ -43,10 +43,10 @@ void afficherArbreBin(Noeud* a) {
  * @param ch 
  * @param occ 
  * @param bin 
- * @return Noeud* 
+ * @return Arbre
  */
-Noeud* creerNoeud(char ch, size_t occ, char* bin) {
-	Noeud* a = (Noeud*)malloc(sizeof(Noeud));
+Arbre creerNoeud(char ch, size_t occ, char* bin) {
+	Arbre a = (Arbre)malloc(sizeof(Noeud));
 	if (a) {
 		a->ch = ch;
 		a->occ = occ;
@@ -63,7 +63,7 @@ Noeud* creerNoeud(char ch, size_t occ, char* bin) {
  * 
  * @param a 
  */
-void freeArbre(Noeud* a) {
+void freeArbre(Arbre a) {
     if (a != NULL) {
         if (a->sad) freeArbre(a->sad);
         if (a->sag) freeArbre(a->sag);
@@ -78,7 +78,7 @@ void freeArbre(Noeud* a) {
  * @param AVL 
  * @param tmp 
  */
-void addNodeAVLch(Noeud** AVL, Noeud* tmp) {
+void addNodeAVLch(Arbre* AVL, Arbre tmp) {
     addNodeBSTch(AVL, tmp);
     balance(AVL);
 }
@@ -89,7 +89,7 @@ void addNodeAVLch(Noeud** AVL, Noeud* tmp) {
  * @param AVL 
  * @param tmp 
  */
-void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
+void addNodeBSTch(Arbre* AVL, Arbre tmp) {
 	if (!(*AVL)) {
 		(*AVL) = creerNoeud(tmp->ch, tmp->occ, tmp->bin);
 	}
@@ -110,7 +110,7 @@ void addNodeBSTch(Noeud** AVL, Noeud* tmp) {
  * @param AVL 
  * @param tmp 
  */
-void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
+void addNodeBSTocc(Arbre* AVL, Arbre tmp) {
     if (tmp) {
         if (!(*AVL)) {
             (*AVL) = creerNoeud(tmp->ch, tmp->occ, NULL);
@@ -128,7 +128,7 @@ void addNodeBSTocc(Noeud** AVL, Noeud* tmp) {
  * @param a 
  * @return size_t 
  */
-size_t depth(Noeud* a) {
+size_t depth(Arbre a) {
 	if (!a) return 0;
 	else {
 		size_t dl = depth(a->sag);
@@ -143,7 +143,7 @@ size_t depth(Noeud* a) {
  * @param a 
  * @return int 
  */
-int getBF(Noeud* a) {
+int getBF(Arbre a) {
 	if (!a) return 0;
 	return (int)(depth(a->sad) - depth(a->sag));
 }
@@ -152,9 +152,9 @@ int getBF(Noeud* a) {
  * 
  * @param a 
  */
-void leftRotation(Noeud** a) {
+void leftRotation(Arbre* a) {
 	if (*a) {
-		Noeud* temp = (*a)->sad;
+		Arbre temp = (*a)->sad;
 		(*a)->sad = temp->sag;
 		temp->sag = *a;
 		*a = temp;
@@ -165,9 +165,9 @@ void leftRotation(Noeud** a) {
  * 
  * @param a 
  */
-void rightRotation(Noeud** a) {
+void rightRotation(Arbre* a) {
 	if (*a) {
-		Noeud* temp = (*a)->sag;
+		Arbre temp = (*a)->sag;
 		(*a)->sag = temp->sad;
 		temp->sad = *a;
 		*a = temp;
@@ -178,7 +178,7 @@ void rightRotation(Noeud** a) {
  * 
  * @param a 
  */
-void balance(Noeud** a) {
+void balance(Arbre* a) {
 	if (*a) {
 		balance(&((*a)->sag));
 		balance(&((*a)->sad));

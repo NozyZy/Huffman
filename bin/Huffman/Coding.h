@@ -14,15 +14,15 @@
 #ifndef HUFFMAN_CODING_H
 #define HUFFMAN_CODING_H
 
-char* codeFromChar(char ch, Arbre dico);
-void int2bin(int n, char* bin);
-void textFileToBinFile(FILE* file, char* fBinName);
-void zipFile(char* toZipName, char* zippedName);
-void addNodeDico(Noeud** a, Noeud* tmp, int index);
-int nbrCaractere(const char* ch);
-void creatHuffmanFromDico(char* dicoName, Noeud** arb);
-char chercheArbreCh(Noeud* arb, const char* bin);
-void unzipFile(char* dicoName, char* unzipName);
-float calculateRatio();
+extern  char*   codeFromChar            (char ch, Arbre dico);
+extern  void    int2bin                 (int n, char* bin);
+extern  void    textFileToBinFile       (FILE* file, char* fBinName);
+extern  void    zipFile                 (char* toZipName, char* zippedName);
+extern  void    addNodeDico             (Arbre* a, Arbre tmp, int index);
+extern  int     nbrCaractere            (const char* ch);
+extern  void    createHuffmanFromDico   (char* dicoName, Arbre* arb);
+extern  char    chercheArbreCh          (Arbre arb, const char* bin);
+extern  void    unzipFile               (char* dicoName, char* unzipName);
+extern  float   calculateRatio          (void);
 
 #endif //HUFFMAN_CODING_H

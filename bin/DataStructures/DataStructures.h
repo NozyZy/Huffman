@@ -55,26 +55,26 @@ typedef struct Queue{
     struct ElementNode* last;
 }Queue;
 
-Noeud* creerNoeud(char ch, size_t occ, char* bin);
-void afficherArbreOcc(Noeud* a);
-void afficherArbreBin(Noeud* a);
-void freeArbre(Noeud* a);
+extern  Arbre   creerNoeud      (char ch, size_t occ, char* bin);
+extern  void    afficherArbreOcc(Arbre a);
+extern  void    afficherArbreBin(Arbre a);
+extern  void    freeArbre       (Arbre a);
 
-void addNodeAVLch(Noeud** AVL, Noeud* tmp);
-void addNodeBSTch(Noeud** AVL, Noeud* tmp);
-void addNodeBSTocc(Noeud** AVL, Noeud* tmp);
+extern  void    addNodeAVLch    (Arbre* AVL, Arbre tmp);
+extern  void    addNodeBSTch    (Arbre* AVL, Arbre tmp);
+extern  void    addNodeBSTocc   (Arbre* AVL, Arbre tmp);
 
-size_t depth(Noeud* a);
-int getBF(Noeud* a);
-void leftRotation(Noeud** a);
-void rightRotation(Noeud** a);
-void balance(Noeud** a);
+extern  size_t  depth           (Arbre a);
+extern  int     getBF           (Arbre a);
+extern  void    leftRotation    (Arbre* a);
+extern  void    rightRotation   (Arbre* a);
+extern  void    balance         (Arbre* a);
 
-Queue* createQueue();
-int isEmptyQueue(Queue* q);
-void pushQueue(Queue* q, Arbre val);
-Arbre popQueue(Queue* q);
-int sizeQueue(ElementNode* q);
-Arbre getMinQueues(Queue* q1, Queue* q2);
+extern  Queue*  createQueue     (void);
+extern  int     isEmptyQueue    (Queue* q);
+extern  void    pushQueue       (Queue* q, Arbre val);
+extern  Arbre   popQueue        (Queue* q);
+extern  int     sizeQueue       (ElementNode* q);
+extern  Arbre   getMinQueues    (Queue* q1, Queue* q2);
 
 #endif //HUFFMAN_DATASTRUCTURES_H

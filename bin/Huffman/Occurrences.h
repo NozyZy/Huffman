@@ -14,9 +14,9 @@
 #ifndef HUFFMAN_OCCURRENCES_H
 #define HUFFMAN_OCCURRENCES_H
 
-void createAVLcaractere(Noeud** AVL, char* content, size_t taille);
-void addNodeAVLocc(Noeud **AVL, Noeud * tmp);
-void createAVLoccurrence(Noeud** AVL, Noeud* a);
-void creerOccQueue(Arbre AVL, Queue* q);
+extern  void    createAVLcaractere  (Arbre* AVL, char* content, size_t taille);
+extern  void    addNodeAVLocc       (Arbre* AVL, Noeud * tmp);
+extern  void    createAVLoccurrence (Arbre* AVL, Arbre a);
+extern  void    creerOccQueue       (Arbre AVL, Queue* q);
 
 #endif //HUFFMAN_OCCURRENCES_H

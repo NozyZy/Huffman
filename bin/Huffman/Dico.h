@@ -14,8 +14,8 @@
 #ifndef HUFFMAN_DICO_H
 #define HUFFMAN_DICO_H
 
-void createAVLDico(Arbre* a, Arbre add);
-void createBinCode(Arbre huffmanTree, char* binCode, int index);
-void printDicoFile(Arbre dico, FILE* fDico);
+extern  void    createAVLDico   (Arbre* a, Arbre add);
+extern  void    createBinCode   (Arbre huffmanTree, char* binCode, int index);
+extern  void    printDicoFile   (Arbre dico, FILE* fDico);
 
 #endif //HUFFMAN_DICO_H

@@ -13,6 +13,6 @@
 #ifndef HUFFMAN_HUFFMANTREE_H
 #define HUFFMAN_HUFFMANTREE_H
 
-Arbre creerArbreHuffman(Arbre AVLocc);
+extern  Arbre   createHuffmanTree   (Arbre AVLocc);
 
 #endif //HUFFMAN_HUFFMANTREE_H

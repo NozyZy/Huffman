@@ -62,7 +62,7 @@ void printFile(FILE* file, char* content){
  * @param file 
  * @return long unsigned int 
  */
-long unsigned int countCharFile(FILE* file){
+size_t countCharFile(FILE* file){
     long unsigned int count = 0;
     int ch;
 

@@ -1,5 +1,5 @@
 #include "Coding.h"
-#define TAILLE_MAX 1000 
+#define TAILLE_MAX 100
 
 /**
  * @brief Renvoie le code binaire correpondant au caractère dans l'arbre dico
@@ -10,9 +10,9 @@
  */
 char* codeFromChar(char ch, Arbre dico) {
     if (dico) {
-        if ((int)ch < (int)dico->ch) return codeFromChar(ch, dico->sag);
-        if ((int)ch > (int)dico->ch) return codeFromChar(ch, dico->sad);
-        if ((int)ch == (int)dico->ch) return dico->bin;
+        if ((int)ch < (int)dico->ch)    return codeFromChar(ch, dico->sag);
+        if ((int)ch > (int)dico->ch)    return codeFromChar(ch, dico->sad);
+        if ((int)ch == (int)dico->ch)   return dico->bin;
     }
     return NULL;
 }
@@ -24,9 +24,7 @@ char* codeFromChar(char ch, Arbre dico) {
  * @param n 
  * @param bin 
  */
-// converts a decimal int given in argument in a char* binary given in argument
 void int2bin(int n, char* bin){
-    // only for positive decimal
     if (n > 0) {
         int i;
         char nb[2];
@@ -47,16 +45,13 @@ void int2bin(int n, char* bin){
  * @param file 
  * @param fBinName 
  */
-// converts a text file in argument into an output.txt in binary
 void textFileToBinFile(FILE* file, char* fBinName){
     FILE* fBin;
     char *content = NULL, *bin = NULL;
     size_t size = 0, i = 0;
-    // empty the output.txt file
+
     emptyFile(fBinName);
-    // open outputs.txt to add binary number, one by one (so not write "w+")
     fBin = fopen(fBinName, "a+");
-    // if no file found
     if(!fBin) error1();
 
     content = loadFile(file);
@@ -64,23 +59,21 @@ void textFileToBinFile(FILE* file, char* fBinName){
     bin = (char*)malloc(9*sizeof(char));
 
     for(i = 0; i < size; i++){
-        // convert content of file in the bin char*
         int2bin((int)content[i], bin);
-        // pints the binary char* into the fBin file
         printFile(fBin, bin);
     }
-    //free(bin);
+    //free(bin); // erreur de free
     fclose(fBin);
 }
 
 /**
- * @brief Compresses un fichier 'toZipName' en un fichier 'zippedName'
+ * @brief Compresse un fichier 'toZipName' en un fichier 'zippedName'
  *
  * @param toZipName
  * @param zippedName
  */
 void zipFile(char* toZipName, char* zippedName){
-    //clock_t begin2, end2;
+    //clock_t begin2, end2; // si jamais besoin de calculer un temps en plus
     //begin2 = clock();
 
     FILE* fZipped, *fToZip, *fDico = NULL;
@@ -95,16 +88,18 @@ void zipFile(char* toZipName, char* zippedName){
     char* content = loadFile(fToZip);
     Arbre AVL = NULL, AVLtrie = NULL, huffman = NULL, dico = NULL;
     size_t sizeContent = countCharFile(fToZip), i = 0;
-    if (sizeContent > 0) {
+
+    if (sizeContent <= 0) printf("\nFile is empty !");
+    else {
         createAVLcaractere(&AVL, content, sizeContent);
 
         createAVLoccurrence(&AVLtrie, AVL);
 
-        huffman = creerArbreHuffman(AVLtrie);
+        huffman = createHuffmanTree(AVLtrie);
 
         char *bin = (char *) malloc(huffman->occ * sizeof(char));
         createBinCode(huffman, bin, 0);
-        //free(bin);
+        //free(bin); // erreur de free
 
         createAVLDico(&dico, huffman);
 
@@ -123,20 +118,16 @@ void zipFile(char* toZipName, char* zippedName){
         fDico = fopen("../dico.txt", "a+");
         printDicoFile(dico, fDico);
 
-        freeArbre(dico); // ok
-        freeArbre(huffman); // ok
-        freeArbre(AVL); // ok
-        //freeArbre(AVLtrie); // probleme
-        //free(content); // probleme
-        fclose(fDico);
-    }
-    else {
-        printf("\nVotre fichier input est vide !");
+        freeArbre(dico);        // ok
+        freeArbre(huffman);     // ok
+        freeArbre(AVL);         // ok
+        //freeArbre(AVLtrie);   // erreur de free
+        //free(content);        // erreur de free
+        fclose(fDico);          // ok
     }
 
     fclose(fZipped);
     fclose(fToZip);
-
 }
 
 /**
@@ -146,7 +137,7 @@ void zipFile(char* toZipName, char* zippedName){
  * @param tmp 
  * @param index 
  */
-void addNodeDico(Noeud** a, Noeud* tmp, int index) {
+void addNodeDico(Arbre* a, Arbre tmp, int index) {
     if (tmp) {
         if (!(*a)) {
             if (tmp->bin[index] != '\0') *a = creerNoeud('\0', 1, NULL);
@@ -167,10 +158,7 @@ int nbrCaractere(const char* ch) {
     int nbr = 0;
     for (int i = 0; ch[i] != '\0'; i++)
     {
-        if (ch[i] == '0' || ch[i] == '1')
-        {
-            nbr++;
-        }
+        if (ch[i] == '0' || ch[i] == '1')  nbr++;
     }
     return nbr;
 }
@@ -181,12 +169,12 @@ int nbrCaractere(const char* ch) {
  * @param dicoName 
  * @param arb 
  */
-void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
+void createHuffmanFromDico(char* dicoName, Arbre* arb) {
     FILE* file = fopen(dicoName, "r");
     if (!file) exit(1);
 
     int i, tmp;
-    while (((tmp = fgetc(file))) != EOF) {
+    while ((tmp = fgetc(file)) != EOF) {
         i = 0;
         char ch = (char)tmp;
         char info[TAILLE_MAX] = "";
@@ -217,19 +205,14 @@ void creatHuffmanFromDico(char* dicoName, Noeud** arb) {
  * @param bin 
  * @return char 
  */
-char chercheArbreCh(Noeud* arb, const char* bin) {
-    if (!bin) exit(1);
-    if (!(arb)) return '\0';
+char chercheArbreCh(Arbre arb, const char* bin) {
+    if (!bin || !(arb)) return '\0';
 
     int i = 0;
     while (bin[i] != '\0') {
         if (arb) {
-            if (bin[i] == '0') {
-                arb = arb->sag;
-            }
-            else if (bin[i] == '1') {
-                arb = arb->sad;
-            }
+            if (bin[i] == '0')      arb = arb->sag;
+            else if (bin[i] == '1') arb = arb->sad;
             i++;
         }
     }
@@ -254,9 +237,10 @@ void unzipFile(char* dicoName, char* unzipName) {
     char* content = loadFile(huffman);
     size_t sizeContent = countCharFile(huffman);
 
-    if (sizeContent > 0) {
-        Noeud* arb = creerNoeud('\0', 1, NULL);
-        creatHuffmanFromDico(dicoName, &arb);
+    if (sizeContent <= 0)  printf("File is empty !");
+    else {
+        Arbre arb = creerNoeud('\0', 1, NULL);
+        createHuffmanFromDico(dicoName, &arb);
 
         char ch = '\0';
         int j;
@@ -285,9 +269,6 @@ void unzipFile(char* dicoName, char* unzipName) {
         end = clock();
         printf("\nThe file has been succesfully decompressed !\nunzip : %f sec\n", (float)(end-begin)/CLOCKS_PER_SEC);
     }
-    else {
-        printf("Le fichier huffman.txt est vide !");
-    }
 
     fclose(dezip);
     fclose(huffman);
@@ -302,16 +283,16 @@ void unzipFile(char* dicoName, char* unzipName) {
  * @return float 
  */
 float calculateRatio() {
-    FILE *fInput, *fHuffman, *fBin; // files input.txt and binary.txt
-    double cI, cH; // charIn, charOut, and ratio cB/cI (should be 8, or 0 if empty, so integer)
+    FILE *fInput, *fHuffman, *fBin;
+    double cI, cH;
     float ratio = 0;
 
-    fInput = fopen("../input.txt", "r+"); // <- Penser à changer le chemin d'acces !!
-    if(!fInput) error1(); // if file is not found
+    fInput = fopen("../input.txt", "r+");
+    if(!fInput) error1();
     textFileToBinFile(fInput, "../binary.txt");
 
     fHuffman = fopen("../huffman.txt", "r+");
-    if(!fHuffman) error1(); // if file is not found
+    if(!fHuffman) error1();
 
     fBin = fopen("../binary.txt", "r+");
 

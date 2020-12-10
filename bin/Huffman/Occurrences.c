@@ -7,14 +7,12 @@
  * @param content 
  * @param taille 
  */
-void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
+void createAVLcaractere(Arbre* AVL, char* content, size_t taille) {
     size_t i = 0;
     for (i = 0; i < taille; i++) {
         if (content[i] != '\0') {
             Noeud *tmp = creerNoeud(content[i], 1, NULL);
-            if (tmp) {
-                addNodeAVLch(AVL, tmp);
-            }
+            if (tmp) addNodeAVLch(AVL, tmp);
         }
     }
 }
@@ -25,7 +23,7 @@ void createAVLcaractere(Noeud** AVL, char* content, size_t taille) {
  * @param AVL 
  * @param tmp 
  */
-void addNodeAVLocc(Noeud **AVL, Noeud * tmp) {
+void addNodeAVLocc(Arbre* AVL, Noeud * tmp) {
     if (tmp) {
         addNodeBSTocc(AVL, tmp);
         balance(AVL);
@@ -37,13 +35,11 @@ void addNodeAVLocc(Noeud **AVL, Noeud * tmp) {
  * @param AVL 
  * @param a 
  */
-void createAVLoccurrence(Noeud** AVL, Noeud* a) {
+void createAVLoccurrence(Arbre* AVL, Arbre a) {
     if (a) {
         createAVLoccurrence(AVL, a->sag);
-        Noeud* tmp = creerNoeud(a->ch, a->occ, NULL);
-        if (tmp) {
-            addNodeAVLocc(AVL, tmp);
-        }
+        Arbre tmp = creerNoeud(a->ch, a->occ, NULL);
+        if (tmp) addNodeAVLocc(AVL, tmp);
         createAVLoccurrence(AVL, a->sad);
     }
 }
