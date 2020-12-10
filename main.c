@@ -26,8 +26,8 @@ int main(void) {
         case (1):
             zipFile("../input.txt", "../huffman.txt");
             printf("\nOuverture du fichier compresse 'huffman.txt', en attente de sa fermeture...\n");
-            system("..\\huffman.txt");
             printf("Compression Ratio : %f%%\n", calculateRatio());
+            system("..\\huffman.txt");
             choice = 0;
             break;
         case (2):
