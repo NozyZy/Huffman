@@ -1,5 +1,5 @@
 #include "DataStructures.h"
-#define TAILLE_MAX 1000 
+
 /**
  * @brief Affiche l'arbre avec ses occurrences
  * 
