@@ -1,4 +1,4 @@
-#include "Huffman/Coding.h"
+#include "bin/Huffman/Coding.h"
 
 int main(void) {
 
