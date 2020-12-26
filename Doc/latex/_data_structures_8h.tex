@@ -1,0 +1,395 @@
+\hypertarget{_data_structures_8h}{}\doxysection{Référence du fichier bin/\+Data\+Structures/\+Data\+Structures.h}
+\label{_data_structures_8h}\index{bin/DataStructures/DataStructures.h@{bin/DataStructures/DataStructures.h}}
+
+
+Headers des fonction des structures de données.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_noeud}{Noeud}}
+\begin{DoxyCompactList}\small\item\em Structure pour un \mbox{\hyperlink{struct_noeud}{Noeud}}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_element_node}{Element\+Node}}
+\begin{DoxyCompactList}\small\item\em Structure pour un element \mbox{\hyperlink{struct_noeud}{Noeud}} d\textquotesingle{}une file. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_queue}{Queue}}
+\begin{DoxyCompactList}\small\item\em Structure pour une file de Noeuds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_data_structures_8h_a8e9241b13e33c89b710a91795150ede0}\label{_data_structures_8h_a8e9241b13e33c89b710a91795150ede0}} 
+typedef struct \mbox{\hyperlink{struct_noeud}{Noeud}} \mbox{\hyperlink{_data_structures_8h_a8e9241b13e33c89b710a91795150ede0}{Noeud}}
+\begin{DoxyCompactList}\small\item\em Structure pour un \mbox{\hyperlink{struct_noeud}{Noeud}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_structures_8h_a3cb3dfbc55ce32382751337fcca5e08a}\label{_data_structures_8h_a3cb3dfbc55ce32382751337fcca5e08a}} 
+typedef \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$ {\bfseries Arbre}
+\item 
+\mbox{\Hypertarget{_data_structures_8h_aa6c0071625016598b3a9da1798e66833}\label{_data_structures_8h_aa6c0071625016598b3a9da1798e66833}} 
+typedef struct \mbox{\hyperlink{struct_element_node}{Element\+Node}} \mbox{\hyperlink{_data_structures_8h_aa6c0071625016598b3a9da1798e66833}{Element\+Node}}
+\begin{DoxyCompactList}\small\item\em Structure pour un element \mbox{\hyperlink{struct_noeud}{Noeud}} d\textquotesingle{}une file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_structures_8h_ad4f29a362a072ba563b41ae8e935c6fc}\label{_data_structures_8h_ad4f29a362a072ba563b41ae8e935c6fc}} 
+typedef struct \mbox{\hyperlink{struct_queue}{Queue}} \mbox{\hyperlink{_data_structures_8h_ad4f29a362a072ba563b41ae8e935c6fc}{Queue}}
+\begin{DoxyCompactList}\small\item\em Structure pour une file de Noeuds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$ \mbox{\hyperlink{_data_structures_8h_a13b514a4b0485b669f721170711882c8}{creer\+Noeud}} (char ch, size\+\_\+t occ, char $\ast$bin)
+\begin{DoxyCompactList}\small\item\em Crée un noeud alloué dynamiquement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_a4f85cfb498e3e0d5f815f4b235d678d8}{afficher\+Arbre\+Occ}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arbre avec ses occurrences. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_a8da495e3c909a211785b3dcc86409b90}{afficher\+Arbre\+Bin}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}arbre avec ses codes binaires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_abe921b1637c43ab26e6714eb2cc1e8c2}{free\+Arbre}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Libère l\textquotesingle{}arbre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_a1f6490f3d21b6acbde30af92922e187f}{add\+Node\+A\+V\+Lch}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp)
+\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}A\+VL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_a61b5f54b1ed3b90d855662ab14680c86}{add\+Node\+B\+S\+Tch}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp)
+\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}abre de tri (alphabétique) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_ae99d92d75c5b154f6e7d8587c2b19fc2}{add\+Node\+B\+S\+Tocc}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$A\+VL, \mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$tmp)
+\begin{DoxyCompactList}\small\item\em Ajoute un noeud dans l\textquotesingle{}arbre de tri (Occurrence) \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{_data_structures_8h_ae137073626dac01e3bf2d8d5fc3b51e6}{depth}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Renvoie la prodonfeur de l\textquotesingle{}arbre (0 si l\textquotesingle{}arbre n\textquotesingle{}existe pas) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_data_structures_8h_a048c517b0ff675a302cf7dbac40ef815}{get\+BF}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Renvoie le balance factor de l\textquotesingle{}A\+VL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_a87f8a1c3c2b9e608fbc55c544e192cb0}{left\+Rotation}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$a)
+\begin{DoxyCompactList}\small\item\em Rotation gauche de noeuds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_a2b0c4a945fa68242d14f642be284b31e}{right\+Rotation}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$a)
+\begin{DoxyCompactList}\small\item\em Rotation droite de noeuds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_aeef7e1682c1e389ff2c8d73f0bdf1526}{balance}} (\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$a)
+\begin{DoxyCompactList}\small\item\em Tant que le Balance Factor $>$ 2 Réequillibre l\textquotesingle{}arbre \+: avoir un A\+VL. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_queue}{Queue}} $\ast$ \mbox{\hyperlink{_data_structures_8h_aa4fc1988b6de9949c88d1247b763b0d4}{create\+Queue}} ()
+\begin{DoxyCompactList}\small\item\em Crée une file allouée dynamiquement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_data_structures_8h_af2770b8a3db2abbf230cd55a0ec9fed3}{is\+Empty\+Queue}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q)
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}état de la file, vidée ou non. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_data_structures_8h_a4a0b76239793855e5aba1a4ec20130b3}{push\+Queue}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q, \mbox{\hyperlink{struct_noeud}{Arbre}} val)
+\begin{DoxyCompactList}\small\item\em Enfile un noeud. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_noeud}{Arbre}} \mbox{\hyperlink{_data_structures_8h_a0c2405a26fe5e87cf5d4769f5e3477cd}{pop\+Queue}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q)
+\begin{DoxyCompactList}\small\item\em Défile un noeud. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_data_structures_8h_afbe23de9a17bf5692f73ced06a3075ba}{size\+Queue}} (\mbox{\hyperlink{struct_element_node}{Element\+Node}} $\ast$q)
+\begin{DoxyCompactList}\small\item\em Renvoie la taille de la file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_noeud}{Arbre}} \mbox{\hyperlink{_data_structures_8h_a27890fc5027694e27aba1ae31ae3cc5e}{get\+Min\+Queues}} (\mbox{\hyperlink{struct_queue}{Queue}} $\ast$q1, \mbox{\hyperlink{struct_queue}{Queue}} $\ast$q2)
+\begin{DoxyCompactList}\small\item\em Compare et choisi le noeud avec l\textquotesingle{}occurrence la plus petite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Headers des fonction des structures de données. 
+
+\begin{DoxyAuthor}{Auteur}
+Gianlucca Annichiarico (\href{mailto:agianlucca@gmail.com}{\texttt{ agianlucca@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/12-\/06
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{_data_structures_8h_a1f6490f3d21b6acbde30af92922e187f}\label{_data_structures_8h_a1f6490f3d21b6acbde30af92922e187f}} 
+\index{DataStructures.h@{DataStructures.h}!addNodeAVLch@{addNodeAVLch}}
+\index{addNodeAVLch@{addNodeAVLch}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{addNodeAVLch()}{addNodeAVLch()}}
+{\footnotesize\ttfamily void add\+Node\+A\+V\+Lch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{A\+VL,  }\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{tmp }\end{DoxyParamCaption})}
+
+
+
+Ajoute un noeud dans l\textquotesingle{}A\+VL. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em A\+VL} & \\
+\hline
+{\em tmp} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_a61b5f54b1ed3b90d855662ab14680c86}\label{_data_structures_8h_a61b5f54b1ed3b90d855662ab14680c86}} 
+\index{DataStructures.h@{DataStructures.h}!addNodeBSTch@{addNodeBSTch}}
+\index{addNodeBSTch@{addNodeBSTch}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{addNodeBSTch()}{addNodeBSTch()}}
+{\footnotesize\ttfamily void add\+Node\+B\+S\+Tch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{A\+VL,  }\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{tmp }\end{DoxyParamCaption})}
+
+
+
+Ajoute un noeud dans l\textquotesingle{}abre de tri (alphabétique) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em A\+VL} & \\
+\hline
+{\em tmp} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_ae99d92d75c5b154f6e7d8587c2b19fc2}\label{_data_structures_8h_ae99d92d75c5b154f6e7d8587c2b19fc2}} 
+\index{DataStructures.h@{DataStructures.h}!addNodeBSTocc@{addNodeBSTocc}}
+\index{addNodeBSTocc@{addNodeBSTocc}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{addNodeBSTocc()}{addNodeBSTocc()}}
+{\footnotesize\ttfamily void add\+Node\+B\+S\+Tocc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{A\+VL,  }\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{tmp }\end{DoxyParamCaption})}
+
+
+
+Ajoute un noeud dans l\textquotesingle{}arbre de tri (Occurrence) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em A\+VL} & \\
+\hline
+{\em tmp} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_a8da495e3c909a211785b3dcc86409b90}\label{_data_structures_8h_a8da495e3c909a211785b3dcc86409b90}} 
+\index{DataStructures.h@{DataStructures.h}!afficherArbreBin@{afficherArbreBin}}
+\index{afficherArbreBin@{afficherArbreBin}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{afficherArbreBin()}{afficherArbreBin()}}
+{\footnotesize\ttfamily void afficher\+Arbre\+Bin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}arbre avec ses codes binaires. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_a4f85cfb498e3e0d5f815f4b235d678d8}\label{_data_structures_8h_a4f85cfb498e3e0d5f815f4b235d678d8}} 
+\index{DataStructures.h@{DataStructures.h}!afficherArbreOcc@{afficherArbreOcc}}
+\index{afficherArbreOcc@{afficherArbreOcc}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{afficherArbreOcc()}{afficherArbreOcc()}}
+{\footnotesize\ttfamily void afficher\+Arbre\+Occ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}arbre avec ses occurrences. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_aeef7e1682c1e389ff2c8d73f0bdf1526}\label{_data_structures_8h_aeef7e1682c1e389ff2c8d73f0bdf1526}} 
+\index{DataStructures.h@{DataStructures.h}!balance@{balance}}
+\index{balance@{balance}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{balance()}{balance()}}
+{\footnotesize\ttfamily void balance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Tant que le Balance Factor $>$ 2 Réequillibre l\textquotesingle{}arbre \+: avoir un A\+VL. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_aa4fc1988b6de9949c88d1247b763b0d4}\label{_data_structures_8h_aa4fc1988b6de9949c88d1247b763b0d4}} 
+\index{DataStructures.h@{DataStructures.h}!createQueue@{createQueue}}
+\index{createQueue@{createQueue}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{createQueue()}{createQueue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_queue}{Queue}}$\ast$ create\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Crée une file allouée dynamiquement. 
+
+\begin{DoxyReturn}{Renvoie}
+Queue$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_data_structures_8h_a13b514a4b0485b669f721170711882c8}\label{_data_structures_8h_a13b514a4b0485b669f721170711882c8}} 
+\index{DataStructures.h@{DataStructures.h}!creerNoeud@{creerNoeud}}
+\index{creerNoeud@{creerNoeud}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{creerNoeud()}{creerNoeud()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_noeud}{Noeud}}$\ast$ creer\+Noeud (\begin{DoxyParamCaption}\item[{char}]{ch,  }\item[{size\+\_\+t}]{occ,  }\item[{char $\ast$}]{bin }\end{DoxyParamCaption})}
+
+
+
+Crée un noeud alloué dynamiquement. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ch} & \\
+\hline
+{\em occ} & \\
+\hline
+{\em bin} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Noeud$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_data_structures_8h_ae137073626dac01e3bf2d8d5fc3b51e6}\label{_data_structures_8h_ae137073626dac01e3bf2d8d5fc3b51e6}} 
+\index{DataStructures.h@{DataStructures.h}!depth@{depth}}
+\index{depth@{depth}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{depth()}{depth()}}
+{\footnotesize\ttfamily size\+\_\+t depth (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Renvoie la prodonfeur de l\textquotesingle{}arbre (0 si l\textquotesingle{}arbre n\textquotesingle{}existe pas) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_data_structures_8h_abe921b1637c43ab26e6714eb2cc1e8c2}\label{_data_structures_8h_abe921b1637c43ab26e6714eb2cc1e8c2}} 
+\index{DataStructures.h@{DataStructures.h}!freeArbre@{freeArbre}}
+\index{freeArbre@{freeArbre}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{freeArbre()}{freeArbre()}}
+{\footnotesize\ttfamily void free\+Arbre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Libère l\textquotesingle{}arbre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_a048c517b0ff675a302cf7dbac40ef815}\label{_data_structures_8h_a048c517b0ff675a302cf7dbac40ef815}} 
+\index{DataStructures.h@{DataStructures.h}!getBF@{getBF}}
+\index{getBF@{getBF}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{getBF()}{getBF()}}
+{\footnotesize\ttfamily int get\+BF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Renvoie le balance factor de l\textquotesingle{}A\+VL. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_data_structures_8h_a27890fc5027694e27aba1ae31ae3cc5e}\label{_data_structures_8h_a27890fc5027694e27aba1ae31ae3cc5e}} 
+\index{DataStructures.h@{DataStructures.h}!getMinQueues@{getMinQueues}}
+\index{getMinQueues@{getMinQueues}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{getMinQueues()}{getMinQueues()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_noeud}{Arbre}} get\+Min\+Queues (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_queue}{Queue}} $\ast$}]{q1,  }\item[{\mbox{\hyperlink{struct_queue}{Queue}} $\ast$}]{q2 }\end{DoxyParamCaption})}
+
+
+
+Compare et choisi le noeud avec l\textquotesingle{}occurrence la plus petite. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em q1} & \\
+\hline
+{\em q2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Arbre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_data_structures_8h_af2770b8a3db2abbf230cd55a0ec9fed3}\label{_data_structures_8h_af2770b8a3db2abbf230cd55a0ec9fed3}} 
+\index{DataStructures.h@{DataStructures.h}!isEmptyQueue@{isEmptyQueue}}
+\index{isEmptyQueue@{isEmptyQueue}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{isEmptyQueue()}{isEmptyQueue()}}
+{\footnotesize\ttfamily int is\+Empty\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_queue}{Queue}} $\ast$}]{q }\end{DoxyParamCaption})}
+
+
+
+Renvoie l\textquotesingle{}état de la file, vidée ou non. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em q} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_data_structures_8h_a87f8a1c3c2b9e608fbc55c544e192cb0}\label{_data_structures_8h_a87f8a1c3c2b9e608fbc55c544e192cb0}} 
+\index{DataStructures.h@{DataStructures.h}!leftRotation@{leftRotation}}
+\index{leftRotation@{leftRotation}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{leftRotation()}{leftRotation()}}
+{\footnotesize\ttfamily void left\+Rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Rotation gauche de noeuds. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_a0c2405a26fe5e87cf5d4769f5e3477cd}\label{_data_structures_8h_a0c2405a26fe5e87cf5d4769f5e3477cd}} 
+\index{DataStructures.h@{DataStructures.h}!popQueue@{popQueue}}
+\index{popQueue@{popQueue}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{popQueue()}{popQueue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_noeud}{Arbre}} pop\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_queue}{Queue}} $\ast$}]{q }\end{DoxyParamCaption})}
+
+
+
+Défile un noeud. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em q} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Arbre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_data_structures_8h_a4a0b76239793855e5aba1a4ec20130b3}\label{_data_structures_8h_a4a0b76239793855e5aba1a4ec20130b3}} 
+\index{DataStructures.h@{DataStructures.h}!pushQueue@{pushQueue}}
+\index{pushQueue@{pushQueue}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{pushQueue()}{pushQueue()}}
+{\footnotesize\ttfamily void push\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_queue}{Queue}} $\ast$}]{q,  }\item[{\mbox{\hyperlink{struct_noeud}{Arbre}}}]{val }\end{DoxyParamCaption})}
+
+
+
+Enfile un noeud. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em q} & \\
+\hline
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_a2b0c4a945fa68242d14f642be284b31e}\label{_data_structures_8h_a2b0c4a945fa68242d14f642be284b31e}} 
+\index{DataStructures.h@{DataStructures.h}!rightRotation@{rightRotation}}
+\index{rightRotation@{rightRotation}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{rightRotation()}{rightRotation()}}
+{\footnotesize\ttfamily void right\+Rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_noeud}{Noeud}} $\ast$$\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Rotation droite de noeuds. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_data_structures_8h_afbe23de9a17bf5692f73ced06a3075ba}\label{_data_structures_8h_afbe23de9a17bf5692f73ced06a3075ba}} 
+\index{DataStructures.h@{DataStructures.h}!sizeQueue@{sizeQueue}}
+\index{sizeQueue@{sizeQueue}!DataStructures.h@{DataStructures.h}}
+\doxysubsubsection{\texorpdfstring{sizeQueue()}{sizeQueue()}}
+{\footnotesize\ttfamily int size\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_element_node}{Element\+Node}} $\ast$}]{q }\end{DoxyParamCaption})}
+
+
+
+Renvoie la taille de la file. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em q} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
